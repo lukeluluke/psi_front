@@ -10,7 +10,7 @@
             <li class="nested" [class.expand]="showMenu === 'purchase'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Create Order' | translate }}</span></a>
+                        <a [routerLink]="['/purchase/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ 'Create Order' | translate }}</span></a>
                     </li>
                     <li>
                         <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Update Order' | translate }}</span></a>
@@ -32,16 +32,16 @@
             <li class="nested" [class.expand]="showMenu === 'sale'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/sale/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Create Order' | translate }}</span></a>
+                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Create Order' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/sale/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Update Order' | translate }}</span></a>
+                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Update Order' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/sale/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Payment' | translate }}</span></a>
+                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Payment' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/sale/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Return' | translate }}</span></a>
+                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Return' | translate }}</span></a>
                     </li>
                 </ul>
             </li>
