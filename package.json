@@ -1,12 +1,12 @@
 {
-    "name": "sb-admin-cli-update",
+    "name": "psi-cli-update",
     "version": "0.0.0",
     "license": "MIT",
     "scripts": {
         "ng": "ng",
         "start": "ng serve --ec true --port 4201",
         "build": "ng build --prod",
-        "gitbuild": "ng build --prod --base /start-angular/SB-Admin-BS4-Angular-4/master/dist/",
+        "gitbuild": "ng build --prod --base /start-angular/psi_front/master/dist/",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e"
