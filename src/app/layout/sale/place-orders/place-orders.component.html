@@ -1,3 +1,125 @@
-<p>
-  place-orders works!
-</p>
+<div [@routerTransition]>
+    <app-page-header [heading]="'Place-orders'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <h4>选择供货单位</h4>
+                <ng-select [allowClear]="true"
+                           [items]="companies"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selected($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <h4>选择经手人</h4>
+                <ng-select [allowClear]="true"
+                           [items]="users"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selected($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <h4>选择部门</h4>
+                <ng-select [allowClear]="true"
+                           [items]="divisions"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selected($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <h4>选择仓库</h4>
+                <ng-select [allowClear]="true"
+                           [items]="warehouses"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selected($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <h4>摘要</h4>
+                <input class="form-control" placeholder="">
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <h4>附加说明</h4>
+                <input class="form-control" placeholder="">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div style="height: 20px;"></div>
+    </div>
+
+    <div class="card mb-3">
+        <div class="card-header">Hoverable rows</div>
+        <table class="card-block table table-hover">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Username</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+            </tr>
+            <tr>
+                <th scope="row">2</th>
+                <td>Jacob</td>
+                <td>Thornton</td>
+                <td>@fat</td>
+            </tr>
+            <tr>
+                <th scope="row">3</th>
+                <td colspan="2">Larry the Bird</td>
+                <td>@twitter</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="row">
+        <div style="height: 50px;"></div>
+    </div>
+
+</div>
