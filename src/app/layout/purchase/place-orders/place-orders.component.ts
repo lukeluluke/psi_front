@@ -3,6 +3,7 @@ import {routerTransition} from '../../../router.animations';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Companies } from '../../../shared/mock/mock-company';
 import { Products } from '../../../shared/mock/mock-product'
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
     selector: 'app-place-orders',
@@ -12,6 +13,11 @@ import { Products } from '../../../shared/mock/mock-product'
 })
 export class PlaceOrdersComponent implements OnInit {
     closeResult: string;
+    public pageConfig: PaginationInstance = {
+        id: 'advanced',
+        itemsPerPage: 3,
+        currentPage: 1
+    };
     public products = Products;
     public companies = [
         { id: 1, text: 'SWISSE' },
@@ -44,7 +50,6 @@ export class PlaceOrdersComponent implements OnInit {
 
     ngOnInit() {
     }
-
     open(content) {
         this.modalService.open(content).result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
@@ -87,6 +92,4 @@ export class PlaceOrdersComponent implements OnInit {
             this.orderProducts.push(selectProduct);
         }
     }
-
-
 }

@@ -106,7 +106,8 @@
                         <tr *ngFor="let product of products" (click)="addProductItem(product.id)">
                             <th scope="row">{{ product.id }}</th>
                             <td>{{ product.name }}</td>
-                            <td>{{ product.spec }}</td>
+                            <td> {{ product.spec }}</td>
+                            <td> {{ product.price }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -133,7 +134,7 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let product of orderProducts">
+                <tr *ngFor="let product of orderProducts | paginate: pageConfig">
                     <th scope="row">{{ product.row }}</th>
                     <td>{{ product.name }}</td>
                     <td> {{ product.spec }}</td>
@@ -141,6 +142,7 @@
                 </tr>
                 </tbody>
             </table>
+            <app-xpagination [pageConfig]="pageConfig"></app-xpagination>
         </div>
     </div>
 
