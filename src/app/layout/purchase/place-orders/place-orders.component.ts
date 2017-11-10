@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
-import {Companies} from '../../../shared/mock/mock-company';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { Companies } from '../../../shared/mock/mock-company';
+import { Products } from '../../../shared/mock/mock-product'
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
     selector: 'app-place-orders',
@@ -9,6 +12,13 @@ import {Companies} from '../../../shared/mock/mock-company';
     animations: [routerTransition()]
 })
 export class PlaceOrdersComponent implements OnInit {
+    closeResult: string;
+    public pageConfig: PaginationInstance = {
+        id: 'advanced',
+        itemsPerPage: 3,
+        currentPage: 1
+    };
+    public products = Products;
     public companies = [
         { id: 1, text: 'SWISSE' },
         { id: 2, text: 'BLACKMORE' },
@@ -30,8 +40,32 @@ export class PlaceOrdersComponent implements OnInit {
         { id: 1, text: 'Clayton' },
         { id: 2, text: 'Chadstone' },
     ];
+    public orderProducts = [];
 
     private value: string;
+    constructor(
+        private modalService: NgbModal
+    ) {
+    }
+
+    ngOnInit() {
+    }
+    open(content) {
+        this.modalService.open(content).result.then((result) => {
+            this.closeResult = `Closed with: ${result}`;
+        }, (reason) => {
+            this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        });
+    }
+    private getDismissReason(reason: any): string {
+        if (reason === ModalDismissReasons.ESC) {
+            return 'by pressing ESC';
+        } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
+            return 'by clicking on a backdrop';
+        } else {
+            return  `with: ${reason}`;
+        }
+    }
     public selected(value: any): void {
         console.log('Selected value is: ', value);
     }
@@ -47,11 +81,15 @@ export class PlaceOrdersComponent implements OnInit {
     public refreshValue(value: any): void {
         this.value = value;
     }
-
-    constructor() {
+    public addProductItem(id: number): void {
+        const product = this.products.filter(x => x.id === id);
+        if (product) {
+            const productLength = this.orderProducts.length;
+            const selectProduct = {};
+            Object.assign(selectProduct, product[0]);
+            selectProduct['price'] = this.orderProducts.length;
+            selectProduct['row'] = productLength + 1;
+            this.orderProducts.push(selectProduct);
+        }
     }
-
-    ngOnInit() {
-    }
-
 }

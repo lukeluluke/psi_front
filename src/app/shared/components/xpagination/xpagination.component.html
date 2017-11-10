@@ -1,0 +1,14 @@
+<div class="row">
+    <div class="col-lg-12">
+        <pagination-controls [id]="pageConfig.id"
+                             [maxSize]="maxSize"
+                             [directionLinks]="directionLinks"
+                             [autoHide]="autoHide"
+                             [previousLabel]="labels.previousLabel"
+                             [nextLabel]="labels.nextLabel"
+                             [screenReaderPaginationLabel]="labels.screenReaderPaginationLabel"
+                             [screenReaderPageLabel]="labels.screenReaderPageLabel"
+                             [screenReaderCurrentLabel]="labels.screenReaderCurrentLabel"
+                             (pageChange)="onPageChange($event)"></pagination-controls>
+    </div>
+</div>
