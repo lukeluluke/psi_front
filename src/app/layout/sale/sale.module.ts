@@ -3,11 +3,13 @@ import { CommonModule } from '@angular/common';
 
 import { SaleRoutingModule } from './sale-routing.module'
 import { SaleComponent } from './sale.component';
-import { PageHeaderModule } from './../../shared';
+import { PageHeaderModule, XpaginationModule } from './../../shared';
 import { PlaceOrdersComponent } from './place-orders/place-orders.component';
 
 import { FormsModule } from '@angular/forms';
 import { SelectModule} from 'ng2-select-compat';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
     imports: [
@@ -15,7 +17,10 @@ import { SelectModule} from 'ng2-select-compat';
         SaleRoutingModule,
         PageHeaderModule,
         FormsModule,
-        SelectModule
+        SelectModule,
+        NgbModule.forRoot(),
+        NgxPaginationModule,
+        XpaginationModule
     ],
     declarations: [SaleComponent, PlaceOrdersComponent]
 })
