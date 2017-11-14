@@ -3,6 +3,9 @@ import {routerTransition} from '../../../router.animations';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Companies } from '../../../shared/mock/mock-company';
 import { Products } from '../../../shared/mock/mock-product'
+import { Warehouses} from '../../../shared/mock/mock-warehouse';
+import { Divisions } from '../../../shared/mock/mock-division';
+import { Users } from '../../../shared/mock/mock-user';
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
@@ -18,28 +21,12 @@ export class PlaceOrdersComponent implements OnInit {
         itemsPerPage: 3,
         currentPage: 1
     };
+    public maxSize = 7;
     public products = Products;
-    public companies = [
-        { id: 1, text: 'SWISSE' },
-        { id: 2, text: 'BLACKMORE' },
-        { id: 3, text: 'HEALTHY CARE' },
-        { id: 4, text: 'BIO ISLAND' }
-    ];
-    public users = [
-        { id: 1, text: '张一' },
-        { id: 2, text: '李二' },
-        { id: 3, text: '王三' },
-        { id: 4, text: '赵四' }
-    ];
-    public divisions = [
-        { id: 1, text: '销售' },
-        { id: 2, text: '仓库' },
-        { id: 3, text: '财务' },
-    ];
-    public warehouses = [
-        { id: 1, text: 'Clayton' },
-        { id: 2, text: 'Chadstone' },
-    ];
+    public companies = Companies;
+    public users = Users;
+    public divisions = Divisions;
+    public warehouses = Warehouses;
     public orderProducts = [];
 
     private value: string;

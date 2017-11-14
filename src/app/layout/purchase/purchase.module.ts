@@ -8,7 +8,7 @@ import { PageHeaderModule } from './../../shared';
 import { PlaceOrdersComponent } from './place-orders/place-orders.component';
 import { SelectModule } from 'ng2-select-compat';
 import { NgxPaginationModule } from 'ngx-pagination';
-import { XpaginationComponent} from '../../shared';
+import { XpaginationModule } from '../../shared/';
 
 @NgModule({
     imports: [
@@ -18,9 +18,10 @@ import { XpaginationComponent} from '../../shared';
         NgbModule.forRoot(),
         PageHeaderModule,
         SelectModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        XpaginationModule
     ],
-    declarations: [XpaginationComponent, PurchaseComponent, PlaceOrdersComponent ]
+    declarations: [PurchaseComponent, PlaceOrdersComponent ]
 })
 
 export class PurchaseModule {}

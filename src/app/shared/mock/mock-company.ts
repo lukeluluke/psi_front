@@ -1,8 +1,6 @@
-import { Company } from '../model/company.model';
-
-export const Companies: Company[] = [
-    { id: 1, name: 'SWISSE' },
-    { id: 2, name: 'BLACKMORE' },
-    { id: 3, name: 'HEALTHY CARE' },
-    { id: 4, name: 'BIO ISLAND' }
+export const Companies = [
+    { id: 1, text: 'SWISSE' },
+    { id: 2, text: 'BLACKMORE' },
+    { id: 3, text: 'HEALTHY CARE' },
+    { id: 4, text: 'BIO ISLAND' }
 ];
