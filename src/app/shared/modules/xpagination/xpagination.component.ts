@@ -8,7 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
 export class XpaginationComponent implements OnInit {
 
     @Input() pageConfig: PaginationInstance;
-    public maxSize = 7;
+    @Input() maxSize: number;
     public directionLinks: boolean = true;
     public autoHide: boolean = true;
     public labels: any = {
@@ -25,7 +25,6 @@ export class XpaginationComponent implements OnInit {
     }
 
     onPageChange(number: number) {
-        console.log('change to page', number);
         this.pageConfig.currentPage = number;
     }
 
