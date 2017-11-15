@@ -139,6 +139,8 @@
                     <td>{{ product.name }}</td>
                     <td> {{ product.spec }}</td>
                     <td> {{ product.price }}</td>
+                    <td><inline-editor type="text" [(ngModel)]="product.name" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [(ngModel)]="product.price" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
                 </tr>
                 </tbody>
             </table>
