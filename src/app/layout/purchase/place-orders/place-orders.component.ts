@@ -6,6 +6,7 @@ import { Products } from '../../../shared/mock/mock-product'
 import { Warehouses} from '../../../shared/mock/mock-warehouse';
 import { Divisions } from '../../../shared/mock/mock-division';
 import { Users } from '../../../shared/mock/mock-user';
+import { Order} from '../../../shared/model/order.model';
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
@@ -18,17 +19,15 @@ export class PlaceOrdersComponent implements OnInit {
     closeResult: string;
     public pageConfig: PaginationInstance = {
         id: 'advanced',
-        itemsPerPage: 3,
+        itemsPerPage: 10,
         currentPage: 1
     };
-    public maxSize = 7;
     public products = Products;
     public companies = Companies;
     public users = Users;
     public divisions = Divisions;
     public warehouses = Warehouses;
     public orderProducts = [];
-    public testText = 'abc';
 
     private value: string;
     constructor(
