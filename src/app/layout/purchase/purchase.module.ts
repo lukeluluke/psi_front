@@ -9,6 +9,7 @@ import { PlaceOrdersComponent } from './place-orders/place-orders.component';
 import { SelectModule } from 'ng2-select-compat';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
+import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 
 @NgModule({
     imports: [
@@ -19,7 +20,8 @@ import { XpaginationModule } from '../../shared/';
         PageHeaderModule,
         SelectModule,
         NgxPaginationModule,
-        XpaginationModule
+        XpaginationModule,
+        InlineEditorModule
     ],
     declarations: [PurchaseComponent, PlaceOrdersComponent ]
 })

@@ -28,6 +28,7 @@ export class PlaceOrdersComponent implements OnInit {
     public divisions = Divisions;
     public warehouses = Warehouses;
     public orderProducts = [];
+    public testText = 'abc';
 
     private value: string;
     constructor(
@@ -78,5 +79,10 @@ export class PlaceOrdersComponent implements OnInit {
             selectProduct['row'] = productLength + 1;
             this.orderProducts.push(selectProduct);
         }
+    }
+
+    public saveEditable($event) {
+        console.log(this.orderProducts);
+        console.log($event);
     }
 }
