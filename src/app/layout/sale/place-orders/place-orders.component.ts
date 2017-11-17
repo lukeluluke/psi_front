@@ -21,7 +21,6 @@ export class PlaceOrdersComponent implements OnInit {
         itemsPerPage: 3,
         currentPage: 1
     };
-    public maxSize = 7;
     public products = Products;
     public companies = Companies;
     public users = Users;

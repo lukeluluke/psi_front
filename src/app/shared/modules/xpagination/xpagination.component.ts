@@ -8,6 +8,7 @@ import { PaginationInstance } from 'ngx-pagination';
 export class XpaginationComponent implements OnInit {
 
     @Input() pageConfig: PaginationInstance;
+    @Input() maxSize: number;
     public directionLinks: boolean = true;
     public autoHide: boolean = true;
     public labels: any = {
@@ -18,7 +19,6 @@ export class XpaginationComponent implements OnInit {
         screenReaderCurrentLabel: `You're on page`
     };
     constructor() {
-
     }
 
     ngOnInit() {
