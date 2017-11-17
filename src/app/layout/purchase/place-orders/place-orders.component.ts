@@ -3,6 +3,7 @@ import {routerTransition} from '../../../router.animations';
 
 import { Companies, Warehouses, Divisions, Users } from '../../../shared/mock';
 import { Order, Product, OrderProduct } from '../../../shared/model/';
+
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
@@ -17,6 +18,7 @@ export class PlaceOrdersComponent implements OnInit {
         itemsPerPage: 10,
         currentPage: 1
     };
+
     public order: Order;
     companies = Companies;
     users = Users;
