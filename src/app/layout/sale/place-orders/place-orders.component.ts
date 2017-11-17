@@ -21,7 +21,6 @@ export class PlaceOrdersComponent implements OnInit {
         itemsPerPage: 3,
         currentPage: 1
     };
-    public maxSize = 7;
     public products = Products;
     public companies = Companies;
     public users = Users;
@@ -69,14 +68,14 @@ export class PlaceOrdersComponent implements OnInit {
         this.value = value;
     }
     public addProductItem(id: number): void {
-        const product = this.products.filter(x => x.id === id);
-        if (product) {
-            const productLength = this.orderProducts.length;
-            const selectProduct = {};
-            Object.assign(selectProduct, product[0]);
-            selectProduct['price'] = this.orderProducts.length;
-            selectProduct['row'] = productLength + 1;
-            this.orderProducts.push(selectProduct);
-        }
+        // const product = this.products.filter(x => x.id === id);
+        // if (product) {
+        //     const productLength = this.orderProducts.length;
+        //     const selectProduct = {};
+        //     Object.assign(selectProduct, product[0]);
+        //     selectProduct['price'] = this.orderProducts.length;
+        //     selectProduct['row'] = productLength + 1;
+        //     this.orderProducts.push(selectProduct);
+        // }
     }
 }

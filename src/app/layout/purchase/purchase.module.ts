@@ -10,6 +10,7 @@ import { SelectModule } from 'ng2-select-compat';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
+import { ProductModalComponent } from './place-orders/product-modal/product-modal.component';
 
 @NgModule({
     imports: [
@@ -23,7 +24,11 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
         XpaginationModule,
         InlineEditorModule
     ],
-    declarations: [PurchaseComponent, PlaceOrdersComponent ]
+    declarations: [
+        PurchaseComponent,
+        PlaceOrdersComponent,
+        ProductModalComponent,
+    ]
 })
 
 export class PurchaseModule {}

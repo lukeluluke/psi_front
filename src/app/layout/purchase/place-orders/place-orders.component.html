@@ -6,6 +6,7 @@
             <div>
                 <h4>选择供货单位</h4>
                 <ng-select [allowClear]="true"
+                           [(ngModel)]="order.companyId"
                            [items]="companies"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
@@ -21,6 +22,7 @@
             <div>
                 <h4>选择经手人</h4>
                 <ng-select [allowClear]="true"
+                           [(ngModel)]="order.userId"
                            [items]="users"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
@@ -36,6 +38,7 @@
             <div>
                 <h4>选择部门</h4>
                 <ng-select [allowClear]="true"
+                           [(ngModel)]="order.divisionId"
                            [items]="divisions"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
@@ -55,6 +58,7 @@
             <div>
                 <h4>选择仓库</h4>
                 <ng-select [allowClear]="true"
+                           [(ngModel)]="order.warehouseId"
                            [items]="warehouses"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
@@ -69,14 +73,14 @@
         <div class="col-lg-3">
             <div>
                 <h4>摘要</h4>
-                <input class="form-control" placeholder="">
+                <input [(ngModel)]="order.description" class="form-control" placeholder="">
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
                 <h4>附加说明</h4>
-                <input class="form-control" placeholder="">
+                <input [(ngModel)]="order.extraInfo" class="form-control" placeholder="">
             </div>
         </div>
     </div>
@@ -86,32 +90,7 @@
     <div class="row">
         <div class="card col-lg-12">
             <div class="card-header">
-                <button (click)="open(content)" class="btn btn-primary">添加产品</button>
-                <ng-template #content let-c="close" let-d="dismiss">
-                    <div class="modal-header">
-                        <h4 class="modal-title">选择产品</h4>
-                        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <table class="card-block table table-hover">
-                        <thead>
-                        <tr>
-                            <th>商品编号</th>
-                            <th>商品名称</th>
-                            <th>规格</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr *ngFor="let product of products" (click)="addProductItem(product.id)">
-                            <th scope="row">{{ product.id }}</th>
-                            <td>{{ product.name }}</td>
-                            <td> {{ product.spec }}</td>
-                            <td> {{ product.price }}</td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </ng-template>
+                <app-product-modal (productAdd)="onProductAdd($event)"></app-product-modal>
             </div>
             <table class="card-block table table-hover">
                 <thead>
@@ -122,11 +101,9 @@
                     <th>条码</th>
                     <th>规格</th>
                     <th>型号</th>
-                    <th>单位</th>
                     <th>数量</th>
                     <th>单价</th>
                     <th>金额</th>
-                    <th>状态</th>
                     <th>备注</th>
                     <th>仓库货位</th>
                     <th>删除</th>
@@ -134,17 +111,23 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let product of orderProducts | paginate: pageConfig">
-                    <th scope="row">{{ product.row }}</th>
-                    <td>{{ product.name }}</td>
-                    <td> {{ product.spec }}</td>
-                    <td> {{ product.price }}</td>
-                    <td><inline-editor type="text" [(ngModel)]="product.name" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><inline-editor type="text" [(ngModel)]="product.price" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                <tr *ngFor="let orederProduct of (order.orderProducts | paginate: pageConfig); let i = index;">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ orederProduct.product.sku }}</td>
+                    <td> {{ orederProduct.product.name }}</td>
+                    <td> {{ orederProduct.product.barcode }}</td>
+                    <td> {{ orederProduct.product.spec }}</td>
+                    <td> {{ orederProduct.product.model }}</td>
+                    <td><inline-editor type="text" disabled="true" [(ngModel)]="orederProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [(ngModel)]="orederProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orederProduct.amount }}</td>
+                    <td><inline-editor type="textarea" [(ngModel)]="orederProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orederProduct.stockQuantity }}</td>
+
                 </tr>
                 </tbody>
             </table>
-            <app-xpagination [pageConfig]="pageConfig"></app-xpagination>
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
         </div>
     </div>
 

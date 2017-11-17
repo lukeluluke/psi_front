@@ -5,21 +5,18 @@
         </a>
         <div class="nested-menu">
             <a class="list-group-item" [routerLink]="['/purchase']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('purchase')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Purchase' | translate }}</span>
+                <span><i class="fa fa-plus"></i>&nbsp; {{ '进货' | translate }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'purchase'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/purchase/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ 'Create Order' | translate }}</span></a>
+                        <a [routerLink]="['/purchase/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ '进货' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Update Order' | translate }}</span></a>
+                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ '财务付款' | translate }}</span></a>
                     </li>
                     <li>
-                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Payment' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ 'Return' | translate }}</span></a>
+                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ '退货' | translate }}</span></a>
                     </li>
                 </ul>
             </li>

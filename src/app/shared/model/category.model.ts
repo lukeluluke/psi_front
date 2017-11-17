@@ -1,26 +1,20 @@
 import { Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
 import { UUID } from 'angular2-uuid';
-import { OrderProduct } from './order-product.model';
 
-export class Order {
+export class Category {
     uuid: string;
-    id: number;
-    orderProducts: OrderProduct[];
-    companyId: number;
-    warehouseId: number;
-    userId: number;
-    divisionId: number;
-    description: string;
-    extraInfo: string;
+    name: string;
     createdAt: string;
+    updatedAt: string;
     createdBy: string;
+
     initialize() {
         if (!this.uuid) {
             const timestamp = moment();
             this.uuid = UUID.UUID();
             this.createdAt = timestamp.format();
-            this.orderProducts = [];
+            this.updatedAt = timestamp.format();
         }
     }
 }
