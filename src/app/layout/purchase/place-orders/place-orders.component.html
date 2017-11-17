@@ -90,7 +90,7 @@
     <div class="row">
         <div class="card col-lg-12">
             <div class="card-header">
-                <app-product-modal [products]="products" (productAdd)="onProductAdd($event)"></app-product-modal>
+                <app-product-modal (productAdd)="onProductAdd($event)"></app-product-modal>
             </div>
             <table class="card-block table table-hover">
                 <thead>
@@ -101,11 +101,9 @@
                     <th>条码</th>
                     <th>规格</th>
                     <th>型号</th>
-                    <th>单位</th>
                     <th>数量</th>
                     <th>单价</th>
                     <th>金额</th>
-                    <th>状态</th>
                     <th>备注</th>
                     <th>仓库货位</th>
                     <th>删除</th>
@@ -113,13 +111,19 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let product of orderProducts | paginate: pageConfig">
-                    <th scope="row">{{ product.row }}</th>
-                    <td>{{ product.name }}</td>
-                    <td> {{ product.spec }}</td>
-                    <td> {{ product.price }}</td>
-                    <td><inline-editor type="text" [(ngModel)]="product.name" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><inline-editor type="text" [(ngModel)]="product.price" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                <tr *ngFor="let orederProduct of (order.orderProducts | paginate: pageConfig); let i = index;">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ orederProduct.product.sku }}</td>
+                    <td> {{ orederProduct.product.name }}</td>
+                    <td> {{ orederProduct.product.barcode }}</td>
+                    <td> {{ orederProduct.product.spec }}</td>
+                    <td> {{ orederProduct.product.model }}</td>
+                    <td><inline-editor type="text" disabled="true" [(ngModel)]="orederProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [(ngModel)]="orederProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orederProduct.amount }}</td>
+                    <td><inline-editor type="textarea" [(ngModel)]="orederProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orederProduct.stockQuantity }}</td>
+
                 </tr>
                 </tbody>
             </table>

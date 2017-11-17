@@ -1,13 +1,8 @@
 import {Component, OnInit } from '@angular/core';
 import {routerTransition} from '../../../router.animations';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-import { Companies } from '../../../shared/mock/mock-company';
-import { Products } from '../../../shared/mock/mock-product'
-import { Warehouses} from '../../../shared/mock/mock-warehouse';
-import { Divisions } from '../../../shared/mock/mock-division';
-import { Users } from '../../../shared/mock/mock-user';
-import { Order} from '../../../shared/model/order.model';
-import { OrderProduct } from '../../../shared/model/order-product.model';
+
+import { Companies, Warehouses, Divisions, Users } from '../../../shared/mock';
+import { Order, Product, OrderProduct } from '../../../shared/model/';
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
@@ -19,12 +14,10 @@ import { PaginationInstance } from 'ngx-pagination';
 export class PlaceOrdersComponent implements OnInit {
    public pageConfig: PaginationInstance = {
         id: 'advanced',
-        itemsPerPage: 3,
+        itemsPerPage: 10,
         currentPage: 1
     };
-    public orderProducts = [];
     public order: Order;
-    public products = Products;
     companies = Companies;
     users = Users;
     divisions = Divisions;
@@ -57,16 +50,17 @@ export class PlaceOrdersComponent implements OnInit {
 
     /**
      * When user add a product in modal popup window
-     * @param {OrderProduct} orderProduct
+     * @param {Product} product
      */
-    onProductAdd(orderProduct: OrderProduct) {
-        this.orderProducts.push(orderProduct);
+    onProductAdd(product: Product) {
+        const orderProduct = new OrderProduct().initialize();
+        orderProduct.product = product;
+        orderProduct.unitPrice = product.price;
         this.order.orderProducts.push(orderProduct);
-        console.log(this.order.orderProducts.length);
     }
 
     public saveEditable($event) {
-        console.log(this.orderProducts);
+        console.log(this.order.orderProducts);
         console.log($event);
     }
 }
