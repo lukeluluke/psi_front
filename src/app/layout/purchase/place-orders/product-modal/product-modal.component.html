@@ -1,0 +1,26 @@
+<button (click)="open(content)" class="btn btn-primary">添加产品</button>
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+        <h4 class="modal-title">选择产品</h4>
+        <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <table class="card-block table table-hover">
+        <thead>
+        <tr>
+            <th>商品编号</th>
+            <th>商品名称</th>
+            <th>规格</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let product of products" (click)="addProductItem(product.id)">
+            <th scope="row">{{ product.id }}</th>
+            <td>{{ product.name }}</td>
+            <td> {{ product.spec }}</td>
+            <td> {{ product.price }}</td>
+        </tr>
+        </tbody>
+    </table>
+</ng-template>
