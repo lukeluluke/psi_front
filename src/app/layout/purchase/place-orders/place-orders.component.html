@@ -1,51 +1,45 @@
 <div [@routerTransition]>
-    <app-page-header [heading]="'Place-orders'" [icon]="'fa-edit'"></app-page-header>
+    <app-page-header [heading]="'新建订单'" [icon]="'fa-edit'"></app-page-header>
 
     <div class="row">
         <div class="col-lg-3">
             <div>
-                <h4>选择供货单位</h4>
                 <ng-select [allowClear]="true"
-                           [(ngModel)]="order.companyId"
                            [items]="companies"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
-                           (selected)="selected($event)"
+                           (selected)="selectCompany($event)"
                            (removed)="removed($event)"
                            (typed)="typed($event)"
-                           placeholder="">
+                           placeholder="选择供货单位">
                 </ng-select>
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
-                <h4>选择经手人</h4>
                 <ng-select [allowClear]="true"
-                           [(ngModel)]="order.userId"
                            [items]="users"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
-                           (selected)="selected($event)"
+                           (selected)="selectUser($event)"
                            (removed)="removed($event)"
                            (typed)="typed($event)"
-                           placeholder="">
+                           placeholder="选择经手人">
                 </ng-select>
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
-                <h4>选择部门</h4>
                 <ng-select [allowClear]="true"
-                           [(ngModel)]="order.divisionId"
                            [items]="divisions"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
-                           (selected)="selected($event)"
+                           (selected)="selectDivision($event)"
                            (removed)="removed($event)"
                            (typed)="typed($event)"
-                           placeholder="">
+                           placeholder="选择部门">
                 </ng-select>
             </div>
         </div>
@@ -56,31 +50,27 @@
     <div class="row">
         <div class="col-lg-3">
             <div>
-                <h4>选择仓库</h4>
                 <ng-select [allowClear]="true"
-                           [(ngModel)]="order.warehouseId"
                            [items]="warehouses"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
-                           (selected)="selected($event)"
+                           (selected)="selectWarehouse($event)"
                            (removed)="removed($event)"
                            (typed)="typed($event)"
-                           placeholder="">
+                           placeholder="选择仓库">
                 </ng-select>
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
-                <h4>摘要</h4>
-                <input [(ngModel)]="order.description" class="form-control" placeholder="">
+                <input [(ngModel)]="order.description" class="form-control" placeholder="摘要">
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
-                <h4>附加说明</h4>
-                <input [(ngModel)]="order.extraInfo" class="form-control" placeholder="">
+                <input [(ngModel)]="order.extraInfo" class="form-control" placeholder="附加说明">
             </div>
         </div>
     </div>
@@ -111,24 +101,31 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let orederProduct of (order.orderProducts | paginate: pageConfig); let i = index;">
+                <tr *ngFor="let orderProduct of (order.orderProducts | paginate: pageConfig); let i = index;">
                     <th scope="row">{{ i+1 }}</th>
-                    <td>{{ orederProduct.product.sku }}</td>
-                    <td> {{ orederProduct.product.name }}</td>
-                    <td> {{ orederProduct.product.barcode }}</td>
-                    <td> {{ orederProduct.product.spec }}</td>
-                    <td> {{ orederProduct.product.model }}</td>
-                    <td><inline-editor type="text" disabled="true" [(ngModel)]="orederProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><inline-editor type="text" [(ngModel)]="orederProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td> {{ orederProduct.amount }}</td>
-                    <td><inline-editor type="textarea" [(ngModel)]="orederProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td> {{ orederProduct.stockQuantity }}</td>
+                    <td>{{ orderProduct.product.sku }}</td>
+                    <td> {{ orderProduct.product.name }}</td>
+                    <td> {{ orderProduct.product.barcode }}</td>
+                    <td> {{ orderProduct.product.spec }}</td>
+                    <td> {{ orderProduct.product.model }}</td>
+                    <td><inline-editor type="text" [(ngModel)]="orderProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [(ngModel)]="orderProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orderProduct.amount }}</td>
+                    <td><inline-editor type="textarea" [(ngModel)]="orderProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td> {{ orderProduct.stockQuantity }}</td>
+                    <td><i (click)="removeOrderProduct(orderProduct.uuid)" class="fa fa-times"></i></td>
 
                 </tr>
                 </tbody>
             </table>
             <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
         </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <button class="btn btn-primary" (click)="saveOrder()">保存订单</button>
     </div>
 
     <div class="row">

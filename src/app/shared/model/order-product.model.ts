@@ -8,7 +8,6 @@ export class OrderProduct {
     quantity: number;
     unitPrice: number;
     amount: number;
-    status: number;
     note: string;
     stockQuantity: number;
 
@@ -16,7 +15,6 @@ export class OrderProduct {
         if (!this.uuid) {
             this.uuid = UUID.UUID();
             this.product = new Product();
-            this.status = 1;
             this.quantity = 1;
             this.note = '';
         }
