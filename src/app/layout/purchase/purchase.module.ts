@@ -11,6 +11,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { ProductModalComponent } from './place-orders/product-modal/product-modal.component';
+import {StatModule} from '../../shared/modules/stat/stat.module';
 
 @NgModule({
     imports: [
@@ -22,7 +23,8 @@ import { ProductModalComponent } from './place-orders/product-modal/product-moda
         SelectModule,
         NgxPaginationModule,
         XpaginationModule,
-        InlineEditorModule
+        InlineEditorModule,
+        StatModule,
     ],
     declarations: [
         PurchaseComponent,

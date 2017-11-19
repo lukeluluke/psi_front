@@ -72,6 +72,7 @@ export const Orders = [
                 uuid : 'd70e4a5d-5c91-24d1-bd25-c7b4c9588bf4'
             }
         ],
+        extraInfo : 'Extra',
         description : '第一个订单',
         companyId : '5f93c220-3d5b-4d89-9898-269e6ef41178'
     },
@@ -116,6 +117,8 @@ export const Orders = [
                 uuid : 'eb3e9e12-041a-4f7d-7937-d723fa1d78cc'
             }
         ],
+        extraInfo: 'testExtroInfo',
+        description: 'test',
         companyId : 'b40efbc7-fc08-4695-af42-163a73a90791'
     },
     {
@@ -191,6 +194,7 @@ export const Orders = [
                 uuid : 'd70e4a5d-5c91-24d1-bd25-c7b4c9588bf4'
             }
         ],
+        extraInfo : 'Extra',
         description : '第一个订单',
         companyId : '35b20f8e-118e-4b9a-a056-4beb017288c0'
     },
@@ -235,6 +239,8 @@ export const Orders = [
                 uuid : 'eb3e9e12-041a-4f7d-7937-d723fa1d78cc'
             }
         ],
+        extraInfo : 'Extra',
+        description: 'Test',
         companyId : 'ed7fc1a0-b646-4c03-add6-e32188c1ddfb'
     },
 ];

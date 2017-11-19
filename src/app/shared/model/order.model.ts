@@ -8,10 +8,10 @@ export class Order {
     id: number;
     status: number;
     orderProducts: OrderProduct[];
-    companyId: number;
-    warehouseId: number;
-    userId: number;
-    divisionId: number;
+    companyId: string;
+    warehouseId: string;
+    userId: string;
+    divisionId: string;
     description: string;
     extraInfo: string;
     createdAt: string;
@@ -26,3 +26,9 @@ export class Order {
         }
     }
 }
+
+export const OrderStatus = {
+    pending: 1,
+    finish: 2,
+    deleted: 3
+};
