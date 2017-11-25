@@ -20,4 +20,18 @@ export class OrderProduct {
         }
         return this;
     }
+
+    fromJson(jsonData) {
+        if (jsonData) {
+            console.log(jsonData.product);
+            const product = new Product();
+            this.uuid = jsonData.uuid ? jsonData.uuid : '';
+            this.quantity = jsonData.quantity ? jsonData.quantity : null;
+            this.unitPrice = jsonData.unitPrice ? jsonData.unitPrice : null;
+            this.amount = jsonData.amount ? jsonData.amount : null;
+            this.note = jsonData.note ? jsonData.note : '';
+            this.product = product.fromJson(jsonData.product);
+        }
+        return this;
+    }
 }

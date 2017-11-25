@@ -20,16 +20,7 @@ export class PurchaseComponent implements OnInit {
         this.filterOrders = [];
         for (const o of Orders) {
             const order = new Order();
-            order.uuid = o.uuid;
-            order.status = o.status;
-            order.companyId = o.companyId;
-            order.warehouseId = o.warehouseId;
-            order.userId = o.userId;
-            order.divisionId = o.divisionId;
-            order.description = o.description;
-            order.extraInfo = o.extraInfo;
-            order.createdAt = o.createdAt;
-            this.orders.push(order);
+            this.orders.push(order.fromJson(o));
         }
 
         this.countAllOrder = this.orders.length;

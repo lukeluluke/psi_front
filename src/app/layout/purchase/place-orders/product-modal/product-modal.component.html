@@ -8,6 +8,10 @@
     </div>
     <div class="col-lg-12">
         <div>
+            <input class="form-control" (keyup)="searchProduct($event)" placeholder="搜索产品" />
+        </div>
+        <hr/>
+        <div>
             <ng-select [allowClear]="true"
                        [(ngModel)]="selectCategoryId"
                        [items]="categories"
@@ -30,7 +34,7 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let product of filterProducts" (click)="addProductItem(product.uuid)">
+        <tr *ngFor="let product of filterProducts | paginate: pageConfig" (click)="addProductItem(product.uuid)">
             <th scope="row">{{ product.sku }}</th>
             <td>{{ product.name }}</td>
             <td> {{ product.spec }}</td>
@@ -38,4 +42,5 @@
         </tr>
         </tbody>
     </table>
+    <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
 </ng-template>

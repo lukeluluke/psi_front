@@ -2,6 +2,7 @@ import {Component, Output, OnInit, EventEmitter} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Products, Categories} from '../../../../shared/mock';
 import {Product} from '../../../../shared/model';
+import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
     selector: 'app-product-modal',
@@ -10,6 +11,11 @@ import {Product} from '../../../../shared/model';
 })
 export class ProductModalComponent implements OnInit {
     @Output() productAdd = new EventEmitter<Product>();
+    public pageConfig: PaginationInstance = {
+        id: 'advanced',
+        itemsPerPage: 4,
+        currentPage: 1
+    };
     closeResult: string;
     public products: Product[];
     public filterProducts: Product[];
@@ -22,15 +28,7 @@ export class ProductModalComponent implements OnInit {
         this.filterProducts = [];
         for (const p of Products) {
             const product = new Product();
-            product.uuid = p.uuid;
-            product.name = p.name;
-            product.spec = p.spec;
-            product.sku = p.sku;
-            product.barcode = p.barcode;
-            product.model = p.model;
-            product.categoryId = p.categoryId;
-            product.price = p.price;
-            this.products.push(product);
+            this.products.push(product.fromJson(p));
         }
 
         for (const c of Categories) {
@@ -95,13 +93,28 @@ export class ProductModalComponent implements OnInit {
         }
     }
 
+    public searchProduct(event: any): void {
+       const searchTerm = event.target.value;
+        if (searchTerm !== '') {
+            let findProducts = this.products;
+            this.filterProducts = [];
+            findProducts = this.products.filter(
+                p => p.name.indexOf(searchTerm) !== -1
+            );
+            console.log(findProducts.length);
+            Object.assign(this.filterProducts, findProducts);
+        } else {
+            Object.assign(this.filterProducts, this.products);
+        }
+    }
+
 
     selectCategory(value: any): void {
         this.filterProducts = [];
         const categoryId = value.id;
         let findProducts = this.products;
         if (categoryId !== 1) {
-             findProducts = this.products.filter(p => p.categoryId === categoryId);
+             findProducts = this.products.filter(p => p.category.uuid === categoryId);
         }
         Object.assign(this.filterProducts, findProducts);
     }

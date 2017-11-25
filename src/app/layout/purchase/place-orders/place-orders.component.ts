@@ -47,19 +47,19 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     selectCompany(value: any): void {
-       this.order.companyId = value.id;
+       this.order.company = value;
     }
 
     selectUser(value: any): void {
-       this.order.userId = value.id;
+       this.order.user = value;
     }
 
     selectDivision(value: any): void {
-       this.order.divisionId = value.id;
+       this.order.division = value;
     }
 
     selectWarehouse(value: any): void {
-       this.order.warehouseId = value.id;
+       this.order.warehouse = value;
     }
 
     removed(value: any): void {
