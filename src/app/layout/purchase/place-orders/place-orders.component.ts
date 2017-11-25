@@ -100,6 +100,15 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     /**
+     * Check if order is valid a order
+     * todo: need to valid order form
+     * @returns {boolean}
+     */
+    public isValidOrder() {
+        return this.order.orderProducts.length === 0;
+    }
+
+    /**
      * Convert object of model to select options with key {id, text)
      * @param objects
      * @returns
@@ -114,4 +123,6 @@ export class PlaceOrdersComponent implements OnInit {
         }
         return options;
     }
+
+
 }

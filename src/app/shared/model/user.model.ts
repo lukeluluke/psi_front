@@ -30,4 +30,8 @@ export class User {
         }
         return this;
     }
+
+    getFullName() {
+        return this.lastName + ' ' + this.firstName;
+    }
 }

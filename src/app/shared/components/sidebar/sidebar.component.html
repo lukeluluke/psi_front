@@ -10,13 +10,13 @@
             <li class="nested" [class.expand]="showMenu === 'purchase'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/purchase/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ '进货' | translate }}</span></a>
+                        <a [routerLink]="['/purchase/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ '进货订单' | translate }}</span></a>
+                    </li>
+                    <li>
+                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ '退货订单' | translate }}</span></a>
                     </li>
                     <li>
                         <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ '财务付款' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/purchase/createorder']" [routerLinkActive]="['router-link-active']"><span>{{ '退货' | translate }}</span></a>
                     </li>
                 </ul>
             </li>

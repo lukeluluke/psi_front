@@ -9,6 +9,10 @@ import { Division } from './division.model';
 
 
 export class Order {
+    static PENDING = 1;
+    static FINISH = 2;
+    static DELETED = 3;
+    static RETURN = 4;
     uuid: string;
     id: number;
     status: number;
@@ -57,13 +61,8 @@ export class Order {
             }
             this.orderProducts = orderProducts;
         }
-        console.log(this);
         return this;
     }
 }
 
-export const OrderStatus = {
-    pending: 1,
-    finish: 2,
-    deleted: 3
-};
+

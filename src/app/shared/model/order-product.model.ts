@@ -23,7 +23,6 @@ export class OrderProduct {
 
     fromJson(jsonData) {
         if (jsonData) {
-            console.log(jsonData.product);
             const product = new Product();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.quantity = jsonData.quantity ? jsonData.quantity : null;

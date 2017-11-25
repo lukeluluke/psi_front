@@ -6,14 +6,54 @@
             <app-stat [bgClass]="'card-primary'" [icon]="'fa-shopping-cart'" [count]="countAllOrder" [label]="'所有订单'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-success'" [icon]="'fa-shopping-cart'" [count]="countFinishOrder" [label]="'完成订单'"></app-stat>
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-shopping-bag'" [count]="countFinishOrder" [label]="'完成订单'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-shopping-cart'" [count]="countPendingOrder" [label]="'未完成订单'"></app-stat>
+            <app-stat [bgClass]="'card-info'" [icon]="'fa-truck'" [count]="countPendingOrder" [label]="'未完成订单'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-stop-circle-o'" [count]="countReturnOrder" [label]="'退货'"></app-stat>
         </div>
     </div>
 
     <hr/>
+
+    <div class="row">
+        <h4>订单列表</h4>
+        <hr/>
+        <div class="col-lg-12">
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>状态</th>
+                    <th>供货商</th>
+                    <th>仓库</th>
+                    <th>经手人</th>
+                    <th>部门</th>
+                    <th>添加日期</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let order of (filterOrders | paginate: pageConfig)">
+                    <td>{{ order.id }}</td>
+                    <td> {{ order.status | StatusText }}</td>
+                    <td> {{ order.company.name }}</td>
+                    <td> {{ order.warehouse.name }}</td>
+                    <td> {{ order.user.getFullName()}}</td>
+                    <td> {{ order.division.name }}</td>
+                    <td> {{ order.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="removeOrderProduct(order.uuid)" class="fa fa-times"></i></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
 
 
 </div>
