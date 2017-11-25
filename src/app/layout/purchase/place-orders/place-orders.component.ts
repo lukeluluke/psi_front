@@ -121,6 +121,4 @@ export class PlaceOrdersComponent implements OnInit {
         }
         return options;
     }
-
-
 }
