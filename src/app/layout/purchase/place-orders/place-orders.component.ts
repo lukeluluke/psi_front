@@ -14,7 +14,7 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class PlaceOrdersComponent implements OnInit {
    public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'purchase-order',
         itemsPerPage: 10,
         currentPage: 1
     };

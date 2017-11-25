@@ -12,7 +12,7 @@ import { PaginationInstance } from 'ngx-pagination';
 export class ProductModalComponent implements OnInit {
     @Output() productAdd = new EventEmitter<Product>();
     public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'product-modal',
         itemsPerPage: 4,
         currentPage: 1
     };
