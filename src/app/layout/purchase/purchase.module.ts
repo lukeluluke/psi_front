@@ -13,6 +13,7 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { StatModule } from '../../shared/modules/stat/stat.module';
 import { OrderStatusPiple } from '../../shared/pipe/order-status.piple';
 import { ProductModalModule } from '../../shared/modules/product-modal/product-modal.module';
+import {OrderTypePiple} from '../../shared/pipe/order-type.piple';
 
 @NgModule({
     imports: [
@@ -31,7 +32,8 @@ import { ProductModalModule } from '../../shared/modules/product-modal/product-m
     declarations: [
         PurchaseComponent,
         PlaceOrdersComponent,
-        OrderStatusPiple
+        OrderStatusPiple,
+        OrderTypePiple
     ]
 })
 

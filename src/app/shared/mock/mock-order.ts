@@ -2,6 +2,7 @@ export const Orders = [
     {
         uuid : 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
         id: 1,
+        type: 1,
         status : 1,
         orderProducts : [
             {
@@ -111,6 +112,7 @@ export const Orders = [
     {
         uuid : 'd52ddd5d-e94f-d3d6-ab38-236387e16310',
         id: 2,
+        type: 1,
         status : 1,
         orderProducts : [
             {
@@ -188,6 +190,7 @@ export const Orders = [
     {
         uuid : 'fe773cf4-0a54-4b50-ba28-fd1bac884665',
         id: 3,
+        type: 1,
         status : 1,
         orderProducts : [
             {
@@ -297,6 +300,7 @@ export const Orders = [
     {
         uuid : 'c00e3511-c7f7-45b3-bff1-6d68437983b6',
         id: 4,
+        type: 1,
         status: 2,
         orderProducts : [
             {

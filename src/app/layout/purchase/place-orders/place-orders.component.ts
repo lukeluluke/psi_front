@@ -21,7 +21,7 @@ export class PlaceOrdersComponent implements OnInit {
 
     order: Order;
     companies;
-    users;
+    users = [];
     divisions;
     warehouses;
 
@@ -31,7 +31,6 @@ export class PlaceOrdersComponent implements OnInit {
         this.order = new Order();
         this.order.initialize();
         this.companies = this.convertSelectOptions(Companies);
-        this.users = this.convertSelectOptions(Users);
         this.divisions = this.convertSelectOptions((Divisions));
         this.warehouses = this.convertSelectOptions(Warehouses);
 
@@ -91,7 +90,6 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     public removeOrderProduct(uuid: string) {
-        console.log(this.order.orderProducts.filter(p => p.uuid === uuid));
        this.order.orderProducts =  this.order.orderProducts.filter(p => p.uuid !== uuid);
     }
 
