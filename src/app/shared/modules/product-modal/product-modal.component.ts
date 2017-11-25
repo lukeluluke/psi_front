@@ -1,7 +1,7 @@
-import {Component, Output, OnInit, EventEmitter} from '@angular/core';
+import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Products, Categories} from '../../../../shared/mock';
-import {Product} from '../../../../shared/model';
+import {Products, Categories} from '../../mock';
+import {Product} from '../../model';
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
@@ -96,12 +96,11 @@ export class ProductModalComponent implements OnInit {
     public searchProduct(event: any): void {
        const searchTerm = event.target.value;
         if (searchTerm !== '') {
-            let findProducts = this.products;
+           // let findProducts = this.products;
             this.filterProducts = [];
-            findProducts = this.products.filter(
+            const findProducts = this.products.filter(
                 p => p.name.indexOf(searchTerm) !== -1
             );
-            console.log(findProducts.length);
             Object.assign(this.filterProducts, findProducts);
         } else {
             Object.assign(this.filterProducts, this.products);
