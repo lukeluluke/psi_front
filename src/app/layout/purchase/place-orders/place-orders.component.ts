@@ -14,14 +14,14 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class PlaceOrdersComponent implements OnInit {
    public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'purchase-order',
         itemsPerPage: 10,
         currentPage: 1
     };
 
     order: Order;
     companies;
-    users;
+    users = [];
     divisions;
     warehouses;
 
@@ -31,7 +31,6 @@ export class PlaceOrdersComponent implements OnInit {
         this.order = new Order();
         this.order.initialize();
         this.companies = this.convertSelectOptions(Companies);
-        this.users = this.convertSelectOptions(Users);
         this.divisions = this.convertSelectOptions((Divisions));
         this.warehouses = this.convertSelectOptions(Warehouses);
 
@@ -47,19 +46,19 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     selectCompany(value: any): void {
-       this.order.companyId = value.id;
+       this.order.company = value;
     }
 
     selectUser(value: any): void {
-       this.order.userId = value.id;
+       this.order.user = value;
     }
 
     selectDivision(value: any): void {
-       this.order.divisionId = value.id;
+       this.order.division = value;
     }
 
     selectWarehouse(value: any): void {
-       this.order.warehouseId = value.id;
+       this.order.warehouse = value;
     }
 
     removed(value: any): void {
@@ -91,12 +90,20 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     public removeOrderProduct(uuid: string) {
-        console.log(this.order.orderProducts.filter(p => p.uuid === uuid));
        this.order.orderProducts =  this.order.orderProducts.filter(p => p.uuid !== uuid);
     }
 
     public saveOrder() {
         console.log(JSON.stringify(this.order));
+    }
+
+    /**
+     * Check if order is valid a order
+     * todo: need to valid order form
+     * @returns {boolean}
+     */
+    public isValidOrder() {
+        return this.order.orderProducts.length === 0;
     }
 
     /**

@@ -1,8 +1,7 @@
-import { Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
-import { UUID } from 'angular2-uuid';
+import {UUID} from 'angular2-uuid';
 
-export class Category {
+export class Division {
     uuid: string;
     name: string;
     createdAt: string;

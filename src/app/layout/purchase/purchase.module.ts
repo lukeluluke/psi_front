@@ -10,7 +10,10 @@ import { SelectModule } from 'ng2-select-compat';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
-import { ProductModalComponent } from './place-orders/product-modal/product-modal.component';
+import { StatModule } from '../../shared/modules/stat/stat.module';
+import { OrderStatusPiple } from '../../shared/pipe/order-status.piple';
+import { ProductModalModule } from '../../shared/modules/product-modal/product-modal.module';
+import {OrderTypePiple} from '../../shared/pipe/order-type.piple';
 
 @NgModule({
     imports: [
@@ -22,12 +25,15 @@ import { ProductModalComponent } from './place-orders/product-modal/product-moda
         SelectModule,
         NgxPaginationModule,
         XpaginationModule,
-        InlineEditorModule
+        InlineEditorModule,
+        StatModule,
+        ProductModalModule
     ],
     declarations: [
         PurchaseComponent,
         PlaceOrdersComponent,
-        ProductModalComponent,
+        OrderStatusPiple,
+        OrderTypePiple
     ]
 })
 

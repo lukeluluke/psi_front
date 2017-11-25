@@ -1,10 +1,11 @@
 import { Observable} from 'rxjs/Observable';
+import { Category } from './category.model';
 import { UUID } from 'angular2-uuid';
 import * as moment from 'moment';
 
 export class Product {
     uuid: string;
-    categoryId: string;
+    category: Category;
     sku: string;
     name: string;
     barcode: string;
@@ -13,6 +14,8 @@ export class Product {
     price: number;
     createdAt: string;
     updatedAt: string;
+
+
 
     initialize() {
         if (!this.uuid) {
@@ -23,4 +26,23 @@ export class Product {
             return this;
         }
     }
+
+    fromJson(jsonData) {
+        if (jsonData) {
+            const category = new Category();
+            this.uuid = jsonData.uuid ? jsonData.uuid : '';
+            this.category = category.fromJson(jsonData.category);
+            this.sku = jsonData.sku ? jsonData.sku : '';
+            this.name = jsonData.name ? jsonData.name : '';
+            this.barcode = jsonData.barcode ? jsonData.barcode : '';
+            this.spec = jsonData.spec ? jsonData.spec : '';
+            this.model = jsonData.model ? jsonData.model : '';
+            this.price = jsonData.price ? jsonData.price : '';
+            this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
+            this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';
+        }
+        return this;
+    }
+
+
 }

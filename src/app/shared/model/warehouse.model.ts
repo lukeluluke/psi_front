@@ -1,8 +1,7 @@
-import {Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
 import {UUID} from 'angular2-uuid';
 
-export class Company {
+export class Warehouse {
     uuid: string;
     name: string;
     addressLine1: string;
@@ -44,5 +43,3 @@ export class Company {
         return this;
     }
 }
-
-

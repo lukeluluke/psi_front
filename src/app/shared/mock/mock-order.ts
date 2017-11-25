@@ -1,11 +1,9 @@
 export const Orders = [
     {
-        userId : '4596dd6d-19b2-42f2-ad60-291dec153ead',
-        divisionId : 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
         uuid : 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
+        id: 1,
+        type: 1,
         status : 1,
-        warehouseId : '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
-        createdAt : '2017-11-19T16:13:17+11:00',
         orderProducts : [
             {
                 quantity : 1,
@@ -72,16 +70,50 @@ export const Orders = [
                 uuid : 'd70e4a5d-5c91-24d1-bd25-c7b4c9588bf4'
             }
         ],
+        company: {
+            uuid: '5f93c220-3d5b-4d89-9898-269e6ef41178',
+            name: 'BIO ISLAND',
+            addressLine1: '1 Hello street',
+            addressLine2: '',
+            suburb: 'Adelaide',
+            postcode: '5000',
+            stateId: 2,
+            countryId: 1,
+            contactPerson: 'Jim Green',
+            contactPhone: '0429990000',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        warehouse: {
+            uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
+            name: 'Chadstone',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        user: {
+            uuid: '4596dd6d-19b2-42f2-ad60-291dec153ead',
+            firstName: '云',
+            lastName: '马',
+            role: 1,
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        division: {
+            uuid: 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
+            name: '仓库',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         description : '第一个订单',
-        companyId : '5f93c220-3d5b-4d89-9898-269e6ef41178'
+        extraInfo : 'Extra',
+        createdAt : '2017-11-19T16:13:17+11:00',
+        updatedAt : '2017-11-19T16:13:17+11:00'
     },
     {
-        userId : '4596dd6d-19b2-42f2-ad60-291dec153ead',
-        divisionId : 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
         uuid : 'd52ddd5d-e94f-d3d6-ab38-236387e16310',
+        id: 2,
+        type: 1,
         status : 1,
-        warehouseId : '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
-        createdAt : '2017-11-19T16:23:37+11:00',
         orderProducts : [
             {
                 quantity : '3',
@@ -116,15 +148,50 @@ export const Orders = [
                 uuid : 'eb3e9e12-041a-4f7d-7937-d723fa1d78cc'
             }
         ],
-        companyId : 'b40efbc7-fc08-4695-af42-163a73a90791'
+        company: {
+            uuid: 'b40efbc7-fc08-4695-af42-163a73a90791',
+            name: 'SWISSE',
+            addressLine1: '123 Abc street',
+            addressLine2: '',
+            suburb: 'Melbourne',
+            postcode: '3000',
+            stateId: 4,
+            countryId: 1,
+            contactPerson: 'Jack Ma',
+            contactPhone: '0399990000',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        warehouse: {
+            uuid: '2aa49891-b198-48e8-9660-5a99f3dc6953',
+            name: 'Clayton',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        user: {
+            uuid: '7042a0ec-f698-4def-8de5-79632af18cf9',
+            firstName: '化腾',
+            lastName: '马',
+            role: 1,
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        division: {
+            uuid: '16a55164-b97c-4cde-8695-ad7067c353fa',
+            name: '销售',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        description: 'test',
+        extraInfo: 'testExtroInfo',
+        createdAt : '2017-11-19T16:23:37+11:00',
+        updatedAt : '2017-11-19T16:13:17+11:00'
     },
     {
-        userId : 'c31bed14-3832-4ab9-a145-92f142f0bbcf',
-        divisionId : 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
         uuid : 'fe773cf4-0a54-4b50-ba28-fd1bac884665',
+        id: 3,
+        type: 1,
         status : 1,
-        warehouseId : '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
-        createdAt : '2017-11-19T16:13:17+11:00',
         orderProducts : [
             {
                 quantity : 1,
@@ -191,16 +258,50 @@ export const Orders = [
                 uuid : 'd70e4a5d-5c91-24d1-bd25-c7b4c9588bf4'
             }
         ],
+        company: {
+            uuid: '35b20f8e-118e-4b9a-a056-4beb017288c0',
+            name: 'BLACKMORE',
+            addressLine1: '23 Sydney street',
+            addressLine2: '',
+            suburb: 'Sydney',
+            postcode: '2000',
+            stateId: 1,
+            countryId: 1,
+            contactPerson: 'Lion Messi',
+            contactPhone: '0289990000',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        warehouse: {
+            uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
+            name: 'Chadstone',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        user : {
+            uuid: 'c31bed14-3832-4ab9-a145-92f142f0bbcf',
+            firstName: '强东',
+            lastName: '刘',
+            role: 2,
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        division : {
+            uuid: '6e224b62-1c4c-49cd-aefc-63cd36b08b16',
+            name: '财务',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         description : '第一个订单',
-        companyId : '35b20f8e-118e-4b9a-a056-4beb017288c0'
+        extraInfo : 'Extra',
+        createdAt : '2017-11-19T16:13:17+11:00',
+        updatedAt: '2017-11-19T16:23:37+11:00'
     },
     {
-        userId : '47a8247c-90a1-4254-8293-b8d4ec179307',
-        divisionId : 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
         uuid : 'c00e3511-c7f7-45b3-bff1-6d68437983b6',
-        status : 2,
-        warehouseId : '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
-        createdAt : '2017-11-19T16:23:37+11:00',
+        id: 4,
+        type: 1,
+        status: 2,
         orderProducts : [
             {
                 quantity : '3',
@@ -235,6 +336,43 @@ export const Orders = [
                 uuid : 'eb3e9e12-041a-4f7d-7937-d723fa1d78cc'
             }
         ],
-        companyId : 'ed7fc1a0-b646-4c03-add6-e32188c1ddfb'
+        company: {
+            uuid: 'ed7fc1a0-b646-4c03-add6-e32188c1ddfb',
+            name: 'HEALTHY CARE',
+            addressLine1: '10 Test street',
+            addressLine2: '',
+            suburb: 'Brisbane',
+            postcode: '4000',
+            stateId: 8,
+            countryId: 1,
+            contactPerson: 'Ronald Lee',
+            contactPhone: '0799993000',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        warehouse: {
+            uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
+            name: 'Chadstone',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        user: {
+            uuid: '47a8247c-90a1-4254-8293-b8d4ec179307',
+            firstName: '彦宏',
+            lastName: '李',
+            role: 1,
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        division: {
+            uuid: 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
+            name: '仓库',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
+        description: 'Test',
+        extraInfo: 'Extra',
+        createdAt: '2017-11-19T16:23:37+11:00',
+        updatedAt: '2017-11-19T16:23:37+11:00'
     },
 ];

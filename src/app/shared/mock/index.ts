@@ -4,3 +4,4 @@ export * from './mock-product';
 export * from './mock-user';
 export * from './mock-warehouse';
 export * from './mock-category';
+export * from './mock-order';

@@ -7,7 +7,12 @@ export const Products = [
         sku: '000001',
         barcode: '111111',
         model: '成人',
-        categoryId: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+        category: {
+            uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+            name: '保健品',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         price: 11.99,
         createdAt: '2017-11-18T02:14:56+11:0',
         updatedAt: '2017-11-18T02:14:56+11:0'
@@ -19,7 +24,12 @@ export const Products = [
         sku: '000002',
         barcode: '2222222',
         model: '成人',
-        categoryId: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+        category: {
+            uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+            name: '保健品',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         price: 29.99,
         createdAt: '2017-11-18T02:14:56+11:0',
         updatedAt: '2017-11-18T02:14:56+11:0'
@@ -31,7 +41,12 @@ export const Products = [
         sku: '000003',
         barcode: '333333',
         model: '羊奶',
-        categoryId: 'c018824c-34b1-40be-af97-8110b3c92948',
+        category: {
+            uuid: 'c018824c-34b1-40be-af97-8110b3c92948',
+            name: '食品',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         price: 2.99,
         createdAt: '2017-11-18T02:14:56+11:0',
         updatedAt: '2017-11-18T02:14:56+11:0'
@@ -43,7 +58,12 @@ export const Products = [
         sku: '000004',
         barcode: '444444',
         model: '成人',
-        categoryId: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+        category: {
+            uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+            name: '保健品',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         price: 14,
         createdAt: '2017-11-18T02:14:56+11:0',
         updatedAt: '2017-11-18T02:14:56+11:0'
@@ -55,7 +75,12 @@ export const Products = [
         sku: '000005',
         barcode: '555555',
         model: '1段',
-        categoryId: '98e64b89-38ae-4259-8222-438367e2e1ec',
+        category: {
+            uuid: '98e64b89-38ae-4259-8222-438367e2e1ec',
+            name: '奶粉',
+            createdAt: '2017-11-18T02:14:56+11:0',
+            updatedAt: '2017-11-18T02:14:56+11:0'
+        },
         price: 25.99,
         createdAt: '2017-11-18T02:14:56+11:0',
         updatedAt: '2017-11-18T02:14:56+11:0'

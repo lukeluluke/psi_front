@@ -1,3 +1,124 @@
-<p>
-  purchase works!
-</p>
+<div [@routerTransition]>
+    <h2 class="text-muted">订单统计</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-shopping-cart'" [count]="countAllOrder"
+                      [label]="'所有订单'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-shopping-bag'" [count]="countPurchaseOrder"
+                      [label]="'进货订单'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-truck'" [count]="countReturnOrder"
+                      [label]="'退货'"></app-stat>
+        </div>
+    </div>
+
+    <hr/>
+
+
+    <div class="row">
+        <h4>订单列表</h4>
+        <hr/>
+        <div class="form-control">
+            <h5>过滤订单</h5>
+            <div class="row">
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="companies"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterCompany($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择供货单位">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="users"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterUser($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择经手人">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="warehouses"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterWarehouse($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择仓库">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="companies"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterCompany($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择供货单位">
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="col-lg-12">
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>类型</th>
+                    <th>状态</th>
+                    <th>供货商</th>
+                    <th>仓库</th>
+                    <th>经手人</th>
+                    <th>部门</th>
+                    <th>添加日期</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let order of (filterOrders | paginate: pageConfig)">
+                    <td>{{ order.id }}</td>
+                    <td> {{ order.type | TypeText }}</td>
+                    <td> {{ order.status | StatusText }}</td>
+                    <td> {{ order.company.name }}</td>
+                    <td> {{ order.warehouse.name }}</td>
+                    <td> {{ order.user.getFullName()}}</td>
+                    <td> {{ order.division.name }}</td>
+                    <td> {{ order.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="removeOrderProduct(order.uuid)" class="fa fa-times"></i></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
+
+
+</div>
