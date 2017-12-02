@@ -33,7 +33,7 @@
                                    [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterCompany($event)"
-                                   (removed)="removed($event)"
+                                   (removed)="removeCompany($event)"
                                    (typed)="typed($event)"
                                    placeholder="选择供货单位">
                         </ng-select>
@@ -47,7 +47,7 @@
                                    [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterUser($event)"
-                                   (removed)="removed($event)"
+                                   (removed)="removeUser($event)"
                                    (typed)="typed($event)"
                                    placeholder="选择经手人">
                         </ng-select>
@@ -61,7 +61,7 @@
                                    [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterWarehouse($event)"
-                                   (removed)="removed($event)"
+                                   (removed)="removeWarehouse($event)"
                                    (typed)="typed($event)"
                                    placeholder="选择仓库">
                         </ng-select>
@@ -71,13 +71,13 @@
                 <div class="col-lg-3" style="display: inline-block">
                     <div>
                         <ng-select [allowClear]="true"
-                                   [items]="companies"
+                                   [items]="divisions"
                                    [disabled]="disabled"
                                    (data)="refreshValue($event)"
-                                   (selected)="filterCompany($event)"
-                                   (removed)="removed($event)"
+                                   (selected)="filterDivision($event)"
+                                   (removed)="removeDivision($event)"
                                    (typed)="typed($event)"
-                                   placeholder="选择供货单位">
+                                   placeholder="选择部门">
                         </ng-select>
                     </div>
                 </div>
