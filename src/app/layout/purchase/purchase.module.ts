@@ -5,15 +5,16 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PurchaseRoutingModule } from './purchase-routing.module'
 import { PurchaseComponent } from './purchase.component';
 import { PageHeaderModule } from './../../shared';
-import { PlaceOrdersComponent } from './place-orders/place-orders.component';
 import { SelectModule } from 'ng2-select-compat';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { StatModule } from '../../shared/modules/stat/stat.module';
-import { OrderStatusPiple } from '../../shared/pipe/order-status.piple';
 import { ProductModalModule } from '../../shared/modules/product-modal/product-modal.module';
-import {OrderTypePiple} from '../../shared/pipe/order-type.piple';
+import { OrderTypePipe } from '../../shared/pipe/order-type.pipe';
+import { OrderStatusPipe } from '../../shared/pipe/order-status.pipe';
+import { CreatePurchaseOrderComponent } from './purchase-order/create-purchase-order/create-purchase-order.component';
+import { PurchaseOrderFormComponent } from './purchase-order/purchase-order-form/purchase-order-form.component';
 
 @NgModule({
     imports: [
@@ -31,9 +32,10 @@ import {OrderTypePiple} from '../../shared/pipe/order-type.piple';
     ],
     declarations: [
         PurchaseComponent,
-        PlaceOrdersComponent,
-        OrderStatusPiple,
-        OrderTypePiple
+        OrderStatusPipe,
+        OrderTypePipe,
+        CreatePurchaseOrderComponent,
+        PurchaseOrderFormComponent,
     ]
 })
 

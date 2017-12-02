@@ -1,25 +1,23 @@
-import {Component, OnInit } from '@angular/core';
-import {routerTransition} from '../../../router.animations';
-
-import { Companies, Warehouses, Divisions, Users } from '../../../shared/mock';
-import { Order, Product, OrderProduct } from '../../../shared/model/';
+import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Companies, Warehouses, Divisions, Users } from '../../../../shared/mock';
+import { Order, Product, OrderProduct } from '../../../../shared/model/';
 
 import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
-    selector: 'app-place-orders',
-    templateUrl: './place-orders.component.html',
-    styleUrls: ['./place-orders.component.scss'],
-    animations: [routerTransition()]
+  selector: 'app-purchase-order-form',
+  templateUrl: './purchase-order-form.component.html',
+  styleUrls: ['./purchase-order-form.component.scss']
 })
-export class PlaceOrdersComponent implements OnInit {
-   public pageConfig: PaginationInstance = {
+export class PurchaseOrderFormComponent implements OnInit {
+    @Input() order: Order;
+    @Output() orderUpdate = new EventEmitter<Order>();
+    public pageConfig: PaginationInstance = {
         id: 'purchase-order',
         itemsPerPage: 10,
         currentPage: 1
     };
 
-    order: Order;
     companies;
     users = [];
     divisions;
@@ -28,8 +26,7 @@ export class PlaceOrdersComponent implements OnInit {
     private value: string;
     constructor(
     ) {
-        this.order = new Order();
-        this.order.initialize();
+
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
         this.warehouses = this.convertSelectOptions(Warehouses);
@@ -46,19 +43,19 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     selectCompany(value: any): void {
-       this.order.company = value;
+        this.order.company = value;
     }
 
     selectUser(value: any): void {
-       this.order.user = value;
+        this.order.user = value;
     }
 
     selectDivision(value: any): void {
-       this.order.division = value;
+        this.order.division = value;
     }
 
     selectWarehouse(value: any): void {
-       this.order.warehouse = value;
+        this.order.warehouse = value;
     }
 
     removed(value: any): void {
@@ -90,11 +87,14 @@ export class PlaceOrdersComponent implements OnInit {
     }
 
     public removeOrderProduct(uuid: string) {
-       this.order.orderProducts =  this.order.orderProducts.filter(p => p.uuid !== uuid);
+        this.order.orderProducts =  this.order.orderProducts.filter(p => p.uuid !== uuid);
     }
 
-    public saveOrder() {
-        console.log(JSON.stringify(this.order));
+
+    public confirmOrder(order: Order) {
+        if (order) {
+            this.orderUpdate.emit(order);
+        }
     }
 
     /**
@@ -121,4 +121,5 @@ export class PlaceOrdersComponent implements OnInit {
         }
         return options;
     }
+
 }
