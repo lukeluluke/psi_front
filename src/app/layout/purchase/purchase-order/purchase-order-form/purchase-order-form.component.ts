@@ -11,17 +11,23 @@ import { PaginationInstance } from 'ngx-pagination';
 })
 export class PurchaseOrderFormComponent implements OnInit {
     @Input() order: Order;
+    @Input() disabled: boolean = true;
     @Output() orderUpdate = new EventEmitter<Order>();
     public pageConfig: PaginationInstance = {
         id: 'purchase-order',
         itemsPerPage: 10,
         currentPage: 1
     };
-
     companies;
     users = [];
     divisions;
     warehouses;
+
+    selectedCompany = [];
+    selectedUser = [];
+    selectedWarehouse = [];
+    selectedDivision = [];
+
 
     private value: string;
     constructor(
@@ -37,9 +43,48 @@ export class PurchaseOrderFormComponent implements OnInit {
             option['text'] = user.lastName + ' ' + user.firstName ;
             this.users.push(option);
         }
+
+
+
+
     }
 
     ngOnInit() {
+        /**
+         * Need to setup default options fro drop down
+         */
+        if (this.order.company) {
+            const selectCompany = this.companies.filter(c => c.id === this.order.company.uuid);
+            if (selectCompany) {
+                this.selectedCompany.push(this.order.company.name);
+            }
+        }
+
+        if (this.order.user) {
+             const selectUser = this.users.filter(c => c.id === this.order.user.uuid);
+             if (selectUser.length > 0 ) {
+                 this.selectedUser.push(this.order.user.getFullName());
+             }
+        }
+
+        if (this.order.division) {
+             const selectDivision = this.divisions.filter(c => c.id === this.order.division.uuid);
+            if (selectDivision) {
+                this.selectedDivision.push(this.order.division.name);
+            }
+        }
+
+        if (this.order.warehouse) {
+            const selectWarehouse = this.warehouses.filter(c => c.id === this.order.warehouse.uuid);
+            if (selectWarehouse) {
+                this.selectedWarehouse.push(this.order.warehouse.name);
+            }
+        }
+
+        console.log(this.selectedDivision);
+        console.log(this.selectedCompany);
+        console.log(this.selectedUser);
+        console.log(this.selectedWarehouse);
     }
 
     selectCompany(value: any): void {

@@ -15,6 +15,7 @@ import { OrderTypePipe } from '../../shared/pipe/order-type.pipe';
 import { OrderStatusPipe } from '../../shared/pipe/order-status.pipe';
 import { CreatePurchaseOrderComponent } from './purchase-order/create-purchase-order/create-purchase-order.component';
 import { PurchaseOrderFormComponent } from './purchase-order/purchase-order-form/purchase-order-form.component';
+import { ViewPurchaseOrderComponent } from './purchase-order/view-purchase-order/view-purchase-order.component';
 
 @NgModule({
     imports: [
@@ -36,6 +37,7 @@ import { PurchaseOrderFormComponent } from './purchase-order/purchase-order-form
         OrderTypePipe,
         CreatePurchaseOrderComponent,
         PurchaseOrderFormComponent,
+        ViewPurchaseOrderComponent,
     ]
 })
 

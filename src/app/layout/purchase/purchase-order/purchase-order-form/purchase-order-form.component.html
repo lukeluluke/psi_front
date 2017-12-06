@@ -5,6 +5,7 @@
                 <ng-select [allowClear]="true"
                            [items]="companies"
                            [disabled]="disabled"
+                           [active]="selectedCompany"
                            (data)="refreshValue($event)"
                            (selected)="selectCompany($event)"
                            (removed)="removed($event)"
@@ -18,6 +19,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="users"
+                           [active]="selectedUser"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectUser($event)"
@@ -32,6 +34,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="divisions"
+                           [active]="selectedDivision"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectDivision($event)"
@@ -50,6 +53,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="warehouses"
+                           [active]="selectedWarehouse"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectWarehouse($event)"

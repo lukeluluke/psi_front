@@ -3,6 +3,7 @@ import {routerTransition} from '../../router.animations';
 import { Orders, Companies, Warehouses, Divisions, Users  } from '../../shared/mock';
 import { Order } from '../../shared/model';
 import { PaginationInstance } from 'ngx-pagination';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-purchase',
     templateUrl: './purchase.component.html',
@@ -30,7 +31,9 @@ export class PurchaseComponent implements OnInit {
     filterUserUuid: string = '';
     filterWarehouseUuid: string = '';
     filterDivisionUuid: string = '';
-    constructor() {
+    constructor(
+        private router: Router
+    ) {
         this.orders = [];
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
@@ -134,6 +137,18 @@ export class PurchaseComponent implements OnInit {
     }
     public removeWarehouse(value) {
         this.filterWarehouseUuid = '';
+    }
+
+    public viewOrder(orderUuid: string) {
+        this.router.navigate(['/purchase/view-purchase-order', { orderUuid: orderUuid }]);
+    }
+
+    public editOrder(order: Order) {
+        console.log(' Edit order uuid ' + order.uuid);
+    }
+
+    public deleteOrder(orderUuid: string) {
+        console.log(orderUuid);
     }
 
     /**
