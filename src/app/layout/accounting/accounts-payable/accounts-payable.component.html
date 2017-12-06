@@ -1,0 +1,110 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'新建支出'" [icon]="'fa-edit'"></app-page-header>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="companies"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectCompany($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择收费单位">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="users"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectUser($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择经手人">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="divisions"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectDivision($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择部门">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <input [(ngModel)]="payable.description" class="form-control" placeholder="摘要">
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <input [(ngModel)]="payable.extraInfo" class="form-control" placeholder="附加说明">
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <div class="card col-lg-12">
+            <div class="card-header">
+                
+            </div>
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>行号</th>
+                    <th>费用编号</th>
+                    <th>费用名称</th>
+                    <th>费用分类</th>
+                    <th>金额</th>
+                    <th>备注</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let payableItem of (payable.journalItems | paginate: pageConfig); let i = index;">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td>{{ payableItem.id }}</td>
+                    <td> {{ payableItem.name }}</td>
+                    <td> {{ payableItem.category.name }}</td>
+                    <td><inline-editor type="text" [(ngModel)]="payableItem.amount" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="textarea" [(ngModel)]="payableItem.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><i (click)="removePayableItem(payableItem.uuid)" class="fa fa-times"></i></td>
+                </tr>
+                </tbody>
+            </table>
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <button [disabled]="isValidOrder()" class="btn btn-primary" (click)="saveOrder()">保存支出</button>
+    </div>
+
+    <div class="row">
+        <div style="height: 400px;"></div>
+    </div>
+
+</div>

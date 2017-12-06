@@ -45,19 +45,13 @@
         </div>
 
         <div class="nested-menu">
-            <a class="list-group-item" [routerLink]="['/finance']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('finance')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Finance' | translate }}</span>
+            <a class="list-group-item" [routerLink]="['/accounting']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('accounting')">
+                <span><i class="fa fa-plus"></i>&nbsp; {{ '财务' | translate }}</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'finance'">
+            <li class="nested" [class.expand]="showMenu === 'accounting'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/finance/receivemoney']" [routerLinkActive]="['router-link-active']"><span>{{ 'Receipt' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/finance/sendmoney']" [routerLinkActive]="['router-link-active']"><span>{{ 'Payment' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/finance/fee']" [routerLinkActive]="['router-link-active']"><span>{{ 'Fee' | translate }}</span></a>
+                        <a [routerLink]="['/accounting/accounts-payable']" [routerLinkActive]="['router-link-active']"><span>{{ 'Receipt' | translate }}</span></a>
                     </li>
                 </ul>
             </li>
