@@ -1,7 +1,7 @@
 <div [@routerTransition]>
     <app-page-header [heading]="'新建订单'" [icon]="'fa-edit'"></app-page-header>
 
-    <app-purchase-order-form [order]="order" (orderUpdate)="onOrderCreate($event)"></app-purchase-order-form>
+    <app-purchase-order-form [order]="order" [disabled]="disabledInput" (orderUpdate)="onOrderCreate($event)"></app-purchase-order-form>
 
     <div style="height: 20px;"></div>
 

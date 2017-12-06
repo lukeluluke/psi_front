@@ -9,6 +9,7 @@ import { Order } from '../../../../shared/model/';
 })
 export class CreatePurchaseOrderComponent implements OnInit {
     order: Order;
+    disabledInput: boolean = false;
     constructor() {
         this.order = new Order();
         this.order.initialize();

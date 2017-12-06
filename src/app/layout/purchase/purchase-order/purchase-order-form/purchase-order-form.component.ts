@@ -142,6 +142,10 @@ export class PurchaseOrderFormComponent implements OnInit {
         }
     }
 
+    public editOrder(orderUuid: string) {
+       this.disabled = false;
+    }
+
     /**
      * Check if order is valid a order
      * todo: need to valid order form

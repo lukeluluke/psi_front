@@ -15,6 +15,7 @@ export class ViewPurchaseOrderComponent implements OnInit {
     order: Order;
     orders: Order[];
     disabledInput: boolean = true;
+    pageHeader: string;
     constructor(private route: ActivatedRoute,
                 private router: Router) {
         this.orders = [];
@@ -25,7 +26,7 @@ export class ViewPurchaseOrderComponent implements OnInit {
         }
 
         this.orderUuid = this.route.snapshot.paramMap.get('orderUuid');
-
+        this.disabledInput = (this.route.snapshot.paramMap.get('editable') === 'false');
         const selectOrder = this.orders.filter(o => o.uuid === this.orderUuid);
         if (selectOrder) {
             Object.assign(this.order, selectOrder[0]);
@@ -35,6 +36,7 @@ export class ViewPurchaseOrderComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.pageHeader = this.disabledInput ? '查看订单' : '修改订单';
     }
 
     // onOrderView(order: Order) {

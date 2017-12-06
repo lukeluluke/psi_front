@@ -37,7 +37,7 @@ import { ViewPurchaseOrderComponent } from './purchase-order/view-purchase-order
         OrderTypePipe,
         CreatePurchaseOrderComponent,
         PurchaseOrderFormComponent,
-        ViewPurchaseOrderComponent,
+        ViewPurchaseOrderComponent
     ]
 })
 

@@ -7,7 +7,7 @@ import {ViewPurchaseOrderComponent} from './purchase-order/view-purchase-order/v
 const routes: Routes = [
     {path: '', component: PurchaseComponent},
     {path: 'place-purchase-order', component: CreatePurchaseOrderComponent},
-    {path: 'view-purchase-order', component: ViewPurchaseOrderComponent}
+    {path: 'view-purchase-order', component: ViewPurchaseOrderComponent},
 ];
 
 @NgModule({

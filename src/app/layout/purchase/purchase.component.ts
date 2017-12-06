@@ -140,11 +140,11 @@ export class PurchaseComponent implements OnInit {
     }
 
     public viewOrder(orderUuid: string) {
-        this.router.navigate(['/purchase/view-purchase-order', { orderUuid: orderUuid }]);
+        this.router.navigate(['/purchase/view-purchase-order', { orderUuid: orderUuid, editable: false }]);
     }
 
-    public editOrder(order: Order) {
-        console.log(' Edit order uuid ' + order.uuid);
+    public editOrder(orderUuid: string) {
+        this.router.navigate(['/purchase/view-purchase-order', { orderUuid: orderUuid, editable: true }]);
     }
 
     public deleteOrder(orderUuid: string) {
