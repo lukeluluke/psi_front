@@ -50,13 +50,7 @@
     <div class="row">
         <div class="col-lg-3">
             <div>
-                <input [(ngModel)]="expenditure.description" class="form-control" placeholder="摘要">
-            </div>
-        </div>
-
-        <div class="col-lg-3">
-            <div>
-                <input [(ngModel)]="expenditure.extraInfo" class="form-control" placeholder="附加说明">
+                <input [(ngModel)]="expenseTransaction.note" class="form-control" placeholder="摘要">
             </div>
         </div>
     </div>
@@ -66,7 +60,7 @@
     <div class="row">
         <div class="card col-lg-12">
             <div class="card-header">
-                <!--<app-accounting-transaction-item-modal (accountingTransactionItemAdd)="onAccountingTransactionItemAdd($event)"></app-accounting-transaction-item-modal>-->
+                <app-expense-modal (expenseAdd)="onExpenseAdd($event)"></app-expense-modal>
             </div>
             <table class="card-block table table-hover">
                 <thead>
@@ -82,14 +76,14 @@
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let expenditureItem of (expenditure.accountingTransactionItems | paginate: pageConfig); let i = index;">
+                <tr *ngFor="let expenseItem of (expenseTransaction.expenseItems | paginate: pageConfig); let i = index;">
                     <th scope="row">{{ i+1 }}</th>
-                    <td>{{ expenditureItem.id }}</td>
-                    <td> {{ expenditureItem.name }}</td>
-                    <td> {{ expenditureItem.category.name }}</td>
-                    <td><inline-editor type="text" [(ngModel)]="expenditureItem.amount" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><inline-editor type="textarea" [(ngModel)]="expenditureItem.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><i (click)="removeExpenditureItem(expenditureItem.uuid)" class="fa fa-times"></i></td>
+                    <td>{{ expenseItem.id }}</td>
+                    <td> {{ expenseItem.name }}</td>
+                    <td> {{ expenseItem.expenseCategory.name }}</td>
+                    <td><inline-editor type="text" [(ngModel)]="expenseItem.amount" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="textarea" [(ngModel)]="expenseItem.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><i (click)="removeExpenditureItem(expenseItem.uuid)" class="fa fa-times"></i></td>
                 </tr>
                 </tbody>
             </table>

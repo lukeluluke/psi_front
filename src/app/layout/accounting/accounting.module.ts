@@ -13,6 +13,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { XpaginationModule } from '../../shared/';
 import { InlineEditorModule } from '@qontu/ngx-inline-editor';
 import { StatModule } from '../../shared/modules/stat/stat.module';
+import { ExpenseModalModule } from '../../shared/modules/expense-modal/expense-modal.module';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { StatModule } from '../../shared/modules/stat/stat.module';
         NgxPaginationModule,
         XpaginationModule,
         InlineEditorModule,
-        StatModule
+        StatModule,
+        ExpenseModalModule
     ],
     declarations: [AccountingComponent, ExpenditureComponent]
 })

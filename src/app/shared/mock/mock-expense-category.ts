@@ -1,5 +1,4 @@
-
-export const AccountingTransactionItemCategories = [
+export const ExpenseCategories = [
     {
         uuid: '48f8661b-0d39-4a3a-8588-5f6d959d1739',
         name: '物流',
