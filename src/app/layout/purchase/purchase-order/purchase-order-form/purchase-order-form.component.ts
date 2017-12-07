@@ -13,6 +13,7 @@ export class PurchaseOrderFormComponent implements OnInit {
     @Input() order: Order;
     @Input() disabled: boolean = true;
     @Output() orderUpdate = new EventEmitter<Order>();
+    @Output() viewStatus? = new EventEmitter<string>();
     public pageConfig: PaginationInstance = {
         id: 'purchase-order',
         itemsPerPage: 10,
@@ -80,11 +81,6 @@ export class PurchaseOrderFormComponent implements OnInit {
                 this.selectedWarehouse.push(this.order.warehouse.name);
             }
         }
-
-        console.log(this.selectedDivision);
-        console.log(this.selectedCompany);
-        console.log(this.selectedUser);
-        console.log(this.selectedWarehouse);
     }
 
     selectCompany(value: any): void {
@@ -142,8 +138,14 @@ export class PurchaseOrderFormComponent implements OnInit {
         }
     }
 
-    public editOrder(orderUuid: string) {
-       this.disabled = false;
+    public editOrder() {
+        this.viewStatus.emit('edit');
+        this.disabled = false;
+    }
+
+    public cancelEdit() {
+        this.viewStatus.emit('view');
+        this.disabled = true;
     }
 
     /**

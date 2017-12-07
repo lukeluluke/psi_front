@@ -39,8 +39,19 @@ export class ViewPurchaseOrderComponent implements OnInit {
         this.pageHeader = this.disabledInput ? '查看订单' : '修改订单';
     }
 
-    // onOrderView(order: Order) {
-    //     console.log(order);
-    // }
+    onOrderSave(order: Order) {
+        if (order) {
+            this.order = order;
+            alert('Order updated, good job');
+        }
+    }
+
+    onViewStatsChange(status: string) {
+        if (status === 'view') {
+            this.pageHeader = '查看订单';
+        } else {
+            this.pageHeader = '修改订单';
+        }
+    }
 
 }
