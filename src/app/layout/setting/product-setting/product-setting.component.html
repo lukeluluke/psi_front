@@ -1,0 +1,70 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">产品管理</h2>
+    <hr/>
+    <div class="row">
+        <div class="form-control">
+            <button class="btn btn-primary" (click)="createProduct()">新建产品</button>
+        </div>
+
+        <div style="display:block;width:100%;height: 20px"></div>
+        <h4>产品列表</h4>
+        <div class="form-control">
+            <h5>过滤产品</h5>
+            <div class="row">
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="categories"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="selectCategory($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择分类">
+                        </ng-select>
+                    </div>
+                </div>
+                <div class="col-lg-6" style="display: inline-block">
+                    <input class="form-control" (keyup)="searchProduct($event)" placeholder="搜索产品" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+            <table class="card-block table table-hover">
+                <thead>
+                    <tr>
+                        <th>商品编号</th>
+                        <th>商品名称</th>
+                        <th>规格</th>
+                        <th>条形码</th>
+                        <th>分类</th>
+                        <th>价格</th>
+                        <th>添加日期</th>
+                        <th>查看</th>
+                        <th>修改</th>
+                        <th>删除</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let product of (filterProducts | paginate: pageConfig)">
+                    <td>{{ product.sku }}</td>
+                    <td> {{ product.name }}</td>
+                    <td> {{ product.model }}</td>
+                    <td> {{ product.barcode }}</td>
+                    <td> {{ product.category.name }}</td>
+                    <td> {{ product.price }}</td>
+                    <td> {{ product.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewProduct(product.uuid)" class="fa fa-eye"></i></td>
+                    <td><i (click)="editProduct(product.uuid)" class="fa fa-edit"></i></td>
+                    <td><i (click)="deleteProduct(product.uuid)" class="fa fa-times"></i></td>
+                </tr>
+                </tbody>
+            </table>
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
+    <div style="height: 200px;"></div>
+</div>
+
+
