@@ -1,5 +1,3 @@
-<div [@routerTransition]>
-    <app-page-header [heading]="'新建订单'" [icon]="'fa-edit'"></app-page-header>
 
     <div class="row">
         <div class="col-lg-3">
@@ -7,6 +5,7 @@
                 <ng-select [allowClear]="true"
                            [items]="companies"
                            [disabled]="disabled"
+                           [active]="selectedCompany"
                            (data)="refreshValue($event)"
                            (selected)="selectCompany($event)"
                            (removed)="removed($event)"
@@ -20,6 +19,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="users"
+                           [active]="selectedUser"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectUser($event)"
@@ -34,6 +34,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="divisions"
+                           [active]="selectedDivision"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectDivision($event)"
@@ -52,6 +53,7 @@
             <div>
                 <ng-select [allowClear]="true"
                            [items]="warehouses"
+                           [active]="selectedWarehouse"
                            [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selectWarehouse($event)"
@@ -64,13 +66,13 @@
 
         <div class="col-lg-3">
             <div>
-                <input [(ngModel)]="order.description" class="form-control" placeholder="摘要">
+                <input [(ngModel)]="order.description" [disabled]="disabled" class="form-control" placeholder="摘要">
             </div>
         </div>
 
         <div class="col-lg-3">
             <div>
-                <input [(ngModel)]="order.extraInfo" class="form-control" placeholder="附加说明">
+                <input [(ngModel)]="order.extraInfo" [disabled]="disabled" class="form-control" placeholder="附加说明">
             </div>
         </div>
     </div>
@@ -79,7 +81,7 @@
 
     <div class="row">
         <div class="card col-lg-12">
-            <div class="card-header">
+            <div *ngIf="!disabled" class="card-header">
                 <app-product-modal (productAdd)="onProductAdd($event)"></app-product-modal>
             </div>
             <table class="card-block table table-hover">
@@ -97,7 +99,7 @@
                     <th>金额</th>
                     <th>备注</th>
                     <th>仓库货位</th>
-                    <th>删除</th>
+                    <th *ngIf="!disabled">删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -110,12 +112,12 @@
                     <td> {{ orderProduct.product.barcode }}</td>
                     <td> {{ orderProduct.product.spec }}</td>
                     <td> {{ orderProduct.product.model }}</td>
-                    <td><inline-editor type="text" [(ngModel)]="orderProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td><inline-editor type="text" [(ngModel)]="orderProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [disabled]="disabled" [(ngModel)]="orderProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="text" [disabled]="disabled" [(ngModel)]="orderProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
                     <td> {{ orderProduct.amount }}</td>
-                    <td><inline-editor type="textarea" [(ngModel)]="orderProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="textarea" [disabled]="disabled" [(ngModel)]="orderProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
                     <td> {{ orderProduct.stockQuantity }}</td>
-                    <td><i (click)="removeOrderProduct(orderProduct.uuid)" class="fa fa-times"></i></td>
+                    <td *ngIf="!disabled"><i (click)="removeOrderProduct(orderProduct.uuid)" class="fa fa-times"></i></td>
 
                 </tr>
                 </tbody>
@@ -124,14 +126,13 @@
         </div>
     </div>
 
-    <div style="height: 20px"></div>
+    <div style="height: 20px;"></div>
 
     <div class="row">
-        <button [disabled]="isValidOrder()" class="btn btn-primary" (click)="saveOrder()">保存订单</button>
+        <button *ngIf="!disabled; else elseBlock" [disabled]="isValidOrder()" class="btn btn-primary" (click)="confirmOrder(order)">确定</button>
+        <ng-template #elseBlock>
+            <button class="btn btn-primary" (click)="editOrder(order.uuid)">修改</button>
+        </ng-template>
     </div>
 
-    <div class="row">
-        <div style="height: 400px;"></div>
-    </div>
 
-</div>
