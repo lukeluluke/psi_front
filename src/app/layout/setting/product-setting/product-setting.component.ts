@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild, ViewContainerRef} from '@angular/core';
 import {routerTransition} from '../../../router.animations';
 import {PaginationInstance} from 'ngx-pagination';
-import {Product} from '../../../shared/model';
+import {Category, Product} from '../../../shared/model';
 import {Products, Categories} from '../../../shared/mock';
 import {ProductSettingModalComponent} from './product-setting-modal/product-setting-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
@@ -19,20 +19,24 @@ export class ProductSettingComponent implements OnInit {
         currentPage: 1
     };
     products: Product[] = [];
+    categories: Category[] = [];
     filterProducts: Product[] = [];
-    categories = [];
+    categoryOptions = [];
     disabled: boolean = false;
     product: Product;
     constructor(
         private modalService: NgbModal
     ) {
-        this.product = new Product();
-        this.product.initialize();
-        this.categories = this.convertSelectOptions(Categories);
+        this.categoryOptions = this.convertSelectOptions(Categories);
         this.filterProducts = [];
         for (const p of Products) {
             const product = new Product();
             this.products.push(product.fromJson(p));
+        }
+
+        for (const c of Categories) {
+            const category = new Category();
+            this.categories.push(category.fromJson(c));
         }
         Object.assign(this.filterProducts, this.products);
     }
@@ -41,13 +45,59 @@ export class ProductSettingComponent implements OnInit {
     }
 
     createProduct() {
+        this.product = new Product();
+        this.product.initialize();
         const modalRef = this.modalService.open(ProductSettingModalComponent);
         modalRef.componentInstance.product = this.product;
         modalRef.componentInstance.headerText = '添加产品';
         modalRef.componentInstance.categories = this.categories;
+        modalRef.componentInstance.categoryOptions = this.categoryOptions;
         modalRef.componentInstance.disabled = false;
+        modalRef.componentInstance.productAdd.subscribe(newProduct => {
+            this.onProductCreate(newProduct);
+            modalRef.dismiss();
+        });
 
     }
+
+    public viewProduct(product: Product) {
+        const modalRef = this.modalService.open(ProductSettingModalComponent);
+        modalRef.componentInstance.product = product;
+        modalRef.componentInstance.headerText = '查看产品';
+        modalRef.componentInstance.categories = this.categories;
+        modalRef.componentInstance.categoryOptions = this.categoryOptions;
+        modalRef.componentInstance.disabled = true;
+        modalRef.componentInstance.selectedCategory = [product.category.name];
+    }
+
+    public editProduct(product: Product) {
+        const modalRef = this.modalService.open(ProductSettingModalComponent);
+        modalRef.componentInstance.product = product;
+        modalRef.componentInstance.headerText = '编辑产品';
+        modalRef.componentInstance.categories = this.categories;
+        modalRef.componentInstance.categoryOptions = this.categoryOptions;
+        modalRef.componentInstance.disabled = false;
+        modalRef.componentInstance.selectedCategory = [product.category.name];
+        modalRef.componentInstance.productAdd.subscribe(editProduct => {
+           this.onProductUpdate(editProduct);
+            modalRef.dismiss();
+        });
+    }
+
+    public deleteProduct(product: Product) {
+        this.filterProducts = this.filterProducts.filter(p => p.uuid !== product.uuid);
+    }
+
+    private onProductCreate(product: Product) {
+       this.products.unshift(product);
+       Object.assign(this.filterProducts, this.products);
+    }
+
+    private onProductUpdate(product: Product) {
+        this.filterProducts = this.filterProducts.filter(p => p.uuid !== product.uuid);
+        this.filterProducts.unshift(product);
+    }
+
     public refreshValue() {
 
     }
@@ -70,7 +120,6 @@ export class ProductSettingComponent implements OnInit {
 
         this.filterProducts = [];
         const categoryId = value.id;
-        console.log(categoryId);
         let findProducts = this.products;
         if (categoryId !== -1) {
             findProducts = this.products.filter(p => p.category.uuid === categoryId);
@@ -87,19 +136,6 @@ export class ProductSettingComponent implements OnInit {
     typed(value: any): void {
         console.log('New search input: ', value);
     }
-
-    public viewProduct(productUuid: string) {
-
-    }
-
-    public editProduct(productUuid: string) {
-
-    }
-
-    public deleteProduct(productUuid: string) {
-
-    }
-
 
     /**
      * Convert object of model to select options with key {id, text)

@@ -12,6 +12,7 @@ export class Product {
     spec: string;
     model: string;
     price: number;
+    note: string;
     createdAt: string;
     updatedAt: string;
 
@@ -38,6 +39,7 @@ export class Product {
             this.spec = jsonData.spec ? jsonData.spec : '';
             this.model = jsonData.model ? jsonData.model : '';
             this.price = jsonData.price ? jsonData.price : '';
+            this.note = jsonData.note ? jsonData.note : '';
             this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
             this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';
         }

@@ -14,7 +14,7 @@
                 <div class="col-lg-3" style="display: inline-block">
                     <div>
                         <ng-select [allowClear]="true"
-                                   [items]="categories"
+                                   [items]="categoryOptions"
                                    [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="selectCategory($event)"
@@ -36,6 +36,7 @@
                     <tr>
                         <th>商品编号</th>
                         <th>商品名称</th>
+                        <th>商品型号</th>
                         <th>规格</th>
                         <th>条形码</th>
                         <th>分类</th>
@@ -51,13 +52,14 @@
                     <td>{{ product.sku }}</td>
                     <td> {{ product.name }}</td>
                     <td> {{ product.model }}</td>
+                    <td> {{ product.spec }}</td>
                     <td> {{ product.barcode }}</td>
                     <td> {{ product.category.name }}</td>
                     <td> {{ product.price }}</td>
                     <td> {{ product.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
-                    <td><i (click)="viewProduct(product.uuid)" class="fa fa-eye"></i></td>
-                    <td><i (click)="editProduct(product.uuid)" class="fa fa-edit"></i></td>
-                    <td><i (click)="deleteProduct(product.uuid)" class="fa fa-times"></i></td>
+                    <td><i (click)="viewProduct(product)" class="fa fa-eye"></i></td>
+                    <td><i (click)="editProduct(product)" class="fa fa-edit"></i></td>
+                    <td><i (click)="deleteProduct(product)" class="fa fa-times"></i></td>
                 </tr>
                 </tbody>
             </table>
