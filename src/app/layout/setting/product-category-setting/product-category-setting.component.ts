@@ -73,7 +73,6 @@ export class ProductCategorySettingComponent implements OnInit {
 
     private onCategoryUpdate(category) {
         this.filterCategories = this.filterCategories.filter(c => c.uuid !== category.uuid);
-        console.log(category);
         this.filterCategories.unshift(category);
     }
 
@@ -85,7 +84,6 @@ export class ProductCategorySettingComponent implements OnInit {
 
         const searchTerm = event.target.value;
         if (searchTerm !== '') {
-            // let findProducts = this.products;
             this.filterCategories = [];
             const findCategories = this.categories.filter(
                 c => c.name.indexOf(searchTerm) !== -1

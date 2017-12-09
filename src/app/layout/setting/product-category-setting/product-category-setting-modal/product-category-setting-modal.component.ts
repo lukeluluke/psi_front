@@ -1,5 +1,5 @@
 import {Component, EventEmitter, Input, Output} from '@angular/core';
-import {Category, Product} from '../../../../shared/model';
+import {Category} from '../../../../shared/model';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
@@ -28,7 +28,7 @@ export class ProductCategorySettingModalComponent {
     updateCategory(category: Category) {
         if (category && category.name) {
             this.categoryAdd.emit(category);
-        } else{
+        } else {
             alert('请输入分类信息');
         }
     }

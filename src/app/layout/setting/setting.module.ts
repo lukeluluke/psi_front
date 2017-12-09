@@ -16,6 +16,8 @@ import {UserRolePipe} from '../../shared/pipe/user-role.pipe';
 import { UserSettingModalComponent } from './user-setting/user-setting-modal/user-setting-modal.component';
 import { WarehouseSettingComponent } from './warehouse-setting/warehouse-setting.component';
 import { WarehouseSettingModalComponent } from './warehouse-setting/warehouse-setting-modal/warehouse-setting-modal.component';
+import { DivisionSettingComponent } from './division-setting/division-setting.component';
+import { DivisionSettingModalComponent } from './division-setting/division-setting-modal/division-setting-modal.component';
 
 @NgModule({
     imports: [
@@ -38,13 +40,16 @@ import { WarehouseSettingModalComponent } from './warehouse-setting/warehouse-se
         UserSettingComponent,
         UserSettingModalComponent,
         WarehouseSettingComponent,
-        WarehouseSettingModalComponent
+        WarehouseSettingModalComponent,
+        DivisionSettingComponent,
+        DivisionSettingModalComponent
     ],
     entryComponents: [
         ProductSettingModalComponent,
         ProductCategorySettingModalComponent,
         UserSettingModalComponent,
-        WarehouseSettingModalComponent
+        WarehouseSettingModalComponent,
+        DivisionSettingModalComponent
     ]
 })
 export class SettingModule {

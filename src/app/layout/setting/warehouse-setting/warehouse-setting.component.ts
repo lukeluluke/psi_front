@@ -95,19 +95,19 @@ export class WarehouseSettingComponent implements OnInit {
     }
 
     public searchWarehouse(event: any) {
-        const searchTerm = event.target.value;
+        const searchTerm = event.target.value.toLowerCase();
         if (searchTerm !== '') {
             // let findProducts = this.products;
             this.filterWarehouses = [];
             const findWarehouses = this.warehouses.filter(
-                w => w.name.indexOf(searchTerm) !== -1
+                w => w.name.toLowerCase().indexOf(searchTerm) !== -1
             );
             Object.assign(this.filterWarehouses, findWarehouses);
         } else {
             Object.assign(this.filterWarehouses, this.warehouses);
         }
     }
-    public deleteWarehouse() {
-
+    public deleteWarehouse(warehosue: Warehouse) {
+        this.filterWarehouses = this.filterWarehouses.filter(w => w.uuid !== warehosue.uuid);
     }
 }
