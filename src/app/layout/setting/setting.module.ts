@@ -9,6 +9,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {PageHeaderModule, XpaginationModule} from '../../shared';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'ng2-select-compat';
+import { ProductCategorySettingComponent } from './product-category-setting/product-category-setting.component';
+import { ProductCategorySettingModalComponent } from './product-category-setting/product-category-setting-modal/product-category-setting-modal.component';
 
 @NgModule({
     imports: [
@@ -24,10 +26,13 @@ import {SelectModule} from 'ng2-select-compat';
     declarations: [
         SettingComponent,
         ProductSettingComponent,
-        ProductSettingModalComponent
+        ProductSettingModalComponent,
+        ProductCategorySettingComponent,
+        ProductCategorySettingModalComponent
     ],
     entryComponents: [
         ProductSettingModalComponent,
+        ProductCategorySettingModalComponent
     ]
 })
 export class SettingModule {

@@ -5,6 +5,7 @@ import { UUID } from 'angular2-uuid';
 export class Category {
     uuid: string;
     name: string;
+    note: string;
     createdAt: string;
     updatedAt: string;
 
@@ -21,6 +22,7 @@ export class Category {
         if (jsonData) {
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.name = jsonData.name ? jsonData.name : '';
+            this.note = jsonData.note ? jsonData.note : '';
             this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
             this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';
         }
