@@ -1,0 +1,43 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{headerText}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="form-control">
+        <div>
+            <ng-select [allowClear]="true"
+                       [items]="roles"
+                       [disabled]="disabled"
+                       [active]="selectedRole"
+                       (data)="refreshValue($event)"
+                       (selected)="selectRole($event)"
+                       (removed)="removed($event)"
+                       (typed)="typed($event)"
+                       placeholder="选择角色">
+            </ng-select>
+        </div>
+        <hr />
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="名字" [(ngModel)]="user.firstName" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="姓" [(ngModel)]="user.lastName" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="备注" [(ngModel)]="user.note" />
+        </div>
+
+        <hr />
+        <div>
+            <button *ngIf="!disabled" class="btn btn-primary" (click)="updateUser(user)">确认</button>
+            <button class="btn btn-primary" (click)="closeModal()">关闭</button>
+        </div>
+
+    </div>
+
+</div>

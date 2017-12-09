@@ -3,7 +3,6 @@ import {routerTransition} from '../../../router.animations';
 import {PaginationInstance} from 'ngx-pagination';
 import {Category, Product} from '../../../shared/model';
 import {Categories} from '../../../shared/mock';
-import {ProductSettingModalComponent} from '../product-setting/product-setting-modal/product-setting-modal.component';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {ProductCategorySettingModalComponent} from './product-category-setting-modal/product-category-setting-modal.component';
 
@@ -22,12 +21,10 @@ export class ProductCategorySettingComponent implements OnInit {
     categories: Category[] = [];
     filterCategories: Category[] = [];
     category: Category;
-    categoryOptions = [];
     disabled: boolean = false;
     constructor(
         private modalService: NgbModal
     ) {
-        this.categoryOptions = this.convertSelectOptions(Categories);
         for (const c of Categories) {
             const category = new Category();
             this.categories.push(category.fromJson(c));
@@ -58,8 +55,6 @@ export class ProductCategorySettingComponent implements OnInit {
     }
 
     public viewCategory(category: Category) {
-        this.category = new Category();
-        this.category.initialize();
         const modalRef = this.modalService.open(ProductCategorySettingModalComponent);
         modalRef.componentInstance.category = category;
         modalRef.componentInstance.headerText = '查看分类';
@@ -100,32 +95,4 @@ export class ProductCategorySettingComponent implements OnInit {
             Object.assign(this.filterCategories, this.categories);
         }
     }
-
-    public refreshValue() {
-
-    }
-
-
-    /**
-     * Convert object of model to select options with key {id, text)
-     * @param objects
-     * @returns
-     */
-    private convertSelectOptions(objects) {
-        const options = [];
-        for (const obj of objects) {
-            const option = {};
-            option['id'] = obj.uuid;
-            option['text'] = obj.name;
-            options.push(option);
-        }
-
-        const defaultOption = {
-            id: -1,
-            text: '显示所有'
-        };
-        options.push(defaultOption);
-        return options;
-    }
-
 }

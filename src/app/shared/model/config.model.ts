@@ -9,4 +9,9 @@ export const OrderTypes = {
     2: '进货退货',
     3: '销售',
     4: '销售退货'
-}
+};
+
+export const UserRoles = {
+    1: '销售',
+    2: '会计'
+};

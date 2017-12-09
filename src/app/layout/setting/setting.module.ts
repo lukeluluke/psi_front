@@ -11,6 +11,9 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'ng2-select-compat';
 import { ProductCategorySettingComponent } from './product-category-setting/product-category-setting.component';
 import { ProductCategorySettingModalComponent } from './product-category-setting/product-category-setting-modal/product-category-setting-modal.component';
+import { UserSettingComponent } from './user-setting/user-setting.component';
+import {UserRolePipe} from '../../shared/pipe/user-role.pipe';
+import { UserSettingModalComponent } from './user-setting/user-setting-modal/user-setting-modal.component';
 
 @NgModule({
     imports: [
@@ -24,15 +27,19 @@ import { ProductCategorySettingModalComponent } from './product-category-setting
         SettingRoutingModule
     ],
     declarations: [
+        UserRolePipe,
         SettingComponent,
         ProductSettingComponent,
         ProductSettingModalComponent,
         ProductCategorySettingComponent,
-        ProductCategorySettingModalComponent
+        ProductCategorySettingModalComponent,
+        UserSettingComponent,
+        UserSettingModalComponent
     ],
     entryComponents: [
         ProductSettingModalComponent,
-        ProductCategorySettingModalComponent
+        ProductCategorySettingModalComponent,
+        UserSettingModalComponent
     ]
 })
 export class SettingModule {
