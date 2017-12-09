@@ -28,9 +28,10 @@ export class Expense {
 
     fromJson(jsonData) {
         if (jsonData) {
+            const expenseCategory = new ExpenseCategory();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.name = jsonData.name ? jsonData.name : 'Unknown Expense';
-            this.expenseCategory = null;
+            this.expenseCategory = expenseCategory.fromJson(jsonData.expenseCategory);
             this.description = jsonData.description ? jsonData.description : '';
             this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
             this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';

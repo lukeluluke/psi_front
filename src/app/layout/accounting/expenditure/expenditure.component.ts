@@ -40,15 +40,18 @@ export class ExpenditureComponent implements OnInit {
     }
 
     selectCompany(value: any): void {
-        this.expenseTransaction.toWhom = value;
+        const selectCompany = this.companies.filter(c => c.uuid === value.id);
+        this.expenseTransaction.toWhom = selectCompany[0];
     }
 
     selectUser(value: any): void {
-        this.expenseTransaction.byWhom = value;
+        const selectUser = this.users.filter(u => u.uuid === value.id);
+        this.expenseTransaction.byWhom = selectUser[0];
     }
 
     selectDivision(value: any): void {
-        this.expenseTransaction.division = value;
+        const selectDivision = this.divisions.filter(d => d.uuid === value.id);
+        this.expenseTransaction.division = selectDivision[0];
     }
 
     removed(value: any): void {
@@ -82,11 +85,11 @@ export class ExpenditureComponent implements OnInit {
         this.expenseTransaction.expenseItems = this.expenseTransaction.expenseItems.filter( ei => ei.uuid !== uuid );
     }
 
-    public saveExpenditureItem() {
+    public saveExpenditure() {
         console.log(JSON.stringify(this.expenseTransaction));
     }
 
-    public isValidOrder() {
+    public isValidExpenditure() {
         return this.expenseTransaction.expenseItems.length === 0;
     }
 

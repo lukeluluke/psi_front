@@ -1,4 +1,4 @@
-import {Component, Output, OnInit, EventEmitter, Input} from '@angular/core';
+import { Component, Output, OnInit, EventEmitter, Input } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Expenses, ExpenseCategories } from '../../mock';
 import { Expense } from '../../model';
@@ -13,7 +13,7 @@ export class ExpenseModalComponent implements OnInit {
     @Output() expenseAdd = new EventEmitter<Expense>();
     public pageConfig: PaginationInstance = {
         id: 'product-modal',
-        itemsPerPage: 4,
+        itemsPerPage: 3,
         currentPage: 1
     };
     closeResult: string;
@@ -33,10 +33,11 @@ export class ExpenseModalComponent implements OnInit {
             const expenseCategory = {};
             expenseCategory['id'] = ec.uuid;
             expenseCategory['text'] = ec.name;
+            this.expenseCategories.push(expenseCategory);
         }
         const defaultExpenseCategory = {
             id: 1,
-            text: '所有产品'
+            text: '所有支持'
         };
         this.expenseCategories.push(defaultExpenseCategory);
 
@@ -93,7 +94,6 @@ export class ExpenseModalComponent implements OnInit {
     public searchExpense(event: any): void {
         const searchTerm = event.target.value;
          if (searchTerm !== '') {
-            // let findProducts = this.products;
              this.filterExpenses = [];
              const findExpenses = this.expenses.filter(
                  e => e.name.indexOf(searchTerm) !== -1

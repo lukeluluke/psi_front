@@ -1,4 +1,4 @@
-<button (click)="open(content)" class="btn btn-primary">添加支出项目</button>
+<button (click)="open(content)" class="btn btn-primary">添加开支</button>
 <ng-template #content let-c="close" let-d="dismiss">
     <div class="modal-header">
         <h4 class="modal-title">选择开支</h4>
@@ -27,14 +27,12 @@
     <table class="card-block table table-hover">
         <thead>
         <tr>
-            <th>支出编号</th>
-            <th>支出名称</th>
+            <th>开支名称</th>
             <th>描述</th>
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let expense of filterExpenses | paginate: pageConfig" (click)="addExpenseItem(expense.uuid)">
-            <th scope="row">{{ expense.uuid }}</th>
             <td>{{ expense.name }}</td>
             <td> {{ expense.description }}</td>
         </tr>
