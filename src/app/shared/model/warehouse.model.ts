@@ -1,11 +1,11 @@
 import * as moment from 'moment';
 import {UUID} from 'angular2-uuid';
+import {States} from './config.model';
 
 export class Warehouse {
     uuid: string;
     name: string;
     addressLine1: string;
-    addressLine2: string;
     suburb: string;
     postcode: number;
     stateId: number;
@@ -30,7 +30,6 @@ export class Warehouse {
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.name = jsonData.name ? jsonData.name : '';
             this.addressLine1 = jsonData.addressLine1 ? jsonData.addressLine1 : '';
-            this.addressLine2 = jsonData.addressLine2 ? jsonData.addressLine2 : '';
             this.suburb = jsonData.suburb ? jsonData.suburb : '';
             this.postcode = jsonData.postcode ? jsonData.postcode : '';
             this.stateId = jsonData.stateId ? jsonData.stateId : '';
@@ -41,5 +40,11 @@ export class Warehouse {
             this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';
         }
         return this;
+    }
+
+    getFullAddress() {
+        const stateText = States[this.stateId];
+        return this.addressLine1 + ', ' + this.suburb + ', ' +
+            stateText + ', ' + this.postcode;
     }
 }

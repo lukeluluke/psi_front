@@ -15,3 +15,14 @@ export const UserRoles = {
     1: '销售',
     2: '会计'
 };
+
+export const States = {
+    1: 'NSW',
+    2: 'SA',
+    3: 'TAS',
+    4: 'VIC',
+    5: 'WA',
+    6: 'NT',
+    7: 'ACT',
+    8: 'QLD'
+};

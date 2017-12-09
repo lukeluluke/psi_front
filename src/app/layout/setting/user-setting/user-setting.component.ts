@@ -4,7 +4,6 @@ import {PaginationInstance} from 'ngx-pagination';
 import {User} from '../../../shared/model';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {Users} from '../../../shared/mock';
-import {ProductSettingModalComponent} from '../product-setting/product-setting-modal/product-setting-modal.component';
 import {UserSettingModalComponent} from './user-setting-modal/user-setting-modal.component';
 import {UserRoles} from '../../../shared/model/config.model';
 

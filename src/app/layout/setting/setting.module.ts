@@ -14,6 +14,8 @@ import { ProductCategorySettingModalComponent } from './product-category-setting
 import { UserSettingComponent } from './user-setting/user-setting.component';
 import {UserRolePipe} from '../../shared/pipe/user-role.pipe';
 import { UserSettingModalComponent } from './user-setting/user-setting-modal/user-setting-modal.component';
+import { WarehouseSettingComponent } from './warehouse-setting/warehouse-setting.component';
+import { WarehouseSettingModalComponent } from './warehouse-setting/warehouse-setting-modal/warehouse-setting-modal.component';
 
 @NgModule({
     imports: [
@@ -34,12 +36,15 @@ import { UserSettingModalComponent } from './user-setting/user-setting-modal/use
         ProductCategorySettingComponent,
         ProductCategorySettingModalComponent,
         UserSettingComponent,
-        UserSettingModalComponent
+        UserSettingModalComponent,
+        WarehouseSettingComponent,
+        WarehouseSettingModalComponent
     ],
     entryComponents: [
         ProductSettingModalComponent,
         ProductCategorySettingModalComponent,
-        UserSettingModalComponent
+        UserSettingModalComponent,
+        WarehouseSettingModalComponent
     ]
 })
 export class SettingModule {
