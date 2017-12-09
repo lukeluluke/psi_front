@@ -15,7 +15,7 @@ import {States} from '../../../shared/model/config.model';
 })
 export class WarehouseSettingComponent implements OnInit {
     public pageConfig: PaginationInstance = {
-        id: 'user-setting-pagination',
+        id: 'warehouse-setting-pagination',
         itemsPerPage: 3,
         currentPage: 1
     };
@@ -97,7 +97,6 @@ export class WarehouseSettingComponent implements OnInit {
     public searchWarehouse(event: any) {
         const searchTerm = event.target.value.toLowerCase();
         if (searchTerm !== '') {
-            // let findProducts = this.products;
             this.filterWarehouses = [];
             const findWarehouses = this.warehouses.filter(
                 w => w.name.toLowerCase().indexOf(searchTerm) !== -1

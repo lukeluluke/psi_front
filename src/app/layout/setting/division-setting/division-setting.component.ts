@@ -14,7 +14,7 @@ import {DivisionSettingModalComponent} from './division-setting-modal/division-s
 })
 export class DivisionSettingComponent implements OnInit {
     public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'division-setting-pagination',
         itemsPerPage: 3,
         currentPage: 1
     };

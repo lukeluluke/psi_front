@@ -14,7 +14,7 @@ import {ProductCategorySettingModalComponent} from './product-category-setting-m
 })
 export class ProductCategorySettingComponent implements OnInit {
     public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'product-category-setting-pagination',
         itemsPerPage: 3,
         currentPage: 1
     };

@@ -18,6 +18,8 @@ import { WarehouseSettingComponent } from './warehouse-setting/warehouse-setting
 import { WarehouseSettingModalComponent } from './warehouse-setting/warehouse-setting-modal/warehouse-setting-modal.component';
 import { DivisionSettingComponent } from './division-setting/division-setting.component';
 import { DivisionSettingModalComponent } from './division-setting/division-setting-modal/division-setting-modal.component';
+import { CompanySettingComponent } from './company-setting/company-setting.component';
+import { CompanySettingModalComponent } from './company-setting/company-setting-modal/company-setting-modal.component';
 
 @NgModule({
     imports: [
@@ -42,14 +44,17 @@ import { DivisionSettingModalComponent } from './division-setting/division-setti
         WarehouseSettingComponent,
         WarehouseSettingModalComponent,
         DivisionSettingComponent,
-        DivisionSettingModalComponent
+        DivisionSettingModalComponent,
+        CompanySettingComponent,
+        CompanySettingModalComponent
     ],
     entryComponents: [
         ProductSettingModalComponent,
         ProductCategorySettingModalComponent,
         UserSettingModalComponent,
         WarehouseSettingModalComponent,
-        DivisionSettingModalComponent
+        DivisionSettingModalComponent,
+        CompanySettingModalComponent
     ]
 })
 export class SettingModule {

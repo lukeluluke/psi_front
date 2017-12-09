@@ -6,6 +6,7 @@ import {ProductCategorySettingComponent} from './product-category-setting/produc
 import {UserSettingComponent} from './user-setting/user-setting.component';
 import {WarehouseSettingComponent} from './warehouse-setting/warehouse-setting.component';
 import {DivisionSettingComponent} from './division-setting/division-setting.component';
+import {CompanySettingComponent} from './company-setting/company-setting.component';
 
 const routes: Routes = [
     { path: '', component: SettingComponent },
@@ -13,7 +14,8 @@ const routes: Routes = [
     { path: 'product-category-setting', component: ProductCategorySettingComponent },
     { path: 'user-setting', component: UserSettingComponent},
     { path: 'warehouse-setting', component: WarehouseSettingComponent},
-    { path: 'division-setting', component: DivisionSettingComponent}
+    { path: 'division-setting', component: DivisionSettingComponent},
+    { path: 'company-setting', component: CompanySettingComponent}
 ];
 
 @NgModule({
