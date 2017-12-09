@@ -1,0 +1,55 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{headerText}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="form-control">
+        <div>
+            <ng-select [allowClear]="true"
+                       [items]="categoryOptions"
+                       [disabled]="disabled"
+                       [active]="selectedCategory"
+                       (data)="refreshValue($event)"
+                       (selected)="selectCategory($event)"
+                       (removed)="removed($event)"
+                       (typed)="typed($event)"
+                       placeholder="选择分类">
+            </ng-select>
+        </div>
+        <hr />
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品名称" [(ngModel)]="product.name" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品编号" [(ngModel)]="product.sku" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品型号" [(ngModel)]="product.model" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品规格" [(ngModel)]="product.spec" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品价格" [(ngModel)]="product.price" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="商品备注" [(ngModel)]="product.note" />
+        </div>
+
+        <hr />
+        <div>
+            <button *ngIf="!disabled" class="btn btn-primary" (click)="updateProduct(product)">确认</button>
+            <button class="btn btn-primary" (click)="closeModal()">关闭</button>
+        </div>
+
+    </div>
+
+</div>

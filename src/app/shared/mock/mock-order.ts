@@ -81,28 +81,28 @@ export const Orders = [
             countryId: 1,
             contactPerson: 'Jim Green',
             contactPhone: '0429990000',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         warehouse: {
             uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
             name: 'Chadstone',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         user: {
             uuid: '4596dd6d-19b2-42f2-ad60-291dec153ead',
             firstName: '云',
             lastName: '马',
             role: 1,
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         division: {
             uuid: 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
             name: '仓库',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         description : '第一个订单',
         extraInfo : 'Extra',
@@ -159,28 +159,28 @@ export const Orders = [
             countryId: 1,
             contactPerson: 'Jack Ma',
             contactPhone: '0399990000',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         warehouse: {
             uuid: '2aa49891-b198-48e8-9660-5a99f3dc6953',
             name: 'Clayton',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         user: {
             uuid: '7042a0ec-f698-4def-8de5-79632af18cf9',
             firstName: '化腾',
             lastName: '马',
             role: 1,
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         division: {
             uuid: '16a55164-b97c-4cde-8695-ad7067c353fa',
             name: '销售',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         description: 'test',
         extraInfo: 'testExtroInfo',
@@ -269,28 +269,28 @@ export const Orders = [
             countryId: 1,
             contactPerson: 'Lion Messi',
             contactPhone: '0289990000',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         warehouse: {
             uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
             name: 'Chadstone',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         user : {
             uuid: 'c31bed14-3832-4ab9-a145-92f142f0bbcf',
             firstName: '强东',
             lastName: '刘',
             role: 2,
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         division : {
             uuid: '6e224b62-1c4c-49cd-aefc-63cd36b08b16',
             name: '财务',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         description : '第一个订单',
         extraInfo : 'Extra',
@@ -347,28 +347,28 @@ export const Orders = [
             countryId: 1,
             contactPerson: 'Ronald Lee',
             contactPhone: '0799993000',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         warehouse: {
             uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
             name: 'Chadstone',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         user: {
             uuid: '47a8247c-90a1-4254-8293-b8d4ec179307',
             firstName: '彦宏',
             lastName: '李',
             role: 1,
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         division: {
             uuid: 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
             name: '仓库',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         description: 'Test',
         extraInfo: 'Extra',

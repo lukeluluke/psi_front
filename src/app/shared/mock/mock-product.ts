@@ -10,12 +10,12 @@ export const Products = [
         category: {
             uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
             name: '保健品',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         price: 11.99,
-        createdAt: '2017-11-18T02:14:56+11:0',
-        updatedAt: '2017-11-18T02:14:56+11:0'
+        createdAt: '2017-11-18T02:14:56+11:00',
+        updatedAt: '2017-11-18T02:14:56+11:00'
     },
     {
         uuid: 'f1314509-d59d-e00f-fbf1-cbc0ce87a8f5',
@@ -27,12 +27,12 @@ export const Products = [
         category: {
             uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
             name: '保健品',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         price: 29.99,
-        createdAt: '2017-11-18T02:14:56+11:0',
-        updatedAt: '2017-11-18T02:14:56+11:0'
+        createdAt: '2017-11-18T02:14:56+11:00',
+        updatedAt: '2017-11-18T02:14:56+11:00'
     },
     {
         uuid: 'b0d40b00-feea-ceaa-64be-63ff590e9c84',
@@ -44,12 +44,12 @@ export const Products = [
         category: {
             uuid: 'c018824c-34b1-40be-af97-8110b3c92948',
             name: '食品',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         price: 2.99,
-        createdAt: '2017-11-18T02:14:56+11:0',
-        updatedAt: '2017-11-18T02:14:56+11:0'
+        createdAt: '2017-11-18T02:14:56+11:00',
+        updatedAt: '2017-11-18T02:14:56+11:00'
     },
     {
         uuid: '3bc589dd-717c-620e-4508-1e706dfd9c70',
@@ -61,12 +61,12 @@ export const Products = [
         category: {
             uuid: '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
             name: '保健品',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         price: 14,
-        createdAt: '2017-11-18T02:14:56+11:0',
-        updatedAt: '2017-11-18T02:14:56+11:0'
+        createdAt: '2017-11-18T02:14:56+11:00',
+        updatedAt: '2017-11-18T02:14:56+11:00'
     },
     {
         uuid: '430c6b66-2fc4-8b05-0cf8-5a924e054ad6',
@@ -78,11 +78,11 @@ export const Products = [
         category: {
             uuid: '98e64b89-38ae-4259-8222-438367e2e1ec',
             name: '奶粉',
-            createdAt: '2017-11-18T02:14:56+11:0',
-            updatedAt: '2017-11-18T02:14:56+11:0'
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
         },
         price: 25.99,
-        createdAt: '2017-11-18T02:14:56+11:0',
-        updatedAt: '2017-11-18T02:14:56+11:0'
+        createdAt: '2017-11-18T02:14:56+11:00',
+        updatedAt: '2017-11-18T02:14:56+11:000'
     },
 ];
