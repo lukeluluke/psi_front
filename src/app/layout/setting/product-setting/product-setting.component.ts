@@ -14,7 +14,7 @@ import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 })
 export class ProductSettingComponent implements OnInit {
     public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'product-setting-pagination',
         itemsPerPage: 3,
         currentPage: 1
     };

@@ -1,0 +1,51 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{headerText}}</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+
+<div class="modal-body">
+    <div class="form-control">
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="仓库名称" [(ngModel)]="warehouse.name" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="地址" [(ngModel)]="warehouse.addressLine1" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="区" [(ngModel)]="warehouse.suburb" />
+        </div>
+        <hr/>
+        <div>
+            <ng-select [allowClear]="true"
+                       [items]="stateOptions"
+                       [disabled]="disabled"
+                       [active]="selectedState"
+                       (data)="refreshValue($event)"
+                       (selected)="selectState($event)"
+                       (removed)="removed($event)"
+                       (typed)="typed($event)"
+                       placeholder="选择州">
+            </ng-select>
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="联系人" [(ngModel)]="warehouse.contactPerson" />
+        </div>
+        <hr/>
+        <div>
+            <input class="form-control" [disabled]="disabled" placeholder="联系电话" [(ngModel)]="warehouse.contactPhone" />
+        </div>
+        <hr/>
+
+        <div>
+            <button *ngIf="!disabled" class="btn btn-primary" (click)="updateWarehouse(warehouse)">确认</button>
+            <button class="btn btn-primary" (click)="closeModal()">关闭</button>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,49 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">部门管理</h2>
+    <hr/>
+    <div class="row">
+        <div class="form-control">
+            <button class="btn btn-primary" (click)="createDivision()">新建部门</button>
+        </div>
+
+        <div style="display:block;width:100%;height: 20px"></div>
+        <h4>部门列表</h4>
+        <div class="form-control">
+            <h5>搜索部门</h5>
+            <div class="row">
+                <div class="col-lg-6" style="display: inline-block">
+                    <input class="form-control" (keyup)="searchDivision($event)" placeholder="部门名称" />
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>分类名称</th>
+                    <th>备注</th>
+                    <th>添加日期</th>
+                    <th>查看</th>
+                    <th>修改</th>
+                    <th>删除</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let division of (filterDivisions | paginate: pageConfig)">
+                    <td> {{ division.name }}</td>
+                    <td> {{ division.note }}</td>
+                    <td> {{ division.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewDivision(division)" class="fa fa-eye"></i></td>
+                    <td><i (click)="editDivision(division)" class="fa fa-edit"></i></td>
+                    <td><i (click)="deleteDivision(division)" class="fa fa-times"></i></td>
+                </tr>
+                </tbody>
+            </table>
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
+    <div style="height: 200px;"></div>
+</div>
+
+
