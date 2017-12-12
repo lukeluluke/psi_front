@@ -1,7 +1,7 @@
 export const ExpenseTransactions = [
     {
         uuid: '5dc3278d-2825-3d57-d928-5e11c7ddb5e9',
-        status: 0,
+        status: 1,
         expenseItems: [
           {
             uuid: '05030651-befd-6c49-d7fc-bb082a6acbd5',
@@ -58,7 +58,7 @@ export const ExpenseTransactions = [
     },
     {
         uuid: 'cd81c599-89a8-83d1-91ad-153e79c57391',
-        status: 0,
+        status: 2,
         expenseItems: [
           {
             uuid: 'e312fe99-2223-8170-d8b6-ca3e8f146f9b',

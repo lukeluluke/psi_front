@@ -7,3 +7,4 @@ export * from './mock-category';
 export * from './mock-order';
 export * from './mock-expense-category';
 export * from './mock-expense';
+export * from './mock-expense-transaction';

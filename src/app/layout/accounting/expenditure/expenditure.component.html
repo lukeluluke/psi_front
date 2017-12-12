@@ -1,0 +1,116 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">支出统计</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllExpenseTransaction"
+                      [label]="'全部支出'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-money'" [count]="countAllOpenExpenseTransaction"
+                      [label]="'待确认支出'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-money'" [count]="countAllClosedExpenseTransaction"
+                      [label]="'已确认支出'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-money'" [count]="countAllDeletedExpenseTransaction"
+                      [label]="'已删除支出'"></app-stat>
+        </div>
+    </div>
+
+    <hr/>
+
+
+    <div class="row">
+        <h4>Transaction List</h4>
+        <hr/>
+        <div class="form-control">
+            <h5>Transaction Filter</h5>
+            <div class="row">
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="companies"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterCompany($event)"
+                                   (removed)="removeCompany($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择单位">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="users"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterUser($event)"
+                                   (removed)="removeUser($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择经手人">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="divisions"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterDivision($event)"
+                                   (removed)="removeDivision($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择部门">
+                        </ng-select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="col-lg-12">
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>Transaction Status</th>
+                    <th>To whom</th>
+                    <th>By whom</th>
+                    <th>Division</th>
+                    <th>Created Date</th>
+                    <th>View</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let expenseTransaction of (filterExpenseTransactions | paginate: pageConfig)">
+                    <td> {{ expenseTransaction.status | TransactionStatusText }}</td>
+                    <td> {{ expenseTransaction.toWhom.name }}</td>
+                    <td> {{ expenseTransaction.byWhom.getFullName()}}</td>
+                    <td> {{ expenseTransaction.division.name }}</td>
+                    <td> {{ expenseTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewExpenseTransactions(expenseTransaction.uuid)" class="fa fa-eye"></i></td>
+                    <td><i (click)="editExpenseTransactions(expenseTransaction.uuid)" class="fa fa-edit"></i></td>
+                    <td><i (click)="deleteExpenseTransactions(expenseTransaction.uuid)" class="fa fa-times"></i></td>
+
+                </tr>
+                </tbody>
+            </table>
+
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+
+
+    </div>
+
+    <div style="height: 120px"></div>
+
+
+</div>

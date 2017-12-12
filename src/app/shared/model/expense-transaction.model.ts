@@ -8,8 +8,11 @@ import { Division } from './division.model';
 
 
 export class ExpenseTransaction {
+    static OPEN = 0;
+    static CLOSED = 1;
+    static DELETED = 2;
     uuid: string;
-    status: number; // 0 => open; 1 => closed
+    status: number; // 0 => open; 1 => closed; 2 => deleted
     expenseItems: ExpenseItem[];
     toWhom: Company;
     byWhom: User;
