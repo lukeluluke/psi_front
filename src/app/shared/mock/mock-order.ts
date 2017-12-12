@@ -375,4 +375,82 @@ export const Orders = [
         createdAt: '2017-11-19T16:23:37+11:00',
         updatedAt: '2017-11-19T16:23:37+11:00'
     },
+    {
+        uuid : 'b7b976d5-3f39-433d-879f-feb3ec491ea1',
+        id: 5,
+        type: 2,
+        status: 2,
+        orderProducts : [
+            {
+                quantity : '3',
+                product : {
+                    barcode : '2222222',
+                    sku : '000002',
+                    price : 29.989999999999998,
+                    model : '成人',
+                    uuid : 'f1314509-d59d-e00f-fbf1-cbc0ce87a8f5',
+                    categoryId : '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+                    spec : '30粒',
+                    name : '鱼油'
+                },
+                unitPrice : 29.989999999999998,
+                note : '',
+                uuid : 'fd32cd8f-da34-893e-de5e-30f637974e91'
+            },
+            {
+                quantity : 1,
+                product : {
+                    barcode : '444444',
+                    sku : '000004',
+                    price : 14,
+                    model : '成人',
+                    uuid : '3bc589dd-717c-620e-4508-1e706dfd9c70',
+                    categoryId : '526e4b43-f393-4d6c-aca9-dbd1d3c06d2f',
+                    spec : '30粒',
+                    name : '钙片'
+                },
+                unitPrice : 14,
+                note : '',
+                uuid : 'eb3e9e12-041a-4f7d-7937-d723fa1d78cc'
+            }
+        ],
+        company: {
+            uuid: 'ed7fc1a0-b646-4c03-add6-e32188c1ddfb',
+            name: 'HEALTHY CARE',
+            addressLine1: '10 Test street',
+            addressLine2: '',
+            suburb: 'Brisbane',
+            postcode: '4000',
+            stateId: 8,
+            countryId: 1,
+            contactPerson: 'Ronald Lee',
+            contactPhone: '0799993000',
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        warehouse: {
+            uuid: '0b6657a7-ff4e-467a-a2b2-61285a31a8ce',
+            name: 'Chadstone',
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        user: {
+            uuid: '47a8247c-90a1-4254-8293-b8d4ec179307',
+            firstName: '彦宏',
+            lastName: '李',
+            role: 1,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        division: {
+            uuid: 'f2826e1e-8ec8-4b5f-a731-ddbca4150b91',
+            name: '仓库',
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        description: 'Test',
+        extraInfo: 'Extra',
+        createdAt: '2017-11-19T16:23:37+11:00',
+        updatedAt: '2017-11-19T16:23:37+11:00'
+    },
 ];
