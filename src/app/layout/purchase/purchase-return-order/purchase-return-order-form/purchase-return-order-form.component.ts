@@ -1,24 +1,24 @@
-import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Companies, Warehouses, Divisions, Users } from '../../../../shared/mock';
-import { Order, Product, OrderProduct } from '../../../../shared/model/';
-
-import { PaginationInstance } from 'ngx-pagination';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Order, OrderProduct, Product} from '../../../../shared/model';
+import {PaginationInstance} from 'ngx-pagination';
+import {Companies, Divisions, Users, Warehouses} from '../../../../shared/mock';
 
 @Component({
-  selector: 'app-purchase-order-form',
-  templateUrl: './purchase-order-form.component.html',
-  styleUrls: ['./purchase-order-form.component.scss']
+    selector: 'app-purchase-return-order-form',
+    templateUrl: './purchase-return-order-form.component.html',
+    styleUrls: ['./purchase-return-order-form.component.scss']
 })
-export class PurchaseOrderFormComponent implements OnInit {
+export class PurchaseReturnOrderFormComponent implements OnInit {
     @Input() order: Order;
     @Input() disabled: boolean = true;
     @Output() orderUpdate = new EventEmitter<Order>();
     @Output() viewStatus? = new EventEmitter<string>();
     public pageConfig: PaginationInstance = {
-        id: 'purchase-order',
+        id: 'purchase-return-order',
         itemsPerPage: 10,
         currentPage: 1
     };
+
     companies;
     users = [];
     divisions;
@@ -28,12 +28,9 @@ export class PurchaseOrderFormComponent implements OnInit {
     selectedUser = [];
     selectedWarehouse = [];
     selectedDivision = [];
-
-
     private value: string;
-    constructor(
-    ) {
 
+    constructor() {
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
         this.warehouses = this.convertSelectOptions(Warehouses);
@@ -45,6 +42,7 @@ export class PurchaseOrderFormComponent implements OnInit {
             this.users.push(option);
         }
     }
+
 
     ngOnInit() {
         /**
@@ -58,14 +56,14 @@ export class PurchaseOrderFormComponent implements OnInit {
         }
 
         if (this.order.user) {
-             const selectUser = this.users.filter(c => c.id === this.order.user.uuid);
-             if (selectUser.length > 0 ) {
-                 this.selectedUser.push(this.order.user.getFullName());
-             }
+            const selectUser = this.users.filter(c => c.id === this.order.user.uuid);
+            if (selectUser.length > 0 ) {
+                this.selectedUser.push(this.order.user.getFullName());
+            }
         }
 
         if (this.order.division) {
-             const selectDivision = this.divisions.filter(c => c.id === this.order.division.uuid);
+            const selectDivision = this.divisions.filter(c => c.id === this.order.division.uuid);
             if (selectDivision) {
                 this.selectedDivision.push(this.order.division.name);
             }

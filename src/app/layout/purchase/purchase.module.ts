@@ -16,6 +16,9 @@ import { OrderStatusPipe } from '../../shared/pipe/order-status.pipe';
 import { CreatePurchaseOrderComponent } from './purchase-order/create-purchase-order/create-purchase-order.component';
 import { PurchaseOrderFormComponent } from './purchase-order/purchase-order-form/purchase-order-form.component';
 import { ViewPurchaseOrderComponent } from './purchase-order/view-purchase-order/view-purchase-order.component';
+import { PurchaseReturnOrderFormComponent } from './purchase-return-order/purchase-return-order-form/purchase-return-order-form.component';
+import { CreatePurchaseReturnOrderComponent } from './purchase-return-order/create-purchase-return-order/create-purchase-return-order.component';
+import { ViewPurchaseReturnOrderComponent } from './purchase-return-order/view-purchase-return-order/view-purchase-return-order.component';
 
 @NgModule({
     imports: [
@@ -37,7 +40,10 @@ import { ViewPurchaseOrderComponent } from './purchase-order/view-purchase-order
         OrderTypePipe,
         CreatePurchaseOrderComponent,
         PurchaseOrderFormComponent,
-        ViewPurchaseOrderComponent
+        ViewPurchaseOrderComponent,
+        PurchaseReturnOrderFormComponent,
+        CreatePurchaseReturnOrderComponent,
+        ViewPurchaseReturnOrderComponent
     ]
 })
 

@@ -129,9 +129,11 @@
     <div style="height: 20px;"></div>
 
     <div class="row">
-        <button *ngIf="!disabled; else elseBlock" [disabled]="isValidOrder()" class="btn btn-primary" (click)="confirmOrder(order)">确定</button>
+        <button *ngIf="disabled; else elseBlock" class="btn btn-primary" (click)="editOrder(order)">修改</button>
         <ng-template #elseBlock>
-            <button class="btn btn-primary" (click)="editOrder(order.uuid)">修改</button>
+            <button class="btn btn-primary" [disabled]="isValidOrder()"  (click)="confirmOrder(order)">确定</button>
+
+            <button  style="margin-left: 20px" class="btn btn-primary" (click)="cancelEdit()">取消</button>
         </ng-template>
     </div>
 
