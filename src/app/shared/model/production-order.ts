@@ -1,23 +1,14 @@
-import * as moment from 'moment';
+import {OrderProduct} from './order-product.model';
+import {Company} from './company.model';
+import {User} from './user.model';
+import {Division} from './division.model';
 import {UUID} from 'angular2-uuid';
-import { OrderProduct} from './order-product.model';
-import { User} from './user.model';
-import { Company } from './company.model';
-import { Warehouse } from './warehouse.model';
-import { Division } from './division.model';
+import {Warehouse} from './warehouse.model';
+import * as moment from 'moment';
 
-
-export class Order {
-    static FINISH = 1;
-    static RETURN = 2;
-    static DELETED = 3;
-    static TYPE_PURCHASE = 1;
-    static TYPE_PURCHASE_RETURN = 2;
-    static TYPE_SALE = 3;
-    static TYPE_SALE_RETURN = 4;
+export class ProductionOrder {
     uuid: string;
     id: number;
-    type: number;
     status: number;
     orderProducts: OrderProduct[];
     company: Company;
@@ -46,7 +37,6 @@ export class Order {
             const division = new Division();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.id = jsonData.id ? jsonData.id : '';
-            this.type = jsonData.type ? jsonData.type : '';
             this.status = jsonData.status ? jsonData.status : '';
             this.user = user.fromJson(jsonData.user);
             this.company = company.fromJson(jsonData.company);
@@ -67,6 +57,5 @@ export class Order {
         }
         return this;
     }
+
 }
-
-

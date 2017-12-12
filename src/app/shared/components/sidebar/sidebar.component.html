@@ -24,7 +24,7 @@
 
         <div class="nested-menu">
             <a class="list-group-item" [routerLink]="['/sale']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('sale')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Sale' | translate }}</span>
+                <span><i class="fa fa-plus"></i>&nbsp; {{ '销售' | translate }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'sale'">
                 <ul class="submenu">
@@ -39,6 +39,19 @@
                     </li>
                     <li>
                         <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Return' | translate }}</span></a>
+                    </li>
+                </ul>
+            </li>
+        </div>
+
+        <div class="nested-menu">
+            <a class="list-group-item" [routerLink]="['/production']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('production')">
+                <span><i class="fa fa-plus"></i>&nbsp; {{ '生产组装' | translate }}</span>
+            </a>
+            <li class="nested" [class.expand]="showMenu === 'production'">
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/production/create-production-order']" [routerLinkActive]="['router-link-active']"><span>{{ '新建生产订单' | translate }}</span></a>
                     </li>
                 </ul>
             </li>

@@ -10,7 +10,8 @@ const routes: Routes = [
             { path: 'purchase', loadChildren: './purchase/purchase.module#PurchaseModule'},
             { path: 'sale', loadChildren: './sale/sale.module#SaleModule'},
             { path: 'accounting', loadChildren: './accounting/accounting.module#AccountingModule'},
-            { path: 'setting', loadChildren: './setting/setting.module#SettingModule'}
+            { path: 'setting', loadChildren: './setting/setting.module#SettingModule'},
+            { path: 'production', loadChildren: './production/production.module#ProductionModule'}
         ]
     }
 ];
