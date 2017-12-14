@@ -10,6 +10,9 @@ import {PageHeaderModule, StatModule, XpaginationModule} from '../../shared/modu
 import {SelectModule} from 'ng2-select-compat';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {InlineEditorModule} from '@qontu/ngx-inline-editor';
+import { ProductionOrderFormComponent } from './production-order-form/production-order-form.component';
+import { CreateProduceProductFormComponent } from './create-produce-product-form/create-produce-product-form.component';
+import {ProductModalModule} from '../../shared/modules/product-modal/product-modal.module';
 
 @NgModule({
     imports: [
@@ -22,11 +25,14 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
         XpaginationModule,
         InlineEditorModule,
         StatModule,
-        ProductionRoutingModule
+        ProductionRoutingModule,
+        ProductModalModule
     ],
     declarations: [
         ProductionComponent,
-        CreateProductionOrderComponent
+        CreateProductionOrderComponent,
+        ProductionOrderFormComponent,
+        CreateProduceProductFormComponent
     ]
 })
 export class ProductionModule {
