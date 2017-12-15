@@ -14,6 +14,7 @@ import { ProductionOrderFormComponent } from './production-order-form/production
 import { CreateProduceProductFormComponent } from './create-produce-product-form/create-produce-product-form.component';
 import {ProductModalModule} from '../../shared/modules/product-modal/product-modal.module';
 import {SharedPipesModule} from '../../shared';
+import { ViewProductionOrderComponent } from './view-production-order/view-production-order.component';
 
 @NgModule({
     imports: [
@@ -34,7 +35,8 @@ import {SharedPipesModule} from '../../shared';
         ProductionComponent,
         CreateProductionOrderComponent,
         ProductionOrderFormComponent,
-        CreateProduceProductFormComponent
+        CreateProduceProductFormComponent,
+        ViewProductionOrderComponent
     ]
 })
 export class ProductionModule {

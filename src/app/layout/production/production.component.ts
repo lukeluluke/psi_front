@@ -145,14 +145,12 @@ export class ProductionComponent implements OnInit {
     }
 
     public viewOrder(orderUuid: string) {
-        const order = this.orders.filter(o => o.uuid === orderUuid)[0];
-        const viewUrl = '/purchase/view-purchase-order';
+        const viewUrl = '/production/view-production-order';
         this.router.navigate([viewUrl, {orderUuid: orderUuid, editable: false}]);
     }
 
     public editOrder(orderUuid: string) {
-        const order = this.orders.filter(o => o.uuid === orderUuid)[0];
-        const editUrl = '/purchase/view-purchase-order';
+        const editUrl = '/production/view-production-order';
         this.router.navigate([editUrl, {orderUuid: orderUuid, editable: true}]);
     }
 

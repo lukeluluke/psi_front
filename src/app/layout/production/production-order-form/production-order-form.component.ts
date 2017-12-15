@@ -45,6 +45,33 @@ export class ProductionOrderFormComponent implements OnInit {
     }
 
     ngOnInit() {
+        if (this.order.user) {
+            const selectUser = this.users.filter(c => c.id === this.order.user.uuid);
+            if (selectUser.length > 0 ) {
+                this.selectedUser.push(this.order.user.getFullName());
+            }
+        }
+
+        if (this.order.division) {
+            const selectDivision = this.divisions.filter(c => c.id === this.order.division.uuid);
+            if (selectDivision) {
+                this.selectedDivision.push(this.order.division.name);
+            }
+        }
+
+        if (this.order.shipWarehouse) {
+            const selectWarehouse = this.shipWarehouses.filter(c => c.id === this.order.shipWarehouse.uuid);
+            if (selectWarehouse) {
+                this.selectedShipWarehouse.push(this.order.shipWarehouse.name);
+            }
+        }
+
+        if (this.order.receiveWarehouse) {
+            const selectWarehouse = this.receiveWarehouses.filter(c => c.id === this.order.receiveWarehouse.uuid);
+            if (selectWarehouse) {
+                this.selectedReceiveWarehouse.push(this.order.receiveWarehouse.name);
+            }
+        }
     }
 
     selectUser(value: any): void {
@@ -95,6 +122,16 @@ export class ProductionOrderFormComponent implements OnInit {
         } else {
             alert('添加失败');
         }
+    }
+
+    public editOrder() {
+        this.viewStatus.emit('edit');
+        this.disabled = false;
+    }
+
+    public cancelEdit() {
+        this.viewStatus.emit('view');
+        this.disabled = true;
     }
 
 
