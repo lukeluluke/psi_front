@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { routerTransition } from '../../../router.animations';
-import { Companies, Divisions, Users } from '../../../shared/mock';
-import { PaginationInstance } from 'ngx-pagination';
-import { ExpenseTransaction, ExpenseItem, Expense } from '../../../shared/model/';
+import {Component, OnInit} from '@angular/core';
+import {routerTransition} from '../../../router.animations';
+import {ExpenseTransactions, Companies, Divisions, Users} from '../../../shared/mock';
+import {ExpenseTransaction} from '../../../shared/model';
+import {PaginationInstance} from 'ngx-pagination';
+import {Router} from '@angular/router';
+
 
 @Component({
     selector: 'app-expenditure',
@@ -12,96 +14,157 @@ import { ExpenseTransaction, ExpenseItem, Expense } from '../../../shared/model/
 })
 export class ExpenditureComponent implements OnInit {
     public pageConfig: PaginationInstance = {
-        id: 'advanced',
+        id: 'expenditure-pagination',
         itemsPerPage: 4,
         currentPage: 1
-    }
-
-    expenseTransaction: ExpenseTransaction;
-    companies;
+    };
+    countAllExpenseTransaction: number;
+    countAllOpenExpenseTransaction: number;
+    countAllClosedExpenseTransaction: number;
+    countAllDeletedExpenseTransaction: number;
+    expenseTransactions: ExpenseTransaction[];
+    filterExpenseTransactions: ExpenseTransaction[];
+    tempFilterExpenseTransactions: ExpenseTransaction[];
+    companies = [];
     users = [];
-    divisions;
+    divisions = [];
+    filterCompanyUuid: string = '';
+    filterUserUuid: string = '';
+    filterDivisionUuid: string = '';
 
-    private value: string;
-    constructor() {
-        this.expenseTransaction = new ExpenseTransaction();
-        this.expenseTransaction.initialize();
+    constructor(private router: Router) {
+        this.expenseTransactions = [];
         this.companies = this.convertSelectOptions(Companies);
-        this.divisions = this.convertSelectOptions(Divisions);
+        this.divisions = this.convertSelectOptions((Divisions));
 
-        for ( const user of Users ) {
+        for (const user of Users) {
             const option = {};
-            option['id'] = user. uuid;
+            option['id'] = user.uuid;
             option['text'] = user.lastName + ' ' + user.firstName;
             this.users.push(option);
         }
+        const defaultUserOption = {
+            id: -1,
+            text: '显示所有'
+        };
+        this.users.push(defaultUserOption);
+
+        this.filterExpenseTransactions = [];
+        this.tempFilterExpenseTransactions = [];
+        for (const expenseTransaction of ExpenseTransactions) {
+            const option = new ExpenseTransaction();
+            this.expenseTransactions.push(option.fromJson(expenseTransaction));
+            console.log(expenseTransaction)
+        }
+
+        this.countAllExpenseTransaction = this.expenseTransactions.length;
+        this.countAllOpenExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.OPEN).length;
+        this.countAllClosedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.CLOSED).length;
+        this.countAllDeletedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.DELETED).length;
+        Object.assign(this.filterExpenseTransactions, this.expenseTransactions);
+        Object.assign(this.tempFilterExpenseTransactions, this.expenseTransactions);
     }
+
     ngOnInit() {
     }
 
-    selectCompany(value: any): void {
-        const selectCompany = this.companies.filter(c => c.uuid === value.id);
-        this.expenseTransaction.toWhom = selectCompany[0];
+    public filterUser(value) {
+        this.filterUserUuid = (value.id !== -1) ? value.id : '';
+        this.filterExpenseTransaction();
     }
 
-    selectUser(value: any): void {
-        const selectUser = this.users.filter(u => u.uuid === value.id);
-        this.expenseTransaction.byWhom = selectUser[0];
+    public filterCompany(value) {
+        this.filterCompanyUuid = (value.id !== -1) ? value.id : '';
+        this.filterExpenseTransaction();
     }
 
-    selectDivision(value: any): void {
-        const selectDivision = this.divisions.filter(d => d.uuid === value.id);
-        this.expenseTransaction.division = selectDivision[0];
+    public filterDivision(value) {
+        this.filterDivisionUuid = (value.id !== -1) ? value.id : '';
+        this.filterExpenseTransaction();
     }
 
-    removed(value: any): void {
-        console.log('Removed value is: ', value);
+    public refreshValue(value) {
     }
 
-    typed(value: any): void {
-        console.log('New search input: ', value);
+    public removeCompany(value) {
+        this.filterCompanyUuid = '';
     }
 
-    refreshValue(value: any): void {
-        this.value = value;
+    public removeUser(value) {
+        this.filterUserUuid = '';
+    }
+
+    public removeDivision(value) {
+        this.filterDivisionUuid = '';
+    }
+
+    public viewExpenseTransactions(expenseTransactionUuid: string) {
+        this.router.navigate(['/accounting/expenditure/view-expenditure', {
+            expenseTransactionUuid: expenseTransactionUuid,
+            editable: false
+        }]);
+    }
+
+    public editExpenseTransactions(expenseTransactionUuid: string) {
+        this.router.navigate(['/accounting/expenditure/view-expenditure', {
+            expenseTransactionUuid: expenseTransactionUuid,
+            editable: true
+        }]);
+    }
+
+    public deleteExpenseTransactions(expenseTransactionUuid: string) {
+        console.log(expenseTransactionUuid);
+    }
+
+    private filterExpenseTransactionByStatus(status: number) {
+        return this.expenseTransactions.filter(e => e.status === status);
+    }
+
+    private filterExpenseTransaction() {
+        let allExpenseTransactions = [];
+        Object.assign(allExpenseTransactions, this.expenseTransactions);
+        if (this.filterUserUuid !== '') {
+            const userExpenseTransactions = allExpenseTransactions.filter(e => e.byWhom.uuid === this.filterUserUuid);
+            allExpenseTransactions = [];
+            Object.assign(allExpenseTransactions, userExpenseTransactions);
+        }
+        if (this.filterCompanyUuid !== '') {
+            const companyExpenseTransactions = allExpenseTransactions.filter(e => e.toWhom.uuid === this.filterCompanyUuid);
+            allExpenseTransactions = [];
+            Object.assign(allExpenseTransactions, companyExpenseTransactions);
+        }
+        if (this.filterDivisionUuid !== '') {
+            const divisionExpenseTransactions = allExpenseTransactions.filter(e => e.division.uuid === this.filterDivisionUuid);
+            allExpenseTransactions = [];
+            Object.assign(allExpenseTransactions, divisionExpenseTransactions);
+        }
+        this.filterExpenseTransactions = [];
+        Object.assign(this.filterExpenseTransactions, allExpenseTransactions);
+    }
+
+    private addExpenditure() {
+        this.router.navigate(['/accounting/expenditure/create-expenditure']);
     }
 
     /**
-     * When user add an expense in modal popup window
-     * @param {Expense} expense
+     * Convert object of model to select options with key {id, text)
+     * @param objects
+     * @returns
      */
-    onExpenseAdd(expense: Expense) {
-        const expenseItem = new ExpenseItem().initialize();
-        expenseItem.expense = expense;
-        this.expenseTransaction.expenseItems.push(expenseItem);
-    }
-
-    public saveEditable($event) {
-        console.log(this.expenseTransaction.expenseItems);
-        console.log($event);
-    }
-
-    public removeExpenditureItem(uuid: string) {
-        this.expenseTransaction.expenseItems = this.expenseTransaction.expenseItems.filter( ei => ei.uuid !== uuid );
-    }
-
-    public saveExpenditure() {
-        console.log(JSON.stringify(this.expenseTransaction));
-    }
-
-    public isValidExpenditure() {
-        return this.expenseTransaction.expenseItems.length === 0;
-    }
-
-
     private convertSelectOptions(objects) {
         const options = [];
-        for ( const obj of objects) {
+        for (const obj of objects) {
             const option = {};
             option['id'] = obj.uuid;
             option['text'] = obj.name;
             options.push(option);
         }
+
+        const defaultOption = {
+            id: -1,
+            text: '显示所有'
+        };
+        options.push(defaultOption);
         return options;
     }
 

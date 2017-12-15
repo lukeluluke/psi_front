@@ -51,7 +51,16 @@
             <li class="nested" [class.expand]="showMenu === 'accounting'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/accounting/expenditure']" [routerLinkActive]="['router-link-active']"><span>{{ '支出' | translate }}</span></a>
+                        <a [routerLink]="['/accounting/expenditure']" [routerLinkActive]="['router-link-active']">
+                            <span>{{ '开支概览' | translate }}</span>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="submenu">
+                    <li>
+                        <a [routerLink]="['/accounting/cost']" [routerLinkActive]="['router-link-active']">
+                            <span>{{ '成本概览' | translate }}</span>
+                        </a>
                     </li>
                 </ul>
             </li>

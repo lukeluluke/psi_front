@@ -1,0 +1,17 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'新建开支'" [icon]="'fa-edit'"></app-page-header>
+
+    <app-expenditure-form [expenseTransaction]="expenseTransaction"
+                          [disabled]="disabledInput"
+                          (expenseTransactionUpdate)="onExpenseTransactionCreate($event)">
+    </app-expenditure-form>
+
+    <div style="height: 20px;"></div>
+
+
+
+    <div class="row">
+        <div style="height: 400px;"></div>
+    </div>
+
+</div>

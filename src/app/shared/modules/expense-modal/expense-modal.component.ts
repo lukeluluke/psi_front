@@ -12,7 +12,7 @@ import { PaginationInstance } from 'ngx-pagination';
 export class ExpenseModalComponent implements OnInit {
     @Output() expenseAdd = new EventEmitter<Expense>();
     public pageConfig: PaginationInstance = {
-        id: 'product-modal',
+        id: 'expense-modal-pagination',
         itemsPerPage: 3,
         currentPage: 1
     };
@@ -36,8 +36,8 @@ export class ExpenseModalComponent implements OnInit {
             this.expenseCategories.push(expenseCategory);
         }
         const defaultExpenseCategory = {
-            id: 1,
-            text: '所有支持'
+            id: -1,
+            text: '所有支付'
         };
         this.expenseCategories.push(defaultExpenseCategory);
 
@@ -108,7 +108,7 @@ export class ExpenseModalComponent implements OnInit {
         this.filterExpenses = [];
         const expenseCategoryId = value.id;
         let findExpenses = this.expenses;
-        if (expenseCategoryId !== 1) {
+        if (expenseCategoryId !== -1) {
             findExpenses = this.expenses.filter(e => e.expenseCategory.uuid === expenseCategoryId);
         }
         Object.assign(this.filterExpenses, findExpenses);

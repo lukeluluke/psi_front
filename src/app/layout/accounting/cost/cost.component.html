@@ -1,22 +1,22 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">开支统计</h2>
+    <h2 class="text-muted">成本统计</h2>
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllExpenseTransaction"
-                      [label]="'全部开支'"></app-stat>
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllCostTransaction"
+                      [label]="'全部成本'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenExpenseTransaction"
-                      [label]="'待确认开支'"></app-stat>
+            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenCostTransaction"
+                      [label]="'待确认成本'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedExpenseTransaction"
-                      [label]="'已确认开支'"></app-stat>
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedCostTransaction"
+                      [label]="'已确认成本'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedExpenseTransaction"
-                      [label]="'已删除开支'"></app-stat>
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedCostTransaction"
+                      [label]="'已删除成本'"></app-stat>
         </div>
     </div>
 
@@ -70,6 +70,7 @@
                         </ng-select>
                     </div>
                 </div>
+
             </div>
         </div>
         <hr/>
@@ -78,29 +79,28 @@
                 <thead>
                 <tr>
                     <th>交易状态</th>
-                    <th>支付单位</th>
+                    <th>交易编号</th>
+                    <th>交易类型</th>
+                    <th>对象单位</th>
                     <th>经手人</th>
                     <th>部门</th>
-                    <td>摘要</td>
-                    <th>创建日期</th>
+                    <th>摘要</th>
+                    <th>创建时间</th>
                     <th>查看</th>
-                    <th>编辑</th>
-                    <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
 
-                <tr *ngFor="let expenseTransaction of (filterExpenseTransactions | paginate: pageConfig)">
-                    <td> {{ expenseTransaction.status | TransactionStatusText }}</td>
-                    <td> {{ expenseTransaction.toWhom.name }}</td>
-                    <td> {{ expenseTransaction.byWhom.getFullName()}}</td>
-                    <td> {{ expenseTransaction.division.name }}</td>
-                    <td> {{ expenseTransaction.note }}</td>
-                    <td> {{ expenseTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
-                    <td><i (click)="viewExpenseTransactions(expenseTransaction.uuid)" class="fa fa-eye"></i></td>
-                    <td><i (click)="editExpenseTransactions(expenseTransaction.uuid)" class="fa fa-edit"></i></td>
-                    <td><i (click)="deleteExpenseTransactions(expenseTransaction.uuid)" class="fa fa-times"></i></td>
-
+                <tr *ngFor="let costTransaction of (filterCostTransactions | paginate: pageConfig)">
+                    <td> {{ costTransaction.status | TransactionStatusText }}</td>
+                    <td> {{ costTransaction.tid }}</td>
+                    <td> {{ costTransaction.category.name }}</td>
+                    <td> {{ costTransaction.company.name }}</td>
+                    <td> {{ costTransaction.user.getFullName()}}</td>
+                    <td> {{ costTransaction.division.name }}</td>
+                    <td> {{ costTransaction.note }}</td>
+                    <td> {{ costTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewReference(costTransaction.reference, costTransaction.category)" class="fa fa-eye"></i></td>
                 </tr>
                 </tbody>
             </table>
@@ -109,12 +109,6 @@
         </div>
 
 
-    </div>
-
-    <div style="height: 20px"></div>
-
-    <div class="row">
-        <button class="btn btn-primary" (click)="addExpenditure()">添加开支</button>
     </div>
 
     <div style="height: 120px"></div>

@@ -4,6 +4,12 @@ export const OrderStatus = {
     3: '删除'
 };
 
+export const TransactionStatus = {
+    1: '等待',
+    2: '完成',
+    3: '删除'
+};
+
 export const OrderTypes = {
     1: '进货',
     2: '进货退货',

@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { routerTransition } from '../../router.animations';
-import { PaginationInstance } from 'ngx-pagination';
 
 @Component({
     selector: 'app-accounting',
@@ -9,10 +8,9 @@ import { PaginationInstance } from 'ngx-pagination';
     animations: [routerTransition()]
 })
 export class AccountingComponent implements OnInit {
-
-    constructor() { }
+    constructor() {
+    }
 
     ngOnInit() {
     }
-
 }

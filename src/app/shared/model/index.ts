@@ -11,6 +11,8 @@ export * from './expense.model'
 export * from './expense-item.model';
 export * from './expense-category.model';
 export * from './expense-transaction.model';
+export * from './cost-category.model';
+export * from './cost-transaction.model';
 
 
 

@@ -1,0 +1,99 @@
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="companies"
+                           [disabled]="disabled"
+                           [active]="selectedCompany"
+                           (data)="refreshValue($event)"
+                           (selected)="selectCompany($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择单位">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="users"
+                           [active]="selectedUser"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectUser($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择经手人">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="divisions"
+                           [active]="selectedDivision"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectDivision($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择部门">
+                </ng-select>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <input [(ngModel)]="expenseTransaction.note" class="form-control" placeholder="摘要">
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <div class="card col-lg-12">
+            <div *ngIf="!disabled" class="card-header">
+                <app-expense-modal (expenseAdd)="onExpenseAdd($event)"></app-expense-modal>
+            </div>
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>行号</th>
+                    <th>费用名称</th>
+                    <th>费用分类</th>
+                    <th>金额</th>
+                    <th>备注</th>
+                    <th *ngIf="!disabled">删除</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let expenseItem of (expenseTransaction.expenseItems | paginate: pageConfig); let i = index;">
+                    <th scope="row">{{ i+1 }}</th>
+                    <td> {{ expenseItem.expense.name }}</td>
+                    <td> {{ expenseItem.expense.expenseCategory.name }}</td>
+                    <td><inline-editor type="text" [(ngModel)]="expenseItem.amount" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td><inline-editor type="textarea" [(ngModel)]="expenseItem.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
+                    <td *ngIf="!disabled"><i (click)="removeExpenditureItem(expenseItem.uuid)" class="fa fa-times"></i></td>
+                </tr>
+                </tbody>
+            </table>
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <button *ngIf="!disabled; else elseBlock" [disabled]="isValidExpenditure()" class="btn btn-primary" (click)="saveExpenditure()">保存开支</button>
+        <ng-template #elseBlock>
+            <button class="btn btn-primary" (click)="editExpenditure(expenseTransaction.uuid)">修改开支</button>
+        </ng-template>
+    </div>
