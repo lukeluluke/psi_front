@@ -1,0 +1,14 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">银行账户</h2>
+    <hr>
+    <div class="row">
+        <ng-container *ngFor="let bankAccount of bankAccounts">
+            <div class="col-xl-3 col-lg-6" style="margin-bottom: 30px">
+                <app-stat [bgClass]="'card-primary'" [icon]="'fa-university'" [count]="'AU$'+bankAccount.balance"
+                          [label]="bankAccount.name" (click)="viewTransactions(bankAccount.uuid)"></app-stat>
+            </div>
+        </ng-container>
+    </div>
+    <div style="height: 120px"></div>
+</div>
+

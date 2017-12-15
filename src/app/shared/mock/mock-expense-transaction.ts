@@ -52,6 +52,13 @@ export const ExpenseTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
+        bankAccount: {
+            uuid: 'c18cee1f-428d-48dc-8bf8-51729171ff44',
+            name: 'CBA Gold Saver',
+            balance: 12983.00,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
         note: '',
         createdAt: '2017-12-09T15:56:42+11:00',
         updatedAt: '2017-12-09T15:56:42+11:00'
@@ -149,9 +156,15 @@ export const ExpenseTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
+        bankAccount: {
+            uuid: '33d4991e-7344-4df6-b4bb-62228c9cdd57',
+            name: 'ANZ Platinum',
+            balance: 3890.22,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
         note: '',
         createdAt: '2017-12-09T16:05:38+11:00',
         updatedAt: '2017-12-09T16:05:38+11:00'
     }
 ]
-
