@@ -1,22 +1,22 @@
 <div [@routerTransition]>
-    <h2 class="text-muted">支出统计</h2>
+    <h2 class="text-muted">开支统计</h2>
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
             <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllExpenseTransaction"
-                      [label]="'全部支出'"></app-stat>
+                      [label]="'全部开支'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-success'" [icon]="'fa-money'" [count]="countAllOpenExpenseTransaction"
-                      [label]="'待确认支出'"></app-stat>
+            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenExpenseTransaction"
+                      [label]="'待确认开支'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-money'" [count]="countAllClosedExpenseTransaction"
-                      [label]="'已确认支出'"></app-stat>
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedExpenseTransaction"
+                      [label]="'已确认开支'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-money'" [count]="countAllDeletedExpenseTransaction"
-                      [label]="'已删除支出'"></app-stat>
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedExpenseTransaction"
+                      [label]="'已删除开支'"></app-stat>
         </div>
     </div>
 
@@ -24,10 +24,9 @@
 
 
     <div class="row">
-        <h4>Transaction List</h4>
+        <h4>交易列表</h4>
         <hr/>
         <div class="form-control">
-            <h5>Transaction Filter</h5>
             <div class="row">
 
                 <div class="col-lg-3" style="display: inline-block">
@@ -78,14 +77,15 @@
             <table class="card-block table table-hover">
                 <thead>
                 <tr>
-                    <th>Transaction Status</th>
-                    <th>To whom</th>
-                    <th>By whom</th>
-                    <th>Division</th>
-                    <th>Created Date</th>
-                    <th>View</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>交易状态</th>
+                    <th>支付单位</th>
+                    <th>经手人</th>
+                    <th>部门</th>
+                    <td>摘要</td>
+                    <th>创建日期</th>
+                    <th>查看</th>
+                    <th>编辑</th>
+                    <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -95,6 +95,7 @@
                     <td> {{ expenseTransaction.toWhom.name }}</td>
                     <td> {{ expenseTransaction.byWhom.getFullName()}}</td>
                     <td> {{ expenseTransaction.division.name }}</td>
+                    <td> {{ expenseTransaction.note }}</td>
                     <td> {{ expenseTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
                     <td><i (click)="viewExpenseTransactions(expenseTransaction.uuid)" class="fa fa-eye"></i></td>
                     <td><i (click)="editExpenseTransactions(expenseTransaction.uuid)" class="fa fa-edit"></i></td>
@@ -108,6 +109,12 @@
         </div>
 
 
+    </div>
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
+        <button class="btn btn-primary" (click)="addExpenditure()">添加开支</button>
     </div>
 
     <div style="height: 120px"></div>

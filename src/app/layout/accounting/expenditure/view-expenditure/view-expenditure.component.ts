@@ -36,7 +36,7 @@ export class ViewExpenditureComponent implements OnInit {
     }
 
     ngOnInit() {
-        this.pageHeader = this.disabledInput ? '查看支出' : '修改支出';
+        this.pageHeader = this.disabledInput ? '查看开支' : '修改开支';
     }
     onViewStatsChange(status: string) {
         if (status === 'view') {

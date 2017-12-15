@@ -20,9 +20,6 @@ import {ExpenditureFormComponent} from './expenditure/expenditure-form/expenditu
 import { ExpenditureComponent } from './expenditure/expenditure.component';
 import { CostComponent } from './cost/cost.component';
 import { IncomeComponent } from './income/income.component';
-import { CreateCostComponent } from './cost/create-cost/create-cost.component';
-import { CostFormComponent } from './cost/cost-form/cost-form.component';
-import { ViewCostComponent } from './cost/view-cost/view-cost.component';
 import { CreateIncomeComponent } from './income/create-income/create-income.component';
 import { IncomeFormComponent } from './income/income-form/income-form.component';
 import { ViewIncomeComponent } from './income/view-income/view-income.component';
@@ -51,9 +48,6 @@ import { ViewIncomeComponent } from './income/view-income/view-income.component'
         ExpenditureComponent,
         CostComponent,
         IncomeComponent,
-        CreateCostComponent,
-        CostFormComponent,
-        ViewCostComponent,
         CreateIncomeComponent,
         IncomeFormComponent,
         ViewIncomeComponent

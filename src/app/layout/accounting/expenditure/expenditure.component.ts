@@ -24,7 +24,7 @@ export class ExpenditureComponent implements OnInit {
     countAllDeletedExpenseTransaction: number;
     expenseTransactions: ExpenseTransaction[];
     filterExpenseTransactions: ExpenseTransaction[];
-    templFilterExpenseTransactions: ExpenseTransaction[];
+    tempFilterExpenseTransactions: ExpenseTransaction[];
     companies = [];
     users = [];
     divisions = [];
@@ -50,7 +50,7 @@ export class ExpenditureComponent implements OnInit {
         this.users.push(defaultUserOption);
 
         this.filterExpenseTransactions = [];
-        this.templFilterExpenseTransactions = [];
+        this.tempFilterExpenseTransactions = [];
         for (const expenseTransaction of ExpenseTransactions) {
             const option = new ExpenseTransaction();
             this.expenseTransactions.push(option.fromJson(expenseTransaction));
@@ -62,7 +62,7 @@ export class ExpenditureComponent implements OnInit {
         this.countAllClosedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.CLOSED).length;
         this.countAllDeletedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.DELETED).length;
         Object.assign(this.filterExpenseTransactions, this.expenseTransactions);
-        Object.assign(this.templFilterExpenseTransactions, this.expenseTransactions);
+        Object.assign(this.tempFilterExpenseTransactions, this.expenseTransactions);
     }
 
     ngOnInit() {
@@ -140,6 +140,10 @@ export class ExpenditureComponent implements OnInit {
         }
         this.filterExpenseTransactions = [];
         Object.assign(this.filterExpenseTransactions, allExpenseTransactions);
+    }
+
+    private addExpenditure() {
+        this.router.navigate(['/accounting/expenditure/create-expenditure']);
     }
 
     /**

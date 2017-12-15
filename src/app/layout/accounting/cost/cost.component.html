@@ -1,3 +1,117 @@
-<p>
-  cost works!
-</p>
+<div [@routerTransition]>
+    <h2 class="text-muted">成本统计</h2>
+    <hr>
+    <div class="row">
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllCostTransaction"
+                      [label]="'全部成本'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenCostTransaction"
+                      [label]="'待确认成本'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedCostTransaction"
+                      [label]="'已确认成本'"></app-stat>
+        </div>
+        <div class="col-xl-3 col-lg-6">
+            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedCostTransaction"
+                      [label]="'已删除成本'"></app-stat>
+        </div>
+    </div>
+
+    <hr/>
+
+
+    <div class="row">
+        <h4>交易列表</h4>
+        <hr/>
+        <div class="form-control">
+            <div class="row">
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="companies"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterCompany($event)"
+                                   (removed)="removeCompany($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择单位">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="users"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterUser($event)"
+                                   (removed)="removeUser($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择经手人">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="divisions"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="filterDivision($event)"
+                                   (removed)="removeDivision($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择部门">
+                        </ng-select>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <hr/>
+        <div class="col-lg-12">
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>交易状态</th>
+                    <th>交易编号</th>
+                    <th>交易类型</th>
+                    <th>对象单位</th>
+                    <th>经手人</th>
+                    <th>部门</th>
+                    <th>摘要</th>
+                    <th>创建时间</th>
+                    <th>查看</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let costTransaction of (filterCostTransactions | paginate: pageConfig)">
+                    <td> {{ costTransaction.status | TransactionStatusText }}</td>
+                    <td> {{ costTransaction.tid }}</td>
+                    <td> {{ costTransaction.category.name }}</td>
+                    <td> {{ costTransaction.company.name }}</td>
+                    <td> {{ costTransaction.user.getFullName()}}</td>
+                    <td> {{ costTransaction.division.name }}</td>
+                    <td> {{ costTransaction.note }}</td>
+                    <td> {{ costTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewReference(costTransaction.reference, costTransaction.category)" class="fa fa-eye"></i></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+
+
+    </div>
+
+    <div style="height: 120px"></div>
+
+
+</div>

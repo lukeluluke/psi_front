@@ -92,8 +92,8 @@
     <div style="height: 20px"></div>
 
     <div class="row">
-        <button *ngIf="!disabled; else elseBlock" [disabled]="isValidExpenditure()" class="btn btn-primary" (click)="saveExpenditure()">保存支出</button>
+        <button *ngIf="!disabled; else elseBlock" [disabled]="isValidExpenditure()" class="btn btn-primary" (click)="saveExpenditure()">保存开支</button>
         <ng-template #elseBlock>
-            <button class="btn btn-primary" (click)="editExpenditure(expenseTransaction.uuid)">修改支出</button>
+            <button class="btn btn-primary" (click)="editExpenditure(expenseTransaction.uuid)">修改开支</button>
         </ng-template>
     </div>
