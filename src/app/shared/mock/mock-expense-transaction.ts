@@ -18,7 +18,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '3000',
+            amount: 3000,
             note: '',
             createdAt: '2017-12-09T15:57:34+11:00',
             updatedAt: '2017-12-09T15:57:34+11:00'
@@ -75,7 +75,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '25',
+            amount: 25,
             note: '发往上海',
             createdAt: '2017-12-09T16:05:49+11:00',
             updatedAt: '2017-12-09T16:05:49+11:00'
@@ -95,7 +95,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '65',
+            amount: 65,
             note: '发往香港',
             createdAt: '2017-12-09T16:05:52+11:00',
             updatedAt: '2017-12-09T16:05:52+11:00'
@@ -115,7 +115,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '350',
+            amount: 350,
             note: '保税区仓库费用',
             createdAt: '2017-12-09T16:05:54+11:00',
             updatedAt: '2017-12-09T16:05:54+11:00'

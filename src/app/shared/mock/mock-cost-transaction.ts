@@ -38,6 +38,7 @@ export const CostTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
+        amount: 3421,
         note: '这是我们从BIO ISLAND的第一笔采购',
         createdAt: '2017-12-09T15:56:42+11:00',
         updatedAt: '2017-12-09T15:56:42+11:00'
@@ -81,6 +82,7 @@ export const CostTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
+        amount: 1200,
         note: '这笔采购还需要继续跟进',
         createdAt: '2017-12-09T16:05:38+11:00',
         updatedAt: '2017-12-09T16:05:38+11:00'

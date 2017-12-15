@@ -81,6 +81,7 @@
                     <th>支付单位</th>
                     <th>经手人</th>
                     <th>部门</th>
+                    <th>金额</th>
                     <td>摘要</td>
                     <th>创建日期</th>
                     <th>查看</th>
@@ -95,6 +96,7 @@
                     <td> {{ expenseTransaction.toWhom.name }}</td>
                     <td> {{ expenseTransaction.byWhom.getFullName()}}</td>
                     <td> {{ expenseTransaction.division.name }}</td>
+                    <td> {{ expenseTransaction.amount }}</td>
                     <td> {{ expenseTransaction.note }}</td>
                     <td> {{ expenseTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
                     <td><i (click)="viewExpenseTransactions(expenseTransaction.uuid)" class="fa fa-eye"></i></td>

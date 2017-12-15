@@ -20,6 +20,7 @@ export class CostTransaction {
     company: Company;
     user: User;
     division: Division;
+    amount: number;
     note: string;
     createdAt: string;
     updatedAt: string;
@@ -33,6 +34,7 @@ export class CostTransaction {
             this.company = null;
             this.user = null;
             this.division = null;
+            this.amount = 0;
             this.note = '';
             const timestamp = moment();
             this.createdAt = timestamp.format();
@@ -54,6 +56,7 @@ export class CostTransaction {
             this.company = company.fromJson(jsonData.company);
             this.user = user.fromJson(jsonData.user);
             this.division = division.fromJson(jsonData.division);
+            this.amount = jsonData.amount ? jsonData.amount : 0;
             this.note = jsonData.note ? jsonData.note : '';
             this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
             this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';

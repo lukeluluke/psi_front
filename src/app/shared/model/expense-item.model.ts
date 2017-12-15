@@ -30,7 +30,7 @@ export class ExpenseItem {
             const expense = new Expense();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.expense = expense.fromJson(jsonData.expense);
-            this.amount = jsonData.amount ? jsonData.amount : null;
+            this.amount = jsonData.amount ? jsonData.amount : 0;
             this.note = jsonData.note ? jsonData.note : '';
         }
         return this;
