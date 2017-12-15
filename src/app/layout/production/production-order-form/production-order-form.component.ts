@@ -1,7 +1,8 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductionOrder} from '../../../shared/model/production-order';
 import {PaginationInstance} from 'ngx-pagination';
-import {Companies, Divisions, Users, Warehouses} from '../../../shared/mock';
+import {Divisions, Users, Warehouses} from '../../../shared/mock';
+import {ProduceProduct} from '../../../shared/model/produce-product.model';
 
 @Component({
     selector: 'app-production-order-form',
@@ -29,6 +30,8 @@ export class ProductionOrderFormComponent implements OnInit {
     selectedDivision = [];
 
     constructor() {
+        this.order = new ProductionOrder();
+        this.order.initialize();
         this.divisions = this.convertSelectOptions((Divisions));
         this.receiveWarehouses = this.convertSelectOptions(Warehouses);
         this.shipWarehouses = this.convertSelectOptions(Warehouses);
@@ -45,36 +48,63 @@ export class ProductionOrderFormComponent implements OnInit {
     }
 
     selectUser(value: any): void {
-        this.order.user = value;
+        const user = Users.filter(u => u.uuid === value.id);
+        Object.assign(this.order.user, user[0]);
     }
 
     selectDivision(value: any): void {
-        this.order.division = value;
+        const division = Divisions.filter(d => d.uuid === value.id);
+        Object.assign(this.order.division, division[0]);
     }
 
     selectShipWarehouse(value: any): void {
-        this.order.shipWarehouse = value;
+        const shipWarehouse = Warehouses.filter(w => w.uuid === value.id);
+        Object.assign(this.order.shipWarehouse, shipWarehouse[0]);
     }
 
     selectReceiveWarehouse(value: any): void {
-        this.order.receiveWarehouse = value;
+        const receiveWarehouse = Warehouses.filter(w => w.uuid === value.id);
+        Object.assign(this.order.receiveWarehouse, receiveWarehouse[0]);
     }
 
-    public isValidOrder() {
-        return this.order.produceProducts.length === 0;
+    public invalidOrder() {
+        return !(this.order.produceProducts.length > 0 );
+    }
+
+    public saveEditable(value) {
+
+    }
+
+    public removeProduceOrderProduct(uuid) {
+        this.order.produceProducts = this.order.produceProducts.filter(p => p.uuid !== uuid);
+    }
+
+    /**
+     * When produce produce created
+     * @param {ProduceProduct} produceProduct
+     */
+    public onProduceProductCreate(produceProduct: ProduceProduct) {
+        if (produceProduct) {
+           this.order.produceProducts.unshift(produceProduct);
+        }
+    }
+
+    public confirmOrder(order: ProductionOrder) {
+        if (order) {
+            this.orderUpdate.emit(order);
+        } else {
+            alert('添加失败');
+        }
     }
 
 
     removed(value: any): void {
-        console.log('Removed value is: ', value);
     }
 
     typed(value: any): void {
-        console.log('New search input: ', value);
     }
 
     refreshValue(value: any): void {
-        console.log('Refresh value is ' + value);
     }
 
     /**

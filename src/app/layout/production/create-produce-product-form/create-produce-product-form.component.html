@@ -17,8 +17,14 @@
                         <th>商品编号</th>
                         <th>商品名称</th>
                         <th>规格</th>
-                        <th>价格</th>
+                        <th>型号</th>
+                        <th>生产日期</th>
+                        <th>批次号</th>
+                        <th>单价</th>
                         <th>数量</th>
+                        <th>金额</th>
+                        <th>备注</th>
+                        <th>出库货位</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -26,8 +32,14 @@
                         <th scope="row">{{ produceProduct.product.sku }}</th>
                         <td>{{ produceProduct.product.name }}</td>
                         <td> {{ produceProduct.product.spec }}</td>
-                        <td> {{ produceProduct.unitPrice }}</td>
-                        <td> {{ produceProduct.quantity }}</td>
+                        <td>{{ produceProduct.product.model }}</td>
+                        <td><inline-editor type="date" [(ngModel)]="produceProduct.produceDate"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="produceProduct.batchNumber"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="produceProduct.unitPrice"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="produceProduct.quantity"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="produceProduct.amount"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="produceProduct.note"></inline-editor></td>
+                        <td>{{produceProduct.stockQuantity}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -42,8 +54,14 @@
                         <th>商品编号</th>
                         <th>商品名称</th>
                         <th>规格</th>
-                        <th>价格</th>
+                        <th>型号</th>
+                        <th>生产日期</th>
+                        <th>批次号</th>
+                        <th>单价</th>
                         <th>数量</th>
+                        <th>金额</th>
+                        <th>备注</th>
+                        <th>出库货位</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -51,8 +69,14 @@
                         <th scope="row">{{ materialProduct.product.sku }}</th>
                         <td>{{ materialProduct.product.name }}</td>
                         <td> {{ materialProduct.product.spec }}</td>
-                        <td> {{ materialProduct.unitPrice }}</td>
-                        <td> {{ materialProduct.quantity }}</td>
+                        <td>{{ materialProduct.product.model }}</td>
+                        <td><inline-editor type="date" [(ngModel)]="materialProduct.produceDate"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="materialProduct.batchNumber"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="materialProduct.unitPrice"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="materialProduct.quantity"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="materialProduct.amount"></inline-editor></td>
+                        <td><inline-editor type="text" [(ngModel)]="materialProduct.note"></inline-editor></td>
+                        <td>{{materialProduct.stockQuantity}}</td>
                     </tr>
                     </tbody>
                 </table>
@@ -65,7 +89,6 @@
         </ng-template>
 
         <hr/>
-
-        <button class="btn btn-primary">确认</button>
+        <button [disabled]="isValidProduceProduct()" class="btn btn-primary" (click)="addProduceProduct(produceProduct)">确认</button>
     </div>
 </ng-template>

@@ -25,6 +25,10 @@ export class ProductionOrder {
             this.status = 1;
             this.createdAt = timestamp.format();
             this.produceProducts = [];
+            this.shipWarehouse = new Warehouse();
+            this.receiveWarehouse = new Warehouse();
+            this.user = new User();
+            this.division = new Division();
         }
     }
 

@@ -92,7 +92,6 @@ export class ProductModalComponent implements OnInit {
     public addProductItem(uuid: string): void {
         const product = this.products.filter(x => x.uuid === uuid);
         if (product) {
-            console.log(product[0]);
             this.productAdd.emit(product[0]);
             if (this.needClose) {
                 this.modalReference.close();

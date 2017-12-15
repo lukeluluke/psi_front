@@ -5,10 +5,14 @@ export class MaterialProduct {
     uuid: string;
     product: Product;
     quantity: number;
+    produceDate: string;
+    batchNumber: string;
     unitPrice: number;
     amount: number;
     note: string;
     stockQuantity: number;
+    createdAt: string;
+    updatedAt: string;
     initialize() {
         if (!this.uuid) {
             this.uuid = UUID.UUID();
@@ -28,6 +32,11 @@ export class MaterialProduct {
             this.amount = jsonData.amount ? jsonData.amount : null;
             this.note = jsonData.note ? jsonData.note : '';
             this.product = product.fromJson(jsonData.product);
+            this.stockQuantity = jsonData.stockQuantity ? jsonData.stockQuantity : null;
+            this.produceDate = jsonData.produceDate ? jsonData.produceDate : '';
+            this.batchNumber = jsonData.batchNumber ? jsonData.batchNumber : '';
+            this.createdAt = jsonData.createdAt ? jsonData.createdAt : null;
+            this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : null;
         }
         return this;
     }

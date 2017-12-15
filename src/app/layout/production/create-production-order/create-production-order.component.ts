@@ -18,12 +18,13 @@ export class CreateProductionOrderComponent implements OnInit {
     }
 
     ngOnInit() {
+
     }
 
     onProduceOrderCreate(produceOrder: ProductionOrder) {
         if (produceOrder) {
             this.produceOrder = produceOrder;
-            alert('Produce order created');
+            alert('订单生成');
         }
     }
 
