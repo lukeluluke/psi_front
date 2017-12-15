@@ -10,6 +10,7 @@ import { PaginationInstance } from 'ngx-pagination';
     styleUrls: ['./product-modal.component.scss']
 })
 export class ProductModalComponent implements OnInit {
+    @Input() needClose: boolean = false;
     @Output() productAdd = new EventEmitter<Product>();
     public pageConfig: PaginationInstance = {
         id: 'product-modal',
@@ -21,8 +22,11 @@ export class ProductModalComponent implements OnInit {
     public filterProducts: Product[];
     public categories;
     public selectCategoryId: string;
+    modalReference: any;
 
-    constructor(private modalService: NgbModal) {
+    constructor(
+        private modalService: NgbModal
+        ) {
         this.products = [];
         this.categories = [];
         this.filterProducts = [];
@@ -58,7 +62,8 @@ export class ProductModalComponent implements OnInit {
      * @param content
      */
     open(content) {
-        this.modalService.open(content).result.then((result) => {
+       this.modalReference =  this.modalService.open(content);
+       this.modalReference.result.then((result) => {
             this.closeResult = `Closed with: ${result}`;
         }, (reason) => {
             this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -88,6 +93,9 @@ export class ProductModalComponent implements OnInit {
         const product = this.products.filter(x => x.uuid === uuid);
         if (product) {
             this.productAdd.emit(product[0]);
+            if (this.needClose) {
+                this.modalReference.close();
+            }
         } else {
             alert('Product not found');
         }

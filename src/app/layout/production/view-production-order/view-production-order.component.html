@@ -1,0 +1,20 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="pageHeader" [icon]="'fa-eye'"></app-page-header>
+
+    <app-production-order-form
+        [disabled]="disabledInput"
+        [order]="order"
+        (orderUpdate)="onOrderSave($event)"
+        (viewStatus)="onViewStatsChange($event)">
+
+    </app-production-order-form>
+
+    <div style="height: 20px;"></div>
+
+
+
+    <div class="row">
+        <div style="height: 400px;"></div>
+    </div>
+
+</div>

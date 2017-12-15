@@ -1,8 +1,5 @@
 <nav class="sidebar" [ngClass]="{sidebarPushRight: isActive}">
     <ul class="list-group">
-        <a routerLink="/dashboard" [routerLinkActive]="['router-link-active']" class="list-group-item">
-            <i class="fa fa-fw fa-dashboard"></i>&nbsp;{{ 'Dashboard' | translate }}
-        </a>
         <div class="nested-menu">
             <a class="list-group-item" [routerLink]="['/purchase']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('purchase')">
                 <span><i class="fa fa-plus"></i>&nbsp; {{ '进货' | translate }}</span>
@@ -22,23 +19,15 @@
             </li>
         </div>
 
+
         <div class="nested-menu">
-            <a class="list-group-item" [routerLink]="['/sale']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('sale')">
-                <span><i class="fa fa-plus"></i>&nbsp; {{ 'Sale' | translate }}</span>
+            <a class="list-group-item" [routerLink]="['/production']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('production')">
+                <span><i class="fa fa-plus"></i>&nbsp; {{ '生产组装' | translate }}</span>
             </a>
-            <li class="nested" [class.expand]="showMenu === 'sale'">
+            <li class="nested" [class.expand]="showMenu === 'production'">
                 <ul class="submenu">
                     <li>
-                        <a [routerLink]="['/sale/place-orders']" [routerLinkActive]="['router-link-active']"><span>{{ 'Place Orders' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Update Order' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Payment' | translate }}</span></a>
-                    </li>
-                    <li>
-                        <a [routerLink]="['/sale/create-order']" [routerLinkActive]="['router-link-active']"><span>{{ 'Return' | translate }}</span></a>
+                        <a [routerLink]="['/production/create-production-order']" [routerLinkActive]="['router-link-active']"><span>{{ '新建生产订单' | translate }}</span></a>
                     </li>
                 </ul>
             </li>

@@ -1,0 +1,16 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'新建生产订单'" [icon]="'fa-edit'"></app-page-header>
+
+    <div style="height: 20px;"></div>
+
+    <app-production-order-form
+        [order]="produceOrder"
+        [disabled]="disabledInput"
+        (orderUpdate)="onProduceOrderCreate($event)">
+    </app-production-order-form>
+
+    <div class="row">
+        <div style="height: 400px;"></div>
+    </div>
+
+</div>

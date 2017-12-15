@@ -1,4 +1,3 @@
-import {Observable} from 'rxjs/Observable';
 import * as moment from 'moment';
 import {UUID} from 'angular2-uuid';
 import { OrderProduct} from './order-product.model';
