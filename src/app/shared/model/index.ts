@@ -14,6 +14,7 @@ export * from './expense-transaction.model';
 export * from './cost-category.model';
 export * from './cost-transaction.model';
 export * from './bank-account.model';
+export * from './bank-account-transaction.model';
 
 
 

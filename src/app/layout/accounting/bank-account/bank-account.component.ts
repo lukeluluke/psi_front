@@ -25,9 +25,10 @@ export class BankAccountComponent implements OnInit {
     ngOnInit() {
     }
 
-    public viewTransactions(bankAccountUuid: string) {
-        this.router.navigate(['/accounting/bank-transaction', {
-            bankAccountUuid: bankAccountUuid
+    public viewTransactions(bankAccountUuid: string, bankAccountName: string) {
+        this.router.navigate(['/accounting/bank-account/bank-transaction', {
+            bankAccountUuid: bankAccountUuid,
+            bankAccountName: bankAccountName
         }]);
     }
 

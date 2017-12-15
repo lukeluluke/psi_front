@@ -59,7 +59,7 @@ export const ExpenseTransactions = [
             createdAt: '2017-11-18T02:14:56+11:00',
             updatedAt: '2017-11-18T02:14:56+11:00'
         },
-        note: '',
+        note: '支付仓库的租金',
         createdAt: '2017-12-09T15:56:42+11:00',
         updatedAt: '2017-12-09T15:56:42+11:00'
     },
