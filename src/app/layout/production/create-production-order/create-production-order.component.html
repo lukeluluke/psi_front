@@ -3,7 +3,11 @@
 
     <div style="height: 20px;"></div>
 
-    <app-production-order-form [order]="produceOrder" [disabled]="disabledInput" (orderUpdate)="onProduceOrderCreate($event)"></app-production-order-form>
+    <app-production-order-form
+        [order]="produceOrder"
+        [disabled]="disabledInput"
+        (orderUpdate)="onProduceOrderCreate($event)">
+    </app-production-order-form>
 
     <div class="row">
         <div style="height: 400px;"></div>
