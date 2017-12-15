@@ -18,7 +18,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '3000',
+            amount: 3000,
             note: '',
             createdAt: '2017-12-09T15:57:34+11:00',
             updatedAt: '2017-12-09T15:57:34+11:00'
@@ -52,7 +52,14 @@ export const ExpenseTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
-        note: '',
+        bankAccount: {
+            uuid: 'c18cee1f-428d-48dc-8bf8-51729171ff44',
+            name: 'CBA Gold Saver',
+            balance: 12983.00,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        note: '支付仓库的租金',
         createdAt: '2017-12-09T15:56:42+11:00',
         updatedAt: '2017-12-09T15:56:42+11:00'
     },
@@ -75,7 +82,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '25',
+            amount: 25,
             note: '发往上海',
             createdAt: '2017-12-09T16:05:49+11:00',
             updatedAt: '2017-12-09T16:05:49+11:00'
@@ -95,7 +102,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '65',
+            amount: 65,
             note: '发往香港',
             createdAt: '2017-12-09T16:05:52+11:00',
             updatedAt: '2017-12-09T16:05:52+11:00'
@@ -115,7 +122,7 @@ export const ExpenseTransactions = [
               createdAt: '2017-11-18T02:14:56+11:00',
               updatedAt: '2017-11-18T02:14:56+11:00'
             },
-            amount: '350',
+            amount: 350,
             note: '保税区仓库费用',
             createdAt: '2017-12-09T16:05:54+11:00',
             updatedAt: '2017-12-09T16:05:54+11:00'
@@ -149,9 +156,15 @@ export const ExpenseTransactions = [
             createdAt: '2017-11-18T02:14:56+11:0',
             updatedAt: '2017-11-18T02:14:56+11:0'
         },
+        bankAccount: {
+            uuid: '33d4991e-7344-4df6-b4bb-62228c9cdd57',
+            name: 'ANZ Platinum',
+            balance: 3890.22,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
         note: '',
         createdAt: '2017-12-09T16:05:38+11:00',
         updatedAt: '2017-12-09T16:05:38+11:00'
     }
 ]
-

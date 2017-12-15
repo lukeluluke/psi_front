@@ -1,0 +1,39 @@
+<div [@routerTransition]>
+    <h2 class="text-muted">银行交易明细</h2>
+    <hr/>
+    <div class="row">
+        <h4>{{ bankAccountName }}</h4>
+        <hr/>
+        <div class="col-lg-12">
+            <table class="card-block table table-hover">
+                <thead>
+                <tr>
+                    <th>交易ID</th>
+                    <th>交易金额</th>
+                    <th>摘要</th>
+                    <th>创建时间</th>
+                    <th>查看</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <tr *ngFor="let bankAccountTransaction of bankAccountTransactions">
+                    <td> {{ bankAccountTransaction.uuid }}</td>
+                    <td> {{ bankAccountTransaction.amount }}</td>
+                    <td> {{ bankAccountTransaction.note }}</td>
+                    <td> {{ bankAccountTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
+                    <td><i (click)="viewBankAccountTransaction(bankAccountTransaction.reference)" class="fa fa-eye"></i></td>
+                </tr>
+                </tbody>
+            </table>
+
+            <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+        </div>
+
+
+    </div>
+
+    <div style="height: 120px"></div>
+
+
+</div>

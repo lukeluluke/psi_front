@@ -23,6 +23,8 @@ import { IncomeComponent } from './income/income.component';
 import { CreateIncomeComponent } from './income/create-income/create-income.component';
 import { IncomeFormComponent } from './income/income-form/income-form.component';
 import { ViewIncomeComponent } from './income/view-income/view-income.component';
+import { BankAccountComponent } from './bank-account/bank-account.component';
+import { BankTransactionComponent } from './bank-account/bank-transaction/bank-transaction.component';
 
 
 @NgModule({
@@ -50,7 +52,9 @@ import { ViewIncomeComponent } from './income/view-income/view-income.component'
         IncomeComponent,
         CreateIncomeComponent,
         IncomeFormComponent,
-        ViewIncomeComponent
+        ViewIncomeComponent,
+        BankAccountComponent,
+        BankTransactionComponent
     ]
 })
 

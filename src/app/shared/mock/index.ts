@@ -9,4 +9,6 @@ export * from './mock-expense-category';
 export * from './mock-expense';
 export * from './mock-expense-transaction';
 export * from './mock-cost-category';
-export * from './mock-cost-transaction'
+export * from './mock-cost-transaction';
+export * from './mock-bank-account';
+export * from './mock-bank-account-transaction';

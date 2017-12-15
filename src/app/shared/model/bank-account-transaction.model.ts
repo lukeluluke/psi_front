@@ -1,12 +1,13 @@
-import { Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import { UUID } from 'angular2-uuid';
-import { Expense } from './expense.model'
 import * as moment from 'moment';
+import { BankAccount } from './bank-account.model';
 
 
-export class ExpenseItem {
+export class BankAccountTransaction {
     uuid: string;
-    expense: Expense;
+    bankAccount: BankAccount;
+    reference: string;
     amount: number;
     note: string;
     createdAt: string;
@@ -15,23 +16,26 @@ export class ExpenseItem {
     initialize() {
         if (!this.uuid) {
             this.uuid = UUID.UUID();
-            this.expense = new Expense();
+            this.bankAccount = null;
+            this.reference = '';
             this.amount = 0;
             this.note = '';
             const timestamp = moment();
             this.createdAt = timestamp.format();
             this.updatedAt = timestamp.format();
         }
-        return this;
     }
 
     fromJson(jsonData) {
         if (jsonData) {
-            const expense = new Expense();
+            const bankAccount = new BankAccount();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
-            this.expense = expense.fromJson(jsonData.expense);
+            this.bankAccount = bankAccount.fromJson(jsonData.bankAccount);
+            this.reference = jsonData.reference ? jsonData.reference : '';
             this.amount = jsonData.amount ? jsonData.amount : 0;
             this.note = jsonData.note ? jsonData.note : '';
+            this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
+            this.updatedAt = jsonData.updatedAt ? jsonData.updatedAt : '';
         }
         return this;
     }

@@ -1,3 +1,4 @@
+<script src="../../../shared/mock/mock-bank-account-transaction.ts"></script>
 <div [@routerTransition]>
     <h2 class="text-muted">成本统计</h2>
     <hr>
@@ -84,6 +85,7 @@
                     <th>对象单位</th>
                     <th>经手人</th>
                     <th>部门</th>
+                    <th>金额</th>
                     <th>摘要</th>
                     <th>创建时间</th>
                     <th>查看</th>
@@ -98,6 +100,7 @@
                     <td> {{ costTransaction.company.name }}</td>
                     <td> {{ costTransaction.user.getFullName()}}</td>
                     <td> {{ costTransaction.division.name }}</td>
+                    <td> {{ costTransaction.amount }}</td>
                     <td> {{ costTransaction.note }}</td>
                     <td> {{ costTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
                     <td><i (click)="viewReference(costTransaction.reference, costTransaction.category)" class="fa fa-eye"></i></td>
