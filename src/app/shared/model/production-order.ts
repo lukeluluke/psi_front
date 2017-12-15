@@ -6,6 +6,9 @@ import * as moment from 'moment';
 import {ProduceProduct} from './produce-product.model';
 
 export class ProductionOrder {
+    static TYPE_PENDING = 1;
+    static TYPE_FINISH = 2;
+    static TYPE_DELETED = 3;
     uuid: string;
     id: number;
     status: number;

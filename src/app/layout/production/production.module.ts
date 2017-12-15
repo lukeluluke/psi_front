@@ -13,6 +13,7 @@ import {InlineEditorModule} from '@qontu/ngx-inline-editor';
 import { ProductionOrderFormComponent } from './production-order-form/production-order-form.component';
 import { CreateProduceProductFormComponent } from './create-produce-product-form/create-produce-product-form.component';
 import {ProductModalModule} from '../../shared/modules/product-modal/product-modal.module';
+import {SharedPipesModule} from '../../shared';
 
 @NgModule({
     imports: [
@@ -26,7 +27,8 @@ import {ProductModalModule} from '../../shared/modules/product-modal/product-mod
         InlineEditorModule,
         StatModule,
         ProductionRoutingModule,
-        ProductModalModule
+        ProductModalModule,
+        SharedPipesModule
     ],
     declarations: [
         ProductionComponent,

@@ -1,6 +1,7 @@
 export const ProductionOrders = [
     {
-        status: 1,
+        id: '000000001',
+        status: 2,
         receiveWarehouse: {
             suburb: 'Chadstone',
             stateId: 4,
@@ -210,6 +211,7 @@ export const ProductionOrders = [
         }
     },
     {
+        id: '000000002',
         status : 1,
         receiveWarehouse : {
             suburb : 'Chadstone',
@@ -338,6 +340,7 @@ export const ProductionOrders = [
         }
     },
     {
+        id: '000000003',
         status : 1,
         receiveWarehouse : {
             suburb : 'Melbourne',
@@ -440,7 +443,8 @@ export const ProductionOrders = [
         }
     },
     {
-        status : 1,
+        id: '000000004',
+        status : 2,
         receiveWarehouse : {
             suburb : 'Chadstone',
             stateId : 4,

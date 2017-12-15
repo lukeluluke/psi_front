@@ -6,13 +6,12 @@ import {ProductSettingComponent} from './product-setting/product-setting.compone
 import {ProductSettingModalComponent} from './product-setting/product-setting-modal/product-setting-modal.component';
 import {FormsModule} from '@angular/forms';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-import {PageHeaderModule, XpaginationModule} from '../../shared';
+import {PageHeaderModule, SharedPipesModule, XpaginationModule} from '../../shared';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {SelectModule} from 'ng2-select-compat';
 import { ProductCategorySettingComponent } from './product-category-setting/product-category-setting.component';
 import { ProductCategorySettingModalComponent } from './product-category-setting/product-category-setting-modal/product-category-setting-modal.component';
 import { UserSettingComponent } from './user-setting/user-setting.component';
-import {UserRolePipe} from '../../shared/pipe/user-role.pipe';
 import { UserSettingModalComponent } from './user-setting/user-setting-modal/user-setting-modal.component';
 import { WarehouseSettingComponent } from './warehouse-setting/warehouse-setting.component';
 import { WarehouseSettingModalComponent } from './warehouse-setting/warehouse-setting-modal/warehouse-setting-modal.component';
@@ -30,10 +29,10 @@ import { CompanySettingModalComponent } from './company-setting/company-setting-
         NgxPaginationModule,
         XpaginationModule,
         SelectModule,
-        SettingRoutingModule
+        SettingRoutingModule,
+        SharedPipesModule
     ],
     declarations: [
-        UserRolePipe,
         SettingComponent,
         ProductSettingComponent,
         ProductSettingModalComponent,
