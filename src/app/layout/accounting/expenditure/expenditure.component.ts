@@ -123,10 +123,6 @@ export class ExpenditureComponent implements OnInit {
         }]);
     }
 
-    public deleteExpenseTransactions(expenseTransactionUuid: string) {
-        console.log(expenseTransactionUuid);
-    }
-
     private countTotalExpense() {
         let total = 0;
         for (const expenseItem of this.expenseTransactions) {

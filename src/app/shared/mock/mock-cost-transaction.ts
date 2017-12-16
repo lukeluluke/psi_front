@@ -1,7 +1,7 @@
 export const CostTransactions = [
     {
         uuid: '4397337a-8c84-46b2-9ced-6b5e6346a11e',
-        tid: 'cg-001',
+        tid: 'PO-0000001',
         reference: 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
         category: {
             uuid: 'e12286d3-530e-4af2-af39-ab0b53690546',
@@ -44,7 +44,7 @@ export const CostTransactions = [
     },
     {
         uuid: '31c511c3-30c6-4cc1-92a2-dad1c79c0ebb',
-        tid: 'cg-001',
+        tid: 'PO-0000001',
         reference: 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
         category: {
             uuid: 'e12286d3-530e-4af2-af39-ab0b53690546',
@@ -87,7 +87,7 @@ export const CostTransactions = [
     },
     {
         uuid: 'aa01dd69-8c3c-4809-bcb1-c15c7b2db51c',
-        tid: 'cg-002',
+        tid: 'PO-0000002',
         reference: 'fe773cf4-0a54-4b50-ba28-fd1bac884665',
         category: {
             uuid: 'e12286d3-530e-4af2-af39-ab0b53690546',
