@@ -1,5 +1,5 @@
 import {Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Companies, Warehouses, Divisions, Users } from '../../../../shared/mock';
+import {Companies, Warehouses, Divisions, Users, BankAccounts} from '../../../../shared/mock';
 import { Order, Product, OrderProduct } from '../../../../shared/model/';
 
 import { PaginationInstance } from 'ngx-pagination';
@@ -23,11 +23,13 @@ export class PurchaseOrderFormComponent implements OnInit {
     users = [];
     divisions;
     warehouses;
+    bankAccounts;
 
     selectedCompany = [];
     selectedUser = [];
     selectedWarehouse = [];
     selectedDivision = [];
+    selectedBankAccount = [];
 
 
     private value: string;
@@ -37,6 +39,7 @@ export class PurchaseOrderFormComponent implements OnInit {
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
         this.warehouses = this.convertSelectOptions(Warehouses);
+        this.bankAccounts = this.convertSelectOptions(BankAccounts);
 
         for ( const user of Users) {
             const option = {};
@@ -77,6 +80,13 @@ export class PurchaseOrderFormComponent implements OnInit {
                 this.selectedWarehouse.push(this.order.warehouse.name);
             }
         }
+
+        if (this.order.bankAccount.uuid) {
+            const selectBankAccount = this.bankAccounts.filter(b => b.id === this.order.bankAccount.uuid);
+            if (selectBankAccount) {
+                this.selectedBankAccount.push(this.order.bankAccount.name);
+            }
+        }
     }
 
     selectCompany(value: any): void {
@@ -93,6 +103,11 @@ export class PurchaseOrderFormComponent implements OnInit {
 
     selectWarehouse(value: any): void {
         this.order.warehouse = value;
+    }
+
+    selectBank(value: any): void {
+        const bankAccount = BankAccounts.filter(b => b.uuid === value.id);
+        Object.assign(this.order.bankAccount, bankAccount[0]);
     }
 
     removed(value: any): void {

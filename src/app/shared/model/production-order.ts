@@ -4,6 +4,7 @@ import {UUID} from 'angular2-uuid';
 import {Warehouse} from './warehouse.model';
 import * as moment from 'moment';
 import {ProduceProduct} from './produce-product.model';
+import {BankAccount} from './bank-account.model';
 
 export class ProductionOrder {
     static TYPE_PENDING = 1;
@@ -14,6 +15,8 @@ export class ProductionOrder {
     status: number;
     produceProducts: ProduceProduct[];
     shipWarehouse: Warehouse;
+    bankAccount: BankAccount;
+    payAmount: number;
     receiveWarehouse: Warehouse;
     user: User;
     division: Division;
@@ -32,6 +35,7 @@ export class ProductionOrder {
             this.receiveWarehouse = new Warehouse();
             this.user = new User();
             this.division = new Division();
+            this.bankAccount = new BankAccount();
         }
     }
 
@@ -41,10 +45,13 @@ export class ProductionOrder {
             const shipWarehouse = new Warehouse();
             const receiveWarehouse = new Warehouse();
             const division = new Division();
+            const bankAccount = new BankAccount();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.id = jsonData.id ? jsonData.id : '';
             this.status = jsonData.status ? jsonData.status : '';
             this.user = user.fromJson(jsonData.user);
+            this.bankAccount = bankAccount.fromJson(jsonData.bankAccount);
+            this.payAmount = jsonData.payAmount? jsonData.payAmount : '';
             this.receiveWarehouse = receiveWarehouse.fromJson(jsonData.receiveWarehouse);
             this.shipWarehouse = shipWarehouse.fromJson(jsonData.shipWarehouse);
             this.division = division.fromJson(jsonData.division);

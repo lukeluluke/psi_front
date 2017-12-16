@@ -1,9 +1,17 @@
 export const Orders = [
     {
         uuid : 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
-        id: 1,
+        id: 'PO-0000001',
         type: 1,
         status : 1,
+        bankAccount: {
+            uuid: '33d4991e-7344-4df6-b4bb-62228c9cdd57',
+            name: 'ANZ Platinum',
+            balance: 3890.22,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 100,
         orderProducts : [
             {
                 quantity : 1,
@@ -111,9 +119,17 @@ export const Orders = [
     },
     {
         uuid : 'd52ddd5d-e94f-d3d6-ab38-236387e16310',
-        id: 2,
+        id: 'PO-0000002',
         type: 1,
         status : 1,
+        bankAccount: {
+            uuid: 'c18cee1f-428d-48dc-8bf8-51729171ff44',
+            name: 'CBA Gold Saver',
+            balance: 12983.00,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 230,
         orderProducts : [
             {
                 quantity : '3',
@@ -189,9 +205,17 @@ export const Orders = [
     },
     {
         uuid : 'fe773cf4-0a54-4b50-ba28-fd1bac884665',
-        id: 3,
+        id: 'PO-0000003',
         type: 1,
         status : 1,
+        bankAccount: {
+            uuid: 'bf51166f-3db3-4c88-9ecd-6d8c43abae63',
+            name: 'ICBC',
+            balance: 23.18,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 330,
         orderProducts : [
             {
                 quantity : 1,
@@ -299,9 +323,17 @@ export const Orders = [
     },
     {
         uuid : 'c00e3511-c7f7-45b3-bff1-6d68437983b6',
-        id: 4,
+        id: 'PO-0000004',
         type: 1,
         status: 2,
+        bankAccount: {
+            uuid: '1c303711-e40b-49a3-b42f-1b9233c5fe47',
+            name: 'CitiBank',
+            balance: 8920.81,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 310,
         orderProducts : [
             {
                 quantity : '3',
@@ -377,9 +409,17 @@ export const Orders = [
     },
     {
         uuid : 'b7b976d5-3f39-433d-879f-feb3ec491ea1',
-        id: 5,
+        id: 'PRO-0000001',
         type: 2,
         status: 2,
+        bankAccount: {
+            uuid: 'd2917696-6673-4a06-addf-e3728da58a6a',
+            name: 'HSBC',
+            balance: 209.10,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 1200,
         orderProducts : [
             {
                 quantity : '3',
