@@ -141,7 +141,7 @@
                     <td> {{ orderProduct.product.model }}</td>
                     <td><inline-editor type="text" [disabled]="disabled" [(ngModel)]="orderProduct.quantity" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
                     <td><inline-editor type="text" [disabled]="disabled" [(ngModel)]="orderProduct.unitPrice" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
-                    <td> {{ orderProduct.amount }}</td>
+                    <td> {{ orderProduct.unitPrice * orderProduct.quantity }}</td>
                     <td><inline-editor type="textarea" [disabled]="disabled" [(ngModel)]="orderProduct.note" empty="编辑" (onSave)="saveEditable($event)" name="name" size="8"></inline-editor></td>
                     <td> {{ orderProduct.stockQuantity }}</td>
                     <td *ngIf="!disabled"><i (click)="removeOrderProduct(orderProduct.uuid)" class="fa fa-times"></i></td>
