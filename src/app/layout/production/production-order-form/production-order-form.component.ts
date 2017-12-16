@@ -1,7 +1,7 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ProductionOrder} from '../../../shared/model/production-order';
 import {PaginationInstance} from 'ngx-pagination';
-import {Divisions, Users, Warehouses} from '../../../shared/mock';
+import {BankAccounts, Divisions, Users, Warehouses} from '../../../shared/mock';
 import {ProduceProduct} from '../../../shared/model/produce-product.model';
 
 @Component({
@@ -23,18 +23,19 @@ export class ProductionOrderFormComponent implements OnInit {
     divisions;
     receiveWarehouses;
     shipWarehouses;
-
+    bankAccounts;
     selectedUser = [];
     selectedShipWarehouse = [];
     selectedReceiveWarehouse = [];
     selectedDivision = [];
-
+    selectedBankAccount = [];
     constructor() {
         this.order = new ProductionOrder();
         this.order.initialize();
         this.divisions = this.convertSelectOptions((Divisions));
         this.receiveWarehouses = this.convertSelectOptions(Warehouses);
         this.shipWarehouses = this.convertSelectOptions(Warehouses);
+        this.bankAccounts = this.convertSelectOptions(BankAccounts);
 
         for ( const user of Users) {
             const option = {};
@@ -72,6 +73,13 @@ export class ProductionOrderFormComponent implements OnInit {
                 this.selectedReceiveWarehouse.push(this.order.receiveWarehouse.name);
             }
         }
+
+        if (this.order.bankAccount.uuid) {
+            const selectBankAccount = this.bankAccounts.filter(b => b.id === this.order.bankAccount.uuid);
+            if (selectBankAccount) {
+                this.selectedBankAccount.push(this.order.bankAccount.name);
+            }
+        }
     }
 
     selectUser(value: any): void {
@@ -92,6 +100,11 @@ export class ProductionOrderFormComponent implements OnInit {
     selectReceiveWarehouse(value: any): void {
         const receiveWarehouse = Warehouses.filter(w => w.uuid === value.id);
         Object.assign(this.order.receiveWarehouse, receiveWarehouse[0]);
+    }
+
+    selectBank(value: any): void {
+        const bankAccount = BankAccounts.filter(b => b.uuid === value.id);
+        Object.assign(this.order.bankAccount, bankAccount[0]);
     }
 
     public invalidOrder() {

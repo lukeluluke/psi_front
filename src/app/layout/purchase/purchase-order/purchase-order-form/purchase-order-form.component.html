@@ -80,6 +80,33 @@
     <div style="height: 20px"></div>
 
     <div class="row">
+        <div class="col-lg-3">
+            <div>
+                <ng-select [allowClear]="true"
+                           [items]="bankAccounts"
+                           [active]="selectedBankAccount"
+                           [disabled]="disabled"
+                           (data)="refreshValue($event)"
+                           (selected)="selectBank($event)"
+                           (removed)="removed($event)"
+                           (typed)="typed($event)"
+                           placeholder="选择付款账户">
+                </ng-select>
+            </div>
+        </div>
+
+        <div class="col-lg-3">
+            <div>
+                <input [(ngModel)]="order.payAmount" [disabled]="disabled" class="form-control" placeholder="付款金额">
+            </div>
+        </div>
+    </div>
+
+
+
+    <div style="height: 20px"></div>
+
+    <div class="row">
         <div class="card col-lg-12">
             <div *ngIf="!disabled" class="card-header">
                 <app-product-modal (productAdd)="onProductAdd($event)"></app-product-modal>

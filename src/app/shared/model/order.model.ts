@@ -5,21 +5,21 @@ import { User} from './user.model';
 import { Company } from './company.model';
 import { Warehouse } from './warehouse.model';
 import { Division } from './division.model';
+import {BankAccount} from './bank-account.model';
 
 
 export class Order {
-    static FINISH = 1;
-    static RETURN = 2;
-    static DELETED = 3;
     static TYPE_PURCHASE = 1;
     static TYPE_PURCHASE_RETURN = 2;
     static TYPE_SALE = 3;
     static TYPE_SALE_RETURN = 4;
     uuid: string;
-    id: number;
+    id: string;
     type: number;
     status: number;
     orderProducts: OrderProduct[];
+    bankAccount: BankAccount;
+    payAmount: number;
     company: Company;
     warehouse: Warehouse;
     user: User;
@@ -35,6 +35,7 @@ export class Order {
             this.status = 1;
             this.createdAt = timestamp.format();
             this.orderProducts = [];
+            this.bankAccount = new BankAccount();
         }
     }
 
@@ -44,11 +45,14 @@ export class Order {
             const company = new Company();
             const warehouse = new Warehouse();
             const division = new Division();
+            const bankAccount = new BankAccount();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.id = jsonData.id ? jsonData.id : '';
             this.type = jsonData.type ? jsonData.type : '';
             this.status = jsonData.status ? jsonData.status : '';
             this.user = user.fromJson(jsonData.user);
+            this.bankAccount = bankAccount.fromJson(jsonData.bankAccount);
+            this.payAmount = jsonData.payAmount? jsonData.payAmount : '';
             this.company = company.fromJson(jsonData.company);
             this.warehouse = warehouse.fromJson(jsonData.warehouse);
             this.division = division.fromJson(jsonData.division);

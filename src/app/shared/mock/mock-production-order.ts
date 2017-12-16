@@ -1,7 +1,15 @@
 export const ProductionOrders = [
     {
-        id: '000000001',
+        id: 'PDO-0000001',
         status: 2,
+        bankAccount: {
+            uuid: '33d4991e-7344-4df6-b4bb-62228c9cdd57',
+            name: 'ANZ Platinum',
+            balance: 3890.22,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 100,
         receiveWarehouse: {
             suburb: 'Chadstone',
             stateId: 4,
@@ -211,8 +219,16 @@ export const ProductionOrders = [
         }
     },
     {
-        id: '000000002',
+        id: 'PDO-0000002',
         status : 1,
+        bankAccount: {
+            uuid: 'c18cee1f-428d-48dc-8bf8-51729171ff44',
+            name: 'CBA Gold Saver',
+            balance: 12983.00,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 230,
         receiveWarehouse : {
             suburb : 'Chadstone',
             stateId : 4,
@@ -340,8 +356,15 @@ export const ProductionOrders = [
         }
     },
     {
-        id: '000000003',
+        id: 'PDO-0000003',
         status : 1,
+        bankAccount: {
+            uuid: 'bf51166f-3db3-4c88-9ecd-6d8c43abae63',
+            name: 'ICBC',
+            balance: 23.18,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
         receiveWarehouse : {
             suburb : 'Melbourne',
             stateId : 4,
@@ -443,8 +466,16 @@ export const ProductionOrders = [
         }
     },
     {
-        id: '000000004',
+        id: 'PDO-0000004',
         status : 2,
+        bankAccount: {
+            uuid: '1c303711-e40b-49a3-b42f-1b9233c5fe47',
+            name: 'CitiBank',
+            balance: 8920.81,
+            createdAt: '2017-11-18T02:14:56+11:00',
+            updatedAt: '2017-11-18T02:14:56+11:00'
+        },
+        payAmount: 310,
         receiveWarehouse : {
             suburb : 'Chadstone',
             stateId : 4,
