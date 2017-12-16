@@ -19,9 +19,7 @@ export class ExpenditureComponent implements OnInit {
         currentPage: 1
     };
     countAllExpenseTransaction: number;
-    countAllOpenExpenseTransaction: number;
-    countAllClosedExpenseTransaction: number;
-    countAllDeletedExpenseTransaction: number;
+    totalExpense: number;
     expenseTransactions: ExpenseTransaction[];
     filterExpenseTransactions: ExpenseTransaction[];
     tempFilterExpenseTransactions: ExpenseTransaction[];
@@ -62,9 +60,7 @@ export class ExpenditureComponent implements OnInit {
         }
 
         this.countAllExpenseTransaction = this.expenseTransactions.length;
-        this.countAllOpenExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.OPEN).length;
-        this.countAllClosedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.CLOSED).length;
-        this.countAllDeletedExpenseTransaction = this.filterExpenseTransactionByStatus(ExpenseTransaction.DELETED).length;
+        this.totalExpense = this.countTotalExpense();
         Object.assign(this.filterExpenseTransactions, this.expenseTransactions);
         Object.assign(this.tempFilterExpenseTransactions, this.expenseTransactions);
     }
@@ -131,8 +127,12 @@ export class ExpenditureComponent implements OnInit {
         console.log(expenseTransactionUuid);
     }
 
-    private filterExpenseTransactionByStatus(status: number) {
-        return this.expenseTransactions.filter(e => e.status === status);
+    private countTotalExpense() {
+        let total = 0;
+        for (const expenseItem of this.expenseTransactions) {
+            total += expenseItem.amount;
+        }
+        return total;
     }
 
     public searchExpenseTransactionByUuid(expenseTransactionUuid: string): void {

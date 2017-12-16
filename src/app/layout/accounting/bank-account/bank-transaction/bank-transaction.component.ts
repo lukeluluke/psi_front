@@ -32,13 +32,13 @@ export class BankTransactionComponent implements OnInit {
 
     ngOnInit() {
     }
-    public viewBankAccountTransaction(reference: string) {
-        if (reference === '5dc3278d-2825-3d57-d928-5e11c7ddb5e9') {
+    public viewBankAccountTransaction(reference: string, type: string) {
+        if (type === 'expense') {
             this.router.navigate(['/accounting/expenditure', {
                 expenseTransactionUuid: reference,
                 editable: false
             }]);
-        } else if (reference === '4397337a-8c84-46b2-9ced-6b5e6346a11e') {
+        } else if (type === 'cost') {
             this.router.navigate(['/accounting/cost', {
                 costTransactionUuid: reference,
                 editable: false

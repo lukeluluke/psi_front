@@ -3,20 +3,12 @@
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllExpenseTransaction"
-                      [label]="'全部开支'"></app-stat>
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-list-alt'" [count]="countAllExpenseTransaction"
+                      [label]="'开支总数'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenExpenseTransaction"
-                      [label]="'待确认开支'"></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedExpenseTransaction"
-                      [label]="'已确认开支'"></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedExpenseTransaction"
-                      [label]="'已删除开支'"></app-stat>
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-money'" [count]="'$'+totalExpense"
+                      [label]="'开支总额'"></app-stat>
         </div>
     </div>
 
@@ -77,7 +69,6 @@
             <table class="card-block table table-hover">
                 <thead>
                 <tr>
-                    <th>交易状态</th>
                     <th>支付单位</th>
                     <th>经手人</th>
                     <th>部门</th>
@@ -93,7 +84,6 @@
                 <tbody>
 
                 <tr *ngFor="let expenseTransaction of (filterExpenseTransactions | paginate: pageConfig)">
-                    <td> {{ expenseTransaction.status | TransactionStatusText }}</td>
                     <td> {{ expenseTransaction.toWhom.name }}</td>
                     <td> {{ expenseTransaction.byWhom.getFullName()}}</td>
                     <td> {{ expenseTransaction.division.name }}</td>

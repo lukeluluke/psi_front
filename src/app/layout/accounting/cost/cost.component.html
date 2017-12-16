@@ -4,20 +4,12 @@
     <hr>
     <div class="row">
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-primary'" [icon]="'fa-money'" [count]="countAllCostTransaction"
-                      [label]="'全部成本'"></app-stat>
+            <app-stat [bgClass]="'card-primary'" [icon]="'fa-list-alt'" [count]="countAllCostTransaction"
+                      [label]="'成本总数'"></app-stat>
         </div>
         <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-warning'" [icon]="'fa-question'" [count]="countAllOpenCostTransaction"
-                      [label]="'待确认成本'"></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-success'" [icon]="'fa-check'" [count]="countAllClosedCostTransaction"
-                      [label]="'已确认成本'"></app-stat>
-        </div>
-        <div class="col-xl-3 col-lg-6">
-            <app-stat [bgClass]="'card-danger'" [icon]="'fa-trash'" [count]="countAllDeletedCostTransaction"
-                      [label]="'已删除成本'"></app-stat>
+            <app-stat [bgClass]="'card-success'" [icon]="'fa-money'" [count]="'$'+totalCost"
+                      [label]="'成本总额'"></app-stat>
         </div>
     </div>
 
@@ -78,7 +70,6 @@
             <table class="card-block table table-hover">
                 <thead>
                 <tr>
-                    <th>交易状态</th>
                     <th>交易编号</th>
                     <th>交易类型</th>
                     <th>对象单位</th>
@@ -93,7 +84,6 @@
                 <tbody>
 
                 <tr *ngFor="let costTransaction of (filterCostTransactions | paginate: pageConfig)">
-                    <td> {{ costTransaction.status | TransactionStatusText }}</td>
                     <td> {{ costTransaction.tid }}</td>
                     <td> {{ costTransaction.category.name }}</td>
                     <td> {{ costTransaction.company.name }}</td>

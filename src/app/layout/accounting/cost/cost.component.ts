@@ -19,6 +19,7 @@ export class CostComponent implements OnInit {
         currentPage: 1
     };
     countAllCostTransaction: number;
+    totalCost: number;
     countAllOpenCostTransaction: number;
     countAllClosedCostTransaction: number;
     countAllDeletedCostTransaction: number;
@@ -62,9 +63,7 @@ export class CostComponent implements OnInit {
         }
 
         this.countAllCostTransaction = this.costTransactions.length;
-        this.countAllOpenCostTransaction = this.filterCostTransactionByStatus(CostTransaction.OPEN).length;
-        this.countAllClosedCostTransaction = this.filterCostTransactionByStatus(CostTransaction.CLOSED).length;
-        this.countAllDeletedCostTransaction = this.filterCostTransactionByStatus(CostTransaction.DELETED).length;
+        this.totalCost = this.countTotalCost();
         Object.assign(this.filterCostTransactions, this.costTransactions);
         Object.assign(this.tempFilterCostTransactions, this.costTransactions);
     }
@@ -121,8 +120,12 @@ export class CostComponent implements OnInit {
         }
     }
 
-    private filterCostTransactionByStatus(status: number) {
-        return this.costTransactions.filter(c => c.status === status);
+    private countTotalCost() {
+        let total = 0;
+        for (const costItem of this.costTransactions) {
+            total += costItem.amount;
+        }
+        return total;
     }
 
     public searchCostTransactionByUuid(costTransactionUuid: string): void {

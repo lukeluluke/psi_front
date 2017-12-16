@@ -9,12 +9,8 @@ import { CostCategory } from './cost-category.model';
 
 
 export class CostTransaction {
-    static OPEN = 1;
-    static CLOSED = 2;
-    static DELETED = 3;
     uuid: string;
     tid: string;
-    status: number;
     reference: string;
     category: CostCategory;
     company: Company;
@@ -29,7 +25,6 @@ export class CostTransaction {
         if (!this.uuid) {
             this.uuid = UUID.UUID();
             this.tid = '';
-            this.status = 0;
             this.reference = '';
             this.company = null;
             this.user = null;
@@ -50,7 +45,6 @@ export class CostTransaction {
             const category = new CostCategory();
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.tid = jsonData.tid ? jsonData.tid : '';
-            this.status = jsonData.status ? jsonData.status : '';
             this.reference = jsonData.reference ? jsonData.reference : '';
             this.category = category.fromJson(jsonData.category);
             this.company = company.fromJson(jsonData.company);

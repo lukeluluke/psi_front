@@ -13,7 +13,6 @@ export class ExpenseTransaction {
     static CLOSED = 2;
     static DELETED = 3;
     uuid: string;
-    status: number; // 0 => open; 1 => closed; 2 => deleted
     expenseItems: ExpenseItem[];
     toWhom: Company;
     byWhom: User;
@@ -26,7 +25,6 @@ export class ExpenseTransaction {
     initialize() {
         if (!this.uuid) {
             this.uuid = UUID.UUID();
-            this.status = 0;
             this.expenseItems = [];
             this.toWhom = null;
             this.byWhom = null;
@@ -49,7 +47,6 @@ export class ExpenseTransaction {
             const bankAccount = new BankAccount();
             let amount = 0;
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
-            this.status = jsonData.status ? jsonData.status : '';
             this.byWhom = user.fromJson(jsonData.byWhom);
             this.toWhom = company.fromJson(jsonData.toWhom);
             this.division = division.fromJson(jsonData.division);

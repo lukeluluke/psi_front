@@ -8,6 +8,7 @@ export class BankAccountTransaction {
     uuid: string;
     bankAccount: BankAccount;
     reference: string;
+    type: string;
     amount: number;
     note: string;
     createdAt: string;
@@ -18,6 +19,7 @@ export class BankAccountTransaction {
             this.uuid = UUID.UUID();
             this.bankAccount = null;
             this.reference = '';
+            this.type = '';
             this.amount = 0;
             this.note = '';
             const timestamp = moment();
@@ -32,6 +34,7 @@ export class BankAccountTransaction {
             this.uuid = jsonData.uuid ? jsonData.uuid : '';
             this.bankAccount = bankAccount.fromJson(jsonData.bankAccount);
             this.reference = jsonData.reference ? jsonData.reference : '';
+            this.type = jsonData.type ? jsonData.type : '';
             this.amount = jsonData.amount ? jsonData.amount : 0;
             this.note = jsonData.note ? jsonData.note : '';
             this.createdAt = jsonData.createdAt ? jsonData.createdAt : '';
