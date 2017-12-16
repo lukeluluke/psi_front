@@ -11,7 +11,8 @@ const routes: Routes = [
             { path: 'sale', loadChildren: './sale/sale.module#SaleModule'},
             { path: 'accounting', loadChildren: './accounting/accounting.module#AccountingModule'},
             { path: 'setting', loadChildren: './setting/setting.module#SettingModule'},
-            { path: 'production', loadChildren: './production/production.module#ProductionModule'}
+            { path: 'production', loadChildren: './production/production.module#ProductionModule'},
+            { path: 'inventory', loadChildren: './inventory/inventory.module#InventoryModule'}
         ]
     }
 ];

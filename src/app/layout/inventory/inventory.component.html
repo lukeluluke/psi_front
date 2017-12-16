@@ -1,0 +1,86 @@
+<div [@routerTransition]>
+    <app-page-header [heading]="'库存列表'" [icon]="'fa-eye'"></app-page-header>
+    <hr>
+
+    <div class="row">
+        <h4>库存产品列表</h4>
+        <hr/>
+        <div class="form-control">
+            <h5>过滤库存</h5>
+            <div class="row">
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="warehouses"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="selectWarehouse($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择仓库">
+                        </ng-select>
+                    </div>
+                </div>
+
+                <div class="col-lg-3" style="display: inline-block">
+                    <div>
+                        <ng-select [allowClear]="true"
+                                   [items]="categories"
+                                   [disabled]="disabled"
+                                   (data)="refreshValue($event)"
+                                   (selected)="selectCategory($event)"
+                                   (removed)="removed($event)"
+                                   (typed)="typed($event)"
+                                   placeholder="选择分类">
+                        </ng-select>
+                    </div>
+                </div>
+
+
+
+                <div class="col-lg-6" style="display: inline-block">
+                    <input class="form-control" (keyup)="searchInventoryProduct($event)" placeholder="搜索库存产品" />
+                </div>
+            </div>
+        </div>
+        <hr/>
+        <div class="row">
+            <div class="col-lg-12">
+
+                <table class="card-block table table-hover">
+                    <thead>
+                    <tr>
+                        <th>仓库</th>
+                        <th>商品编号</th>
+                        <th>商品名称</th>
+                        <th>商品型号</th>
+                        <th>规格</th>
+                        <th>分类</th>
+                        <th>价格</th>
+                        <th>库存数量</th>
+                        <th>备注</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let inventory of (filterInventory | paginate: pageConfig)">
+                        <td>{{ inventory.warehouse.name }}</td>
+                        <td> {{ inventory.product.sku }}</td>
+                        <td> {{ inventory.product.name }}</td>
+                        <td> {{ inventory.product.model }}</td>
+                        <td> {{ inventory.product.spec }}</td>
+                        <td> {{ inventory.product.category.name }}</td>
+                        <td> {{ inventory.product.price }}</td>
+                        <td> {{ inventory.quantity }}</td>
+                        <td> {{ inventory.note }}</td>
+                    </tr>
+                    </tbody>
+                </table>
+                <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
+            </div>
+        </div>
+    </div>
+
+    <div style="height: 100px"></div>
+
+</div>
+
