@@ -165,7 +165,7 @@ export class PurchaseComponent implements OnInit {
     }
 
     public deleteOrder(orderUuid: string) {
-        console.log(orderUuid);
+        this.filterOrders = this.filterOrders.filter(o => o.uuid !== orderUuid);
     }
 
     /**
