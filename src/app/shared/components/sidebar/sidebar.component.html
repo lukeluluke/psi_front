@@ -34,7 +34,7 @@
         </div>
 
         <div class="nested-menu">
-            <a class="list-group-item" [routerLink]="['/accounting']" [routerLinkActive]="['router-link-active']" (click)="addExpandClass('accounting')">
+            <a class="list-group-item" (click)="addExpandClass('accounting')">
                 <span><i class="fa fa-plus"></i>&nbsp; {{ '财务' | translate }}</span>
             </a>
             <li class="nested" [class.expand]="showMenu === 'accounting'">

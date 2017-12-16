@@ -22,7 +22,7 @@
                     <td> {{ bankAccountTransaction.amount }}</td>
                     <td> {{ bankAccountTransaction.note }}</td>
                     <td> {{ bankAccountTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
-                    <td><i (click)="viewBankAccountTransaction(bankAccountTransaction.reference)" class="fa fa-eye"></i></td>
+                    <td><i (click)="viewBankAccountTransaction(bankAccountTransaction.reference, bankAccountTransaction.type)" class="fa fa-eye"></i></td>
                 </tr>
                 </tbody>
             </table>
