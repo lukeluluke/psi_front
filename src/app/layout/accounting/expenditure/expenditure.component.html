@@ -111,13 +111,18 @@
 
             <app-xpagination [pageConfig]="pageConfig" [maxSize]="10"></app-xpagination>
         </div>
+        <div *ngIf="visible" class="row">
+            <div class="col-lg-1">
+                <button class="btn btn-primary" (click)="removeUuidFilter()">显示全部交易</button>
+            </div>
+        </div>
 
 
     </div>
 
     <div style="height: 20px"></div>
 
-    <div class="row">
+    <div *ngIf="!visible" class="row">
         <button class="btn btn-primary" (click)="addExpenditure()">添加开支</button>
     </div>
 

@@ -3,7 +3,7 @@ import {routerTransition} from '../../../router.animations';
 import {ExpenseTransactions, Companies, Divisions, Users} from '../../../shared/mock';
 import {ExpenseTransaction} from '../../../shared/model';
 import {PaginationInstance} from 'ngx-pagination';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 
 
 @Component({
@@ -31,8 +31,12 @@ export class ExpenditureComponent implements OnInit {
     filterCompanyUuid: string = '';
     filterUserUuid: string = '';
     filterDivisionUuid: string = '';
+    filterExpenseTransactionUuid: string = '';
+    expenseTransactionUuid: string = '';
+    visible: boolean = false;
 
-    constructor(private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router) {
+        this.visible = false;
         this.expenseTransactions = [];
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
@@ -66,6 +70,17 @@ export class ExpenditureComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.expenseTransactionUuid = this.route.snapshot.paramMap.get('expenseTransactionUuid');
+        if (this.expenseTransactionUuid) {
+            this.searchExpenseTransactionByUuid(this.expenseTransactionUuid);
+            this.visible = true;
+        }
+    }
+    public removeUuidFilter() {
+        this.filterExpenseTransactionUuid = '';
+        this.filterExpenseTransaction()
+        this.visible = false;
+        this.router.navigate(['accounting/expenditure']);
     }
 
     public filterUser(value) {
@@ -120,6 +135,11 @@ export class ExpenditureComponent implements OnInit {
         return this.expenseTransactions.filter(e => e.status === status);
     }
 
+    public searchExpenseTransactionByUuid(expenseTransactionUuid: string): void {
+        this.filterExpenseTransactionUuid = expenseTransactionUuid;
+        this.filterExpenseTransaction();
+    }
+
     private filterExpenseTransaction() {
         let allExpenseTransactions = [];
         Object.assign(allExpenseTransactions, this.expenseTransactions);
@@ -137,6 +157,11 @@ export class ExpenditureComponent implements OnInit {
             const divisionExpenseTransactions = allExpenseTransactions.filter(e => e.division.uuid === this.filterDivisionUuid);
             allExpenseTransactions = [];
             Object.assign(allExpenseTransactions, divisionExpenseTransactions);
+        }
+        if (this.filterExpenseTransactionUuid !== '') {
+            const uuidCostTransactions = allExpenseTransactions.filter(et => et.uuid.indexOf(this.filterExpenseTransactionUuid) !== -1);
+            allExpenseTransactions = [];
+            Object.assign(allExpenseTransactions, uuidCostTransactions);
         }
         this.filterExpenseTransactions = [];
         Object.assign(this.filterExpenseTransactions, allExpenseTransactions);

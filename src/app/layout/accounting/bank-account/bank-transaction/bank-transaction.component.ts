@@ -34,13 +34,13 @@ export class BankTransactionComponent implements OnInit {
     }
     public viewBankAccountTransaction(reference: string) {
         if (reference === '5dc3278d-2825-3d57-d928-5e11c7ddb5e9') {
-            this.router.navigate(['/accounting/expenditure/view-expenditure', {
+            this.router.navigate(['/accounting/expenditure', {
                 expenseTransactionUuid: reference,
                 editable: false
             }]);
         } else if (reference === '4397337a-8c84-46b2-9ced-6b5e6346a11e') {
-            this.router.navigate(['/purchase/view-purchase-order', {
-                orderUuid: 'dd9d5ea5-5cfa-815c-90fb-20573fe06ead',
+            this.router.navigate(['/accounting/cost', {
+                costTransactionUuid: reference,
                 editable: false
             }]);
         }

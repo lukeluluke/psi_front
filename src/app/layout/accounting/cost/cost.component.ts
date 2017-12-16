@@ -3,7 +3,7 @@ import { routerTransition } from '../../../router.animations';
 import { CostTransactions, Companies, Divisions, Users } from '../../../shared/mock';
 import { CostTransaction } from '../../../shared/model';
 import { PaginationInstance } from 'ngx-pagination';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CostCategory } from '../../../shared/model/cost-category.model';
 
 @Component({
@@ -31,8 +31,12 @@ export class CostComponent implements OnInit {
     filterCompanyUuid: string = '';
     filterUserUuid: string = '';
     filterDivisionUuid: string = '';
+    filterCostTransactionUuid: string = '';
+    costTransactionUuid: string = '';
+    visible: boolean = false;
 
-    constructor(private router: Router) {
+    constructor(private route: ActivatedRoute, private router: Router) {
+        this.visible = false;
         this.costTransactions = [];
         this.companies = this.convertSelectOptions(Companies);
         this.divisions = this.convertSelectOptions((Divisions));
@@ -66,8 +70,18 @@ export class CostComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.costTransactionUuid = this.route.snapshot.paramMap.get('costTransactionUuid');
+        if (this.costTransactionUuid) {
+            this.searchCostTransactionByUuid(this.costTransactionUuid);
+            this.visible = true;
+        }
     }
-
+    public removeUuidFilter() {
+        this.filterCostTransactionUuid = '';
+        this.filterCostTransaction()
+        this.visible = false;
+        this.router.navigate(['accounting/cost']);
+    }
     public filterUser(value) {
         this.filterUserUuid = (value.id !== -1) ? value.id : '';
         this.filterCostTransaction();
@@ -111,6 +125,11 @@ export class CostComponent implements OnInit {
         return this.costTransactions.filter(c => c.status === status);
     }
 
+    public searchCostTransactionByUuid(costTransactionUuid: string): void {
+        this.filterCostTransactionUuid = costTransactionUuid;
+        this.filterCostTransaction();
+    }
+
     private filterCostTransaction() {
         let allCostTransactions = [];
         Object.assign(allCostTransactions, this.costTransactions);
@@ -128,6 +147,11 @@ export class CostComponent implements OnInit {
             const divisionCostTransactions = allCostTransactions.filter(c => c.division.uuid === this.filterDivisionUuid);
             allCostTransactions = [];
             Object.assign(allCostTransactions, divisionCostTransactions);
+        }
+        if (this.filterCostTransactionUuid !== '') {
+            const uuidCostTransactions = allCostTransactions.filter(ct => ct.uuid.indexOf(this.filterCostTransactionUuid) !== -1);
+            allCostTransactions = [];
+            Object.assign(allCostTransactions, uuidCostTransactions);
         }
         this.filterCostTransactions = [];
         Object.assign(this.filterCostTransactions, allCostTransactions);
