@@ -15,7 +15,6 @@
             <ng-select [allowClear]="true"
                        [(ngModel)]="selectCategoryId"
                        [items]="categories"
-                       [disabled]="disabled"
                        (data)="refreshValue($event)"
                        (selected)="selectCategory($event)"
                        (removed)="removed($event)"

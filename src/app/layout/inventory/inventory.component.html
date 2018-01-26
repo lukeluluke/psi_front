@@ -12,7 +12,6 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="warehouses"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="selectWarehouse($event)"
                                    (removed)="removed($event)"
@@ -26,7 +25,6 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="categories"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="selectCategory($event)"
                                    (removed)="removed($event)"

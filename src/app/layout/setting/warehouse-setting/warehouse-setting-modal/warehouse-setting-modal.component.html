@@ -24,10 +24,10 @@
                        [items]="stateOptions"
                        [disabled]="disabled"
                        [active]="selectedState"
-                       (data)="refreshValue($event)"
+                       (data)="refreshValue()"
                        (selected)="selectState($event)"
-                       (removed)="removed($event)"
-                       (typed)="typed($event)"
+                       (removed)="removed()"
+                       (typed)="typed()"
                        placeholder="选择州">
             </ng-select>
         </div>

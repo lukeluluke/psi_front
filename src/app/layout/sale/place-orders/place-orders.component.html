@@ -7,7 +7,6 @@
                 <h4>选择供货单位</h4>
                 <ng-select [allowClear]="true"
                            [items]="companies"
-                           [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selected($event)"
                            (removed)="removed($event)"
@@ -22,7 +21,6 @@
                 <h4>选择经手人</h4>
                 <ng-select [allowClear]="true"
                            [items]="users"
-                           [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selected($event)"
                            (removed)="removed($event)"
@@ -37,7 +35,6 @@
                 <h4>选择部门</h4>
                 <ng-select [allowClear]="true"
                            [items]="divisions"
-                           [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selected($event)"
                            (removed)="removed($event)"
@@ -56,7 +53,6 @@
                 <h4>选择仓库</h4>
                 <ng-select [allowClear]="true"
                            [items]="warehouses"
-                           [disabled]="disabled"
                            (data)="refreshValue($event)"
                            (selected)="selected($event)"
                            (removed)="removed($event)"

@@ -16,7 +16,7 @@
                         <ng-select [allowClear]="true"
                                    [items]="categoryOptions"
                                    [disabled]="disabled"
-                                   (data)="refreshValue($event)"
+                                   (data)="refreshValue()"
                                    (selected)="selectCategory($event)"
                                    (removed)="removed($event)"
                                    (typed)="typed($event)"

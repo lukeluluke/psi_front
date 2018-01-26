@@ -29,11 +29,9 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="users"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterUser($event)"
                                    (removed)="removeUser($event)"
-                                   (typed)="typed($event)"
                                    placeholder="选择经手人">
                         </ng-select>
                     </div>
@@ -43,11 +41,9 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="shipWarehouses"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterShipWarehouse($event)"
                                    (removed)="removeShipWarehouse($event)"
-                                   (typed)="typed($event)"
                                    placeholder="选择发出仓库">
                         </ng-select>
                     </div>
@@ -57,11 +53,9 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="receiveWarehouses"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterReceiveWarehouse($event)"
                                    (removed)="removeReceiveWarehouse($event)"
-                                   (typed)="typed($event)"
                                    placeholder="选择接收仓库">
                         </ng-select>
                     </div>
@@ -72,11 +66,9 @@
                     <div>
                         <ng-select [allowClear]="true"
                                    [items]="divisions"
-                                   [disabled]="disabled"
                                    (data)="refreshValue($event)"
                                    (selected)="filterDivision($event)"
                                    (removed)="removeDivision($event)"
-                                   (typed)="typed($event)"
                                    placeholder="选择部门">
                         </ng-select>
                     </div>

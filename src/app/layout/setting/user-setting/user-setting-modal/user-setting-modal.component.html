@@ -12,10 +12,10 @@
                        [items]="roles"
                        [disabled]="disabled"
                        [active]="selectedRole"
-                       (data)="refreshValue($event)"
+                       (data)="refreshValue()"
                        (selected)="selectRole($event)"
-                       (removed)="removed($event)"
-                       (typed)="typed($event)"
+                       (removed)="removed()"
+                       (typed)="typed()"
                        placeholder="选择角色">
             </ng-select>
         </div>
