@@ -4,14 +4,15 @@
     "license": "MIT",
     "scripts": {
         "ng": "ng",
-        "start": "ng serve --ec true --port 4201",
+        //"start": "ng serve --ec true --port 4201",
+        "start": "http-server",
         "build": "ng build --prod",
         "gitbuild": "ng build --prod --base /start-angular/psi_front/master/dist/",
         "test": "ng test",
         "lint": "ng lint",
         "e2e": "ng e2e",
-        "preinstall":   "npm install -g http-server",
-        "postinstall":  "ng build --prod"
+        "preinstall": "npm install -g http-server",
+        "postinstall": "ng build --prod"
     },
     "private": true,
     "dependencies": {
