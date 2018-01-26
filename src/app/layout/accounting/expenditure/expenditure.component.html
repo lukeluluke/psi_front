@@ -77,8 +77,6 @@
                     <td>摘要</td>
                     <th>创建日期</th>
                     <th>查看</th>
-                    <th>编辑</th>
-                    <th>删除</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -92,9 +90,6 @@
                     <td> {{ expenseTransaction.note }}</td>
                     <td> {{ expenseTransaction.createdAt | date:'yyyy-MM-dd HH:mm' }}</td>
                     <td><i (click)="viewExpenseTransactions(expenseTransaction.uuid)" class="fa fa-eye"></i></td>
-                    <td><i (click)="editExpenseTransactions(expenseTransaction.uuid)" class="fa fa-edit"></i></td>
-                    <td><i (click)="deleteExpenseTransactions(expenseTransaction.uuid)" class="fa fa-times"></i></td>
-
                 </tr>
                 </tbody>
             </table>
